@@ -26,8 +26,10 @@ func _physics_process(delta):
 	velocity.x += SPEED
 
 	if direction_y:
-		velocity.y = direction_y * SPEED
+		velocity.y = direction_y * (abs(0.8 * direction_y) * SPEED)
+		rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 2)
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+		rotation = rotate_toward(rotation, 0, delta * 2)
 		
 	move_and_slide()
