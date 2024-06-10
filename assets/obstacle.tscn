@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://kownbogt80w6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7w6w5"]
+size = Vector2(239.5, 233.5)
+
+[node name="Node2D" type="Node2D"]
+metadata/obstacle = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7w6w5")
+metadata/obstacle = true
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_left = -119.0
+offset_top = -116.0
+offset_right = 119.0
+offset_bottom = 116.0
