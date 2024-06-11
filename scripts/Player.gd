@@ -14,6 +14,8 @@ func _hitobject(object):
 
 func _physics_process(delta):
 	
+	$AnimatedSprite2D.play()
+	
 	# Add the gravity.
 	
 	#if not is_on_floor():
@@ -23,13 +25,16 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	if TakingOff == true:
-		
-		if position.y >= 100:
-			TakingOff = false
+
+		if position.y <= -100:
+			rotation = rotate_toward(rotation, 0, delta * 0.2)
+			if rotation == 0:
+				TakingOff = false
 		else:
 			velocity.x = SPEED
-			velocity.y = SPEED
-			rotation = rotate_toward(rotation, -0.8, delta)
+			velocity.y = 1 * (rotation * SPEED)
+			
+			rotation = rotate_toward(rotation, -0.5, delta * 0.8)
 			
 	elif TakingOff == false:
 		
@@ -44,10 +49,12 @@ func _physics_process(delta):
 		velocity.x += SPEED
 
 		if direction_y:
-			velocity.y = direction_y * (abs(direction_y + rotation) * SPEED)
 			rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 2.5)
+			#velocity.y = 1 * (abs(rotation) * SPEED)
 		else:
-			velocity.y = move_toward(velocity.y, 0 + rotation, SPEED)
 			rotation = rotate_toward(rotation, 0, delta * 2.5)
+			#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
 			
-		move_and_slide()
+		velocity.y = 1 * (rotation * SPEED)
+			
+	move_and_slide()

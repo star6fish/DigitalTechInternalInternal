@@ -26,4 +26,4 @@ scale = Vector2(43.468, 0.440001)
 metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" parent="." instance=ExtResource("2_p6737")]
-position = Vector2(1132, -228)
+position = Vector2(4531, -143)
