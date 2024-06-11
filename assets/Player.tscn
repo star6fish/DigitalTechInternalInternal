@@ -49,6 +49,6 @@ shape = SubResource("RectangleShape2D_uml7w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rpire")
-frame_progress = 0.868632
+frame_progress = 0.50999
 
 [connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
