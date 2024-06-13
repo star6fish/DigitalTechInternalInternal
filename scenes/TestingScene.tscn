@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=5 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
+[ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
 [ext_resource type="PackedScene" uid="uid://kownbogt80w6" path="res://assets/obstacle.tscn" id="2_p6737"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
@@ -8,8 +9,11 @@ size = Vector2(1217.5, 16.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(420, 512)
+script = ExtResource("1_qlakw")
+ObstacleScene = ExtResource("2_p6737")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
+position = Vector2(0, 71)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -24,6 +28,3 @@ offset_right = -482.0
 offset_bottom = 122.0
 scale = Vector2(43.468, 0.440001)
 metadata/_edit_use_anchors_ = true
-
-[node name="Node2D" parent="." instance=ExtResource("2_p6737")]
-position = Vector2(4531, -143)
