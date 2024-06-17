@@ -49,10 +49,10 @@ func _physics_process(delta):
 		velocity.x += SPEED
 
 		if direction_y:
-			rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 2.5)
+			rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)
 			#velocity.y = 1 * (abs(rotation) * SPEED)
 		else:
-			rotation = rotate_toward(rotation, 0, delta * 2.5)
+			rotation = rotate_toward(rotation, 0, delta * 5)
 			#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
 			
 		velocity.y = 1 * (rotation * SPEED)

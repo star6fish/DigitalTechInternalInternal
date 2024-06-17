@@ -39,6 +39,7 @@ position = Vector2(2, -1)
 shape = SubResource("RectangleShape2D_uml7w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(400, 0)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 rotation_smoothing_speed = 2.0
