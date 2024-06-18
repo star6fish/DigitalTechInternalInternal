@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=6 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
 [ext_resource type="PackedScene" uid="uid://kownbogt80w6" path="res://assets/obstacle.tscn" id="2_p6737"]
+[ext_resource type="PackedScene" uid="uid://bdab77ain0ysm" path="res://assets/mountain.tscn" id="4_ngl22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
@@ -28,3 +29,6 @@ offset_right = -482.0
 offset_bottom = 122.0
 scale = Vector2(43.468, 0.440001)
 metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="." instance=ExtResource("4_ngl22")]
+position = Vector2(1983, 234)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdab77ain0ysm"]
+
+[ext_resource type="Texture2D" uid="uid://bw6efh03rbiu6" path="res://assets/Mountain.png" id="1_4peoa"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6grk7"]
+a = Vector2(-284.375, 41.5)
+b = Vector2(26.0417, -369.5)
+
+[node name="Node2D" type="Node2D"]
+metadata/obstacle = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-30.5, -86.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(28.5, 38)
+scale = Vector2(0.96, 1)
+shape = SubResource("SegmentShape2D_6grk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, -246)
+scale = Vector2(15.375, 15.375)
+texture = ExtResource("1_4peoa")
