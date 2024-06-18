@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://btccivvk86dij"]
+
+[ext_resource type="Texture2D" uid="uid://mh5ht5gckikm" path="res://assets/MissileFlyingAnimation/Untitled-10000.png" id="1_fj1p5"]
+[ext_resource type="Script" path="res://scripts/missile.gd" id="1_lwwty"]
+[ext_resource type="Texture2D" uid="uid://bqko55epahqi" path="res://assets/MissileFlyingAnimation/Untitled-10001.png" id="2_lpfth"]
+[ext_resource type="Texture2D" uid="uid://clnm135r3tvt3" path="res://assets/MissileFlyingAnimation/Untitled-10002.png" id="3_m5y71"]
+[ext_resource type="Texture2D" uid="uid://drvhprr5xhiye" path="res://assets/MissileFlyingAnimation/Untitled-10003.png" id="4_lyifr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om1qm"]
+size = Vector2(64, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lpsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fj1p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lpfth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m5y71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lyifr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.683175, 0.683175)
+script = ExtResource("1_lwwty")
+metadata/obstacle = true
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0.5)
+shape = SubResource("RectangleShape2D_om1qm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -3)
+scale = Vector2(2.1875, 2.1875)
+sprite_frames = SubResource("SpriteFrames_5lpsl")
+frame_progress = 0.271233

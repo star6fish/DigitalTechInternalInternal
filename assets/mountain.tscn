@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdab77ain0ysm"]
+[gd_scene load_steps=4 format=3 uid="uid://bdab77ain0ysm"]
 
+[ext_resource type="Script" path="res://scripts/mountain.gd" id="1_01cbb"]
 [ext_resource type="Texture2D" uid="uid://bw6efh03rbiu6" path="res://assets/Mountain.png" id="1_4peoa"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_6grk7"]
@@ -7,6 +8,7 @@ a = Vector2(-284.375, 41.5)
 b = Vector2(26.0417, -369.5)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_01cbb")
 metadata/obstacle = true
 
 [node name="Area2D" type="Area2D" parent="."]

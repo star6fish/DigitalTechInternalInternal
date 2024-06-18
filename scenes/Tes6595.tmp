@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=6 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
 [ext_resource type="PackedScene" uid="uid://kownbogt80w6" path="res://assets/obstacle.tscn" id="2_p6737"]
-[ext_resource type="PackedScene" uid="uid://btccivvk86dij" path="res://assets/missile.tscn" id="4_53f2b"]
 [ext_resource type="PackedScene" uid="uid://bdab77ain0ysm" path="res://assets/mountain.tscn" id="4_ngl22"]
-[ext_resource type="PackedScene" uid="uid://0j8eka4tmoa1" path="res://assets/jetplane_obstacle1.tscn" id="5_tqf1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
@@ -15,8 +13,6 @@ position = Vector2(420, 512)
 script = ExtResource("1_qlakw")
 ObstacleScene = ExtResource("2_p6737")
 MountainScene = ExtResource("4_ngl22")
-MissileScene = ExtResource("4_53f2b")
-JetPlane_Obstacle1Scene = ExtResource("5_tqf1o")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
 position = Vector2(0, 71)
@@ -36,4 +32,4 @@ scale = Vector2(43.468, 0.440001)
 metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" parent="." instance=ExtResource("4_ngl22")]
-position = Vector2(1946, 406)
+position = Vector2(1983, 234)
