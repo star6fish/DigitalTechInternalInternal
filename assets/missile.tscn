@@ -30,7 +30,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
-scale = Vector2(0.683175, 0.683175)
+scale = Vector2(2.6801, 2.6801)
 script = ExtResource("1_lwwty")
 metadata/obstacle = true
 metadata/_edit_group_ = true

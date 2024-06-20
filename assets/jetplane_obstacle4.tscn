@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyjlqnw5dsikp"]
+
+[ext_resource type="Script" path="res://scripts/jetplane_obstacle1.gd" id="1_0f56u"]
+[ext_resource type="Texture2D" uid="uid://brltbi21uvat2" path="res://assets/ObstacleJetPlane4FlyingAnimation/JetPlane40000.png" id="2_y3kjw"]
+[ext_resource type="Texture2D" uid="uid://drjdjd654l5o3" path="res://assets/ObstacleJetPlane4FlyingAnimation/JetPlane40001.png" id="3_8rh1r"]
+[ext_resource type="Texture2D" uid="uid://c2u7gnoynqfms" path="res://assets/ObstacleJetPlane4FlyingAnimation/JetPlane40002.png" id="4_6q0sb"]
+[ext_resource type="Texture2D" uid="uid://bns2wx0pvptlu" path="res://assets/ObstacleJetPlane4FlyingAnimation/JetPlane40003.png" id="5_3rutx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ajs8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y3kjw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8rh1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6q0sb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3rutx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1muu"]
+size = Vector2(54, 20)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0f56u")
+metadata/obstacle = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -2)
+sprite_frames = SubResource("SpriteFrames_ajs8q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i1muu")

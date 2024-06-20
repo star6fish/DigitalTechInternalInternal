@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(3.84, 3.84)
 script = ExtResource("1_5acs1")
 
 [node name="Area2D" type="Area2D" parent="."]
