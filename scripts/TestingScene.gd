@@ -40,8 +40,8 @@ func _spawn_obstacle():
 		Obstacle.position.x = $CharacterBody2D.position.x + 2000
 		Obstacle.position.y = randf_range(100, 200)
 	elif ObstacleSelect == MissileScene or ObstacleSelect == JetPlane_Obstacle1Scene or ObstacleSelect == JetPlane_Obstacle2Scene:
-		Obstacle.position.x = $CharacterBody2D.position.x + 2000
-		Obstacle.position.y = clamp(randf_range($CharacterBody2D.position.y - 50, $CharacterBody2D.position.y + 50), -2000, -320)
+		Obstacle.position.x = $CharacterBody2D.position.x + 1000
+		Obstacle.position.y = clamp(randf_range($CharacterBody2D.position.y - 50, $CharacterBody2D.position.y + 50), -1000, -320)
 	
 	add_child(Obstacle)
 	

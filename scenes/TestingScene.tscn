@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=12 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wugcy6d5dvfq" path="res://assets/jetplane_obstacle2.tscn" id="6_tij6r"]
 [ext_resource type="PackedScene" uid="uid://c2glu2cqs7hwd" path="res://assets/jetplane_obstacle3.tscn" id="7_fleq2"]
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
+[ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
@@ -28,6 +29,8 @@ JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 position = Vector2(0, 71)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-354, 0)
+scale = Vector2(1.24, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(98.25, 93.75)
@@ -39,4 +42,9 @@ offset_top = 86.0
 offset_right = -482.0
 offset_bottom = 122.0
 scale = Vector2(43.468, 0.440001)
+color = Color(0.278431, 0.278431, 0.278431, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
+position = Vector2(624100, 5781)
+scale = Vector2(-64739.2, 568.407)

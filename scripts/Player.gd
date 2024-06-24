@@ -58,3 +58,5 @@ func _physics_process(delta):
 		velocity.y = 1 * (rotation * SPEED)
 			
 	move_and_slide()
+	
+	position.y = clamp(position.y, -1000, 200)
