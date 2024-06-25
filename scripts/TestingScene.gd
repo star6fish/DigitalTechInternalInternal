@@ -56,7 +56,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if $CharacterBody2D.position.x > 500:
+	if $CharacterBody2D.position.x > 1600:
 	
 		if obstacleCoolDown == false:
 			_spawn_obstacle()

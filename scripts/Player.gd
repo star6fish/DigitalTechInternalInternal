@@ -31,10 +31,11 @@ func _physics_process(delta):
 			if rotation == 0:
 				TakingOff = false
 		else:
-			velocity.x = SPEED
+			velocity.x = SPEED * 2
 			velocity.y = 1 * (rotation * SPEED)
 			
-			rotation = rotate_toward(rotation, -0.5, delta * 0.8)
+			if position.x >= - 215:
+				rotation = rotate_toward(rotation, -0.5, delta)
 			
 	elif TakingOff == false:
 		

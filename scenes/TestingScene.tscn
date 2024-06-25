@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=13 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2glu2cqs7hwd" path="res://assets/jetplane_obstacle3.tscn" id="7_fleq2"]
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
+[ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
@@ -26,7 +27,7 @@ JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
 JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
-position = Vector2(0, 71)
+position = Vector2(-693, -46)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-354, 0)
@@ -48,3 +49,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
 position = Vector2(624100, 5781)
 scale = Vector2(-64739.2, 568.407)
+
+[node name="Node2D2" parent="." instance=ExtResource("11_3sgq2")]
+position = Vector2(-202, -238)
