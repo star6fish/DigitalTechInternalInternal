@@ -40,12 +40,17 @@ func _spawn_obstacle():
 		Obstacle.position.x = $CharacterBody2D.position.x + 2000
 		Obstacle.position.y = randf_range(100, 200)
 	elif ObstacleSelect == MissileScene or ObstacleSelect == JetPlane_Obstacle1Scene or ObstacleSelect == JetPlane_Obstacle2Scene:
-		Obstacle.position.x = $CharacterBody2D.position.x + 1000
-		Obstacle.position.y = clamp(randf_range($CharacterBody2D.position.y - 50, $CharacterBody2D.position.y + 50), -1000, -320)
+		Obstacle.position.x = $CharacterBody2D.position.x + 2000
+		Obstacle.position.y = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
 	
 	add_child(Obstacle)
 	
-	await get_tree().create_timer(1).timeout
+	var Double = Random.randi_range(1, 4)
+	
+	if Double == 4:
+		_spawn_obstacle()
+	
+	await get_tree().create_timer(0.5).timeout
 	
 	obstacleCoolDown = false
 	
@@ -55,6 +60,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	$Camera2D.position.x = $CharacterBody2D.position.x
+	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -500, -100)
 	
 	if $CharacterBody2D.position.x > 1600:
 	
