@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://1npm5sife422"]
+
+[ext_resource type="Script" path="res://scripts/PlayScreen.gd" id="1_x4aba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmka3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h05f5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.00322)
+script = ExtResource("1_x4aba")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 402.0
+offset_top = 438.407
+offset_right = 481.0
+offset_bottom = 463.407
+scale = Vector2(4.88459, 4.88459)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmka3")
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 809.0
+offset_top = 515.655
+offset_right = 892.0
+offset_bottom = 540.655
+scale = Vector2(2.86191, 2.86191)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_h05f5")
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 145.0
+offset_top = 517.661
+offset_right = 228.0
+offset_bottom = 542.661
+scale = Vector2(2.86191, 2.86191)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_h05f5")
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 175.0
+offset_top = 21.0676
+offset_right = 373.0
+offset_bottom = 50.0676
+scale = Vector2(4.4, 4.4)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+text = "AIR FORCE ONE"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 74.7593
+offset_right = 289.0
+offset_bottom = 97.7593
+scale = Vector2(6.87413, 6.87413)
+text = "AIR FORCE ONE"
+
+[connection signal="gui_input" from="CanvasLayer/Label" to="." method="_playButtonPressed"]

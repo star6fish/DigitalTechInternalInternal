@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7f6q0v78w73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl5ii"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 323.0
+offset_top = 255.0
+offset_right = 426.0
+offset_bottom = 280.0
+scale = Vector2(4.92459, 4.92459)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5ii")
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 325.0
+offset_top = 400.0
+offset_right = 476.0
+offset_bottom = 425.0
+scale = Vector2(3.36459, 3.36459)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_nl5ii")
+text = "HOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 26.0
+offset_right = 1310.0
+offset_bottom = 191.0
+scale = Vector2(0.880597, 0.880597)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 422.441
+offset_top = 4.54237
+offset_right = 493.441
+offset_bottom = 27.5424
+scale = Vector2(6.87413, 6.87413)
+text = "PAUSED"

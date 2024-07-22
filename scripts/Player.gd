@@ -14,8 +14,6 @@ func _hitobject(object):
 
 func _physics_process(delta):
 	
-	print(position.y)
-	
 	$AnimatedSprite2D.play()
 	
 	# Add the gravity.
@@ -58,7 +56,7 @@ func _physics_process(delta):
 			rotation = rotate_toward(rotation, 0, delta * 5)
 			#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
 				
-		if position.y == -910 and rotation != 0:
+		if position.y == -910 and not direction_y:
 			rotation = rotate_toward(rotation, 0, delta * 5)
 				
 		velocity.y = 1 * (rotation * SPEED)

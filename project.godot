@@ -17,3 +17,10 @@ config/icon="res://icon.svg"
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+
+[shader_globals]
+
+OptionsPreSreen={
+"type": "bool",
+"value": false
+}

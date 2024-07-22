@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6voduoidr52e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi8r8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 26.0
+offset_right = 1310.0
+offset_bottom = 191.0
+scale = Vector2(0.880597, 0.880597)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 422.441
+offset_top = 4.54237
+offset_right = 493.441
+offset_bottom = 27.5424
+scale = Vector2(6.87413, 6.87413)
+text = "OPTIONS"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 537.0
+offset_right = 487.0
+offset_bottom = 562.0
+scale = Vector2(3.40056, 3.40056)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mi8r8")
+text = "BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 209.0
+offset_right = 534.0
+offset_bottom = 234.0
+scale = Vector2(2.60292, 2.60292)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mi8r8")
+text = "OPTION 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 290.0
+offset_right = 534.0
+offset_bottom = 315.0
+scale = Vector2(2.60292, 2.60292)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mi8r8")
+text = "OPTION 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 368.0
+offset_right = 534.0
+offset_bottom = 393.0
+scale = Vector2(2.60292, 2.60292)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mi8r8")
+text = "OPTION 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 446.0
+offset_right = 531.0
+offset_bottom = 471.0
+scale = Vector2(2.60292, 2.60292)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_mi8r8")
+text = "OPTION 4"
+horizontal_alignment = 1
+vertical_alignment = 1
