@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_865kt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4is"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
@@ -41,25 +41,22 @@ JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 7.00001
+offset_right = 107.0
+offset_bottom = 33.0
+scale = Vector2(2.16544, 2.06453)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sj4is")
+text = "II  PAUSE"
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 837.0
 offset_top = 23.0
 offset_right = 1102.0
 offset_bottom = 46.0
 text = "Use the arrows to go up and down"
-
-[node name="Label2" type="Label" parent="CanvasLayer"]
-offset_left = 22.0
-offset_top = 14.0
-offset_right = 104.0
-offset_bottom = 39.0
-scale = Vector2(2.15908, 2.03124)
-theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_865kt")
-text = "II  PAUSE"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
 offset_top = 546.0
@@ -129,3 +126,5 @@ position = Vector2(-291, -121)
 scale = Vector2(1.05241, 12.472)
 offset = Vector2(400, 0)
 position_smoothing_enabled = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]

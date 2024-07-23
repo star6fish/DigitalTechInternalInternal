@@ -10,6 +10,12 @@ extends Node2D
 
 var obstacleCoolDown = false
 
+func _pause():
+	get_tree().change_scene_to_file("res://scenes/PauseScreen.tscn")
+	
+func _pauseButtonPressed():
+	_pause()
+
 func _spawn_obstacle():
 	
 	obstacleCoolDown = true
