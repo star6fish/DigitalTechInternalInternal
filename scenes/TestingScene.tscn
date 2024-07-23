@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=16 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -11,8 +11,22 @@
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
+[ext_resource type="PackedScene" uid="uid://bivtyjvfrv15f" path="res://assets/win.tscn" id="12_nivx7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4is"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eakbq"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
 border_width_top = 1
@@ -63,14 +77,14 @@ offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
 scale = Vector2(1, 0.599999)
-color = Color(0, 0.458824, 0.0901961, 1)
+color = Color(0, 0.458824, 0.0901961, 0.505882)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
 scale = Vector2(1, 0.599999)
-color = Color(0, 0.768627, 0.180392, 1)
+color = Color(0, 0.768627, 0.180392, 0.694118)
 
 [node name="Label3" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
@@ -92,6 +106,46 @@ scale = Vector2(0.766514, 1.23169)
 theme_override_colors/font_color = Color(0, 0.458824, 0.0901961, 1)
 text = "DISTANCE COVERED:"
 horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+offset_top = 26.0
+offset_right = 1310.0
+offset_bottom = 191.0
+scale = Vector2(0.880597, 0.880597)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Label" type="Label" parent="CanvasLayer2/ColorRect"]
+layout_mode = 0
+offset_left = 422.441
+offset_top = 4.54237
+offset_right = 493.441
+offset_bottom = 27.5424
+scale = Vector2(6.87413, 6.87413)
+text = "PAUSED"
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+offset_left = 291.0
+offset_top = 271.0
+offset_right = 388.0
+offset_bottom = 297.0
+scale = Vector2(5.19574, 5.39819)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+text = "RESUME"
+
+[node name="Button2" type="Button" parent="CanvasLayer2"]
+offset_left = 294.0
+offset_top = 443.0
+offset_right = 433.0
+offset_bottom = 468.0
+scale = Vector2(3.59574, 3.49454)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+text = "HOME"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
 position = Vector2(-693, -46)
@@ -121,6 +175,9 @@ position = Vector2(-202, -238)
 position = Vector2(624120, 5781)
 scale = Vector2(-64739.2, 568.407)
 
+[node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
+position = Vector2(73649, -3904)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-291, -121)
 scale = Vector2(1.05241, 12.472)
@@ -128,3 +185,5 @@ offset = Vector2(400, 0)
 position_smoothing_enabled = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button2" to="." method="_homeButtonPressed"]

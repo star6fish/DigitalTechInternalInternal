@@ -10,11 +10,30 @@ extends Node2D
 
 var obstacleCoolDown = false
 
+func _win():
+	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
+
 func _pause():
-	get_tree().change_scene_to_file("res://scenes/PauseScreen.tscn")
+	get_tree().paused = true
+	$CanvasLayer.visible = false
+	$CanvasLayer2.visible = true
+	
+func _resume():
+	get_tree().paused = false
+	$CanvasLayer2.visible = false
+	$CanvasLayer.visible = true
+	
+func _home():
+	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
 	
 func _pauseButtonPressed():
 	_pause()
+
+func _resumeButtonPressed():
+	_resume()
+	
+func _homeButtonPressed():
+	_home()
 
 func _spawn_obstacle():
 	
@@ -74,3 +93,6 @@ func _process(delta):
 	
 		if obstacleCoolDown == false:
 			_spawn_obstacle()
+			
+	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)
+	$CanvasLayer.get_child(3).get_child(0).text = $CharacterBody2D.position.x " / 1152"

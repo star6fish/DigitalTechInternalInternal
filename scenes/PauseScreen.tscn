@@ -43,6 +43,7 @@ scale = Vector2(6.87413, 6.87413)
 text = "PAUSED"
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 325.0
 offset_top = 238.0
 offset_right = 422.0
@@ -53,6 +54,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pi652")
 text = "RESUME"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 328.0
 offset_top = 410.0
 offset_right = 467.0

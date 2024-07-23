@@ -43,6 +43,7 @@ scale = Vector2(6.87413, 6.87413)
 text = "OPTIONS"
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 353.0
 offset_top = 206.0
 offset_right = 540.0
@@ -53,6 +54,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 1"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 353.0
 offset_top = 285.0
 offset_right = 540.0
@@ -63,6 +65,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 2"
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 353.0
 offset_top = 367.0
 offset_right = 540.0
@@ -73,6 +76,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 3"
 
 [node name="Button4" type="Button" parent="."]
+layout_mode = 0
 offset_left = 353.0
 offset_top = 449.0
 offset_right = 540.0
@@ -83,6 +87,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 4"
 
 [node name="Button5" type="Button" parent="."]
+layout_mode = 0
 offset_left = 354.0
 offset_top = 543.0
 offset_right = 495.0
