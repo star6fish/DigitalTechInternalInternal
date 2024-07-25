@@ -7,10 +7,15 @@ var TakingOff = true
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _win():
+	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
+
 func _hitobject(object):
 	if object.get_parent().has_meta("obstacle"):
 		queue_free()
 		get_tree().reload_current_scene()
+	elif object.get_parent().name == "Node2D3":
+		_win()
 
 func _physics_process(delta):
 	

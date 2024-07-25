@@ -10,9 +10,6 @@ extends Node2D
 
 var obstacleCoolDown = false
 
-func _win():
-	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
-
 func _pause():
 	get_tree().paused = true
 	$CanvasLayer.visible = false
@@ -95,4 +92,4 @@ func _process(delta):
 			_spawn_obstacle()
 			
 	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)
-	$CanvasLayer.get_child(3).get_child(0).text = $CharacterBody2D.position.x " / 1152"
+	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / " + str($Node2D3.position.x))
