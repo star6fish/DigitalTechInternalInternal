@@ -9,6 +9,7 @@ extends Node2D
 @export var JetPlane_Obstacle4Scene: PackedScene
 
 var obstacleCoolDown = false
+var obstacles = {}
 
 func _pause():
 	get_tree().paused = true
@@ -21,6 +22,7 @@ func _resume():
 	$CanvasLayer.visible = true
 	
 func _home():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
 	
 func _pauseButtonPressed():
@@ -63,9 +65,27 @@ func _spawn_obstacle():
 		Obstacle.position.y = randf_range(100, 200)
 	elif ObstacleSelect == MissileScene or ObstacleSelect == JetPlane_Obstacle1Scene or ObstacleSelect == JetPlane_Obstacle2Scene:
 		Obstacle.position.x = $CharacterBody2D.position.x + 2000
-		Obstacle.position.y = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
-	
-	add_child(Obstacle)
+		
+		var obstaclePositionY = 0
+		
+		obstacles[Obstacle] = false
+		
+		while obstacles[Obstacle] == false:
+		
+			obstaclePositionY = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
+			
+			var canSpawn = true
+			
+			for obstacle in obstacles:
+				if obstacle != Obstacle:
+					print(obstacles[obstacle] - obstaclePositionY)
+					if obstacles[obstacle] - obstaclePositionY < 10:
+						canSpawn = false
+			
+			if canSpawn == true:
+				obstacles[Obstacle] = obstaclePositionY
+				add_child(Obstacle)
+				Obstacle.position.y = obstaclePositionY
 	
 	var Double = Random.randi_range(1, 4)
 	

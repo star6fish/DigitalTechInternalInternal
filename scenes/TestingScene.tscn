@@ -176,7 +176,7 @@ position = Vector2(624120, 5781)
 scale = Vector2(-64739.2, 568.407)
 
 [node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
-position = Vector2(77626, -3520)
+position = Vector2(99002, -576)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-291, -121)
