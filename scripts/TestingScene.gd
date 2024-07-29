@@ -84,8 +84,9 @@ func _spawn_obstacle():
 			
 			if canSpawn == true:
 				obstacles[Obstacle] = obstaclePositionY
-				add_child(Obstacle)
-				Obstacle.position.y = obstaclePositionY
+				
+		add_child(Obstacle)
+		Obstacle.position.y = obstaclePositionY
 	
 	var Double = Random.randi_range(1, 4)
 	
