@@ -58,42 +58,37 @@ func _spawn_obstacle():
 		elif  ObstacleJetPlaneColour == 3:
 			ObstacleSelect = JetPlane_Obstacle3Scene
 			
-	var Obstacle = ObstacleSelect.instantiate()
-	
+	var obstaclePositionY = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
+		
+	var canSpawn = true
+			
+	for obstacle in obstacles:
+		if obstacles[obstacle] - obstaclePositionY < 10:
+			canSpawn = false
+			
 	if ObstacleSelect == MountainScene:
-		Obstacle.position.x = $CharacterBody2D.position.x + 2000
-		Obstacle.position.y = randf_range(100, 200)
-	elif ObstacleSelect == MissileScene or ObstacleSelect == JetPlane_Obstacle1Scene or ObstacleSelect == JetPlane_Obstacle2Scene:
-		Obstacle.position.x = $CharacterBody2D.position.x + 2000
-		
-		var obstaclePositionY = 0
-		
-		obstacles[Obstacle] = false
-		
-		while obstacles[Obstacle] == false:
-		
-			obstaclePositionY = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
+		canSpawn = true
+		obstaclePositionY = randf_range(100, 200)
 			
-			var canSpawn = true
-			
-			for obstacle in obstacles:
-				if obstacle != Obstacle:
-					print(obstacles[obstacle] - obstaclePositionY)
-					if obstacles[obstacle] - obstaclePositionY < 10:
-						canSpawn = false
-			
-			if canSpawn == true:
-				obstacles[Obstacle] = obstaclePositionY
+	if canSpawn == true:
+							
+		var Obstacle = ObstacleSelect.instantiate()
+		
+		obstacles[Obstacle] = obstaclePositionY
 				
 		add_child(Obstacle)
+			
+		Obstacle.position.x = $CharacterBody2D.position.x + 2000
 		Obstacle.position.y = obstaclePositionY
 	
-	var Double = Random.randi_range(1, 4)
+		var Double = Random.randi_range(1, 4)
 	
-	if Double == 4:
-		_spawn_obstacle()
+		if Double == 4:
+			_spawn_obstacle()
 	
-	await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.5).timeout
+			
+		obstacles.erase(Obstacle)
 	
 	obstacleCoolDown = false
 	
@@ -105,7 +100,7 @@ func _ready():
 func _process(delta):
 	
 	$Camera2D.position.x = $CharacterBody2D.position.x
-	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -500, -100)
+	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -600, -100)
 	
 	if $CharacterBody2D.position.x > 1600:
 	
