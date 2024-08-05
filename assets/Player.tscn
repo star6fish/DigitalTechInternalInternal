@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1wlff68hwr0h"]
+[gd_scene load_steps=9 format=3 uid="uid://c1wlff68hwr0h"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_5acs1"]
 [ext_resource type="Texture2D" uid="uid://bijm5udnrw7yo" path="res://assets/JetPlaneFlyingAnimation/JetPlane0000.png" id="2_jist5"]
+[ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_ovkc5"]
 [ext_resource type="Texture2D" uid="uid://dauom0pk8kn20" path="res://assets/JetPlaneFlyingAnimation/JetPlane0001.png" id="3_ycseq"]
 [ext_resource type="Texture2D" uid="uid://dvqvgcuwqci8y" path="res://assets/JetPlaneFlyingAnimation/JetPlane0002.png" id="4_c5usi"]
 [ext_resource type="Texture2D" uid="uid://slokw2d3yh8f" path="res://assets/JetPlaneFlyingAnimation/JetPlane0003.png" id="5_n037r"]
@@ -32,6 +33,7 @@ animations = [{
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(1.07735, 1.07735)
 script = ExtResource("1_5acs1")
+ExplosionScene = ExtResource("2_ovkc5")
 
 [node name="Area2D" type="Area2D" parent="."]
 

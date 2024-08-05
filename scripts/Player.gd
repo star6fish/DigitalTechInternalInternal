@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED = 300.0
+@export var ExplosionScene: PackedScene
 
 var TakingOff = true
 
@@ -12,8 +13,19 @@ func _win():
 
 func _hitobject(object):
 	if object.get_parent().has_meta("obstacle"):
+		
+		var Explosion = ExplosionScene.instantiate()
+		
+		Explosion.position.x = position.x
+		Explosion.position.y = position.y
+		
+		add_child(Explosion)
+		
+		await get_tree().create_timer(0.5).timeout
+		
 		queue_free()
 		get_tree().reload_current_scene()
+		
 	elif object.get_parent().name == "Node2D3":
 		_win()
 
