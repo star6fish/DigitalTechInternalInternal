@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var ExplosionScene : PackedScene
+@export var ExplosionColour : Color
 
 var RotateDirection = 0.2
 var Crashing = false
@@ -16,6 +17,9 @@ func _hitobject(object):
 		
 		Explosion.position.x = position.x
 		Explosion.position.y = position.y
+		
+		Explosion.get_child(0).modulate = ExplosionColour
+		Explosion.get_child(1).color = ExplosionColour
 		
 		get_parent().add_child(Explosion)
 

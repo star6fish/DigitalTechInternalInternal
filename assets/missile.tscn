@@ -34,6 +34,7 @@ animations = [{
 scale = Vector2(1.0001, 1.0001)
 script = ExtResource("1_lwwty")
 ExplosionScene = ExtResource("2_6e8yn")
+ExplosionColour = Color(0, 0.509804, 0.615686, 1)
 metadata/obstacle = true
 metadata/_edit_group_ = true
 

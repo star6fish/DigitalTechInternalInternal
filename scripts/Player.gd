@@ -25,12 +25,16 @@ func _hitobject(object):
 		Explosion.position.x = position.x
 		Explosion.position.y = position.y
 		
+		Explosion.get_child(0).modulate = Color(1, 1, 0.5, 1)
+		Explosion.get_child(1).color = Color(1, 1, 0.5, 1)
+		
 		get_parent().add_child(Explosion)
 		
 		await get_tree().create_timer(0.5).timeout
 		
 		queue_free()
-		get_tree().reload_current_scene()
+		get_tree().paused = false
+		get_tree().reload_current_scene()	
 		
 	elif object.get_parent().name == "Node2D3":
 		_win()

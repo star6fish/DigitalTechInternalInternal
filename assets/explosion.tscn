@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnupu42r46n7x"]
+[gd_scene load_steps=12 format=3 uid="uid://bnupu42r46n7x"]
 
 [ext_resource type="Script" path="res://scripts/explosion.gd" id="1_tg7er"]
 [ext_resource type="Texture2D" uid="uid://bbj74u62bf68m" path="res://assets/Explosion/Explosion0000.png" id="1_u2t4f"]
@@ -38,11 +38,24 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_ut713"]
+offsets = PackedFloat32Array(0.2, 0.713043)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ij3ht"]
+gradient = SubResource("Gradient_ut713")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tg7er")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.76, 2.76)
 sprite_frames = SubResource("SpriteFrames_brvhr")
-frame = 6
-frame_progress = 0.846193
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+texture = SubResource("GradientTexture2D_ij3ht")
+texture_scale = 2.02
