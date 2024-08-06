@@ -1,0 +1,189 @@
+[gd_scene load_steps=16 format=3 uid="uid://k6nq41vrrsrx"]
+
+[ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
+[ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
+[ext_resource type="PackedScene" uid="uid://kownbogt80w6" path="res://assets/obstacle.tscn" id="2_p6737"]
+[ext_resource type="PackedScene" uid="uid://btccivvk86dij" path="res://assets/missile.tscn" id="4_53f2b"]
+[ext_resource type="PackedScene" uid="uid://bdab77ain0ysm" path="res://assets/mountain.tscn" id="4_ngl22"]
+[ext_resource type="PackedScene" uid="uid://0j8eka4tmoa1" path="res://assets/jetplane_obstacle1.tscn" id="5_tqf1o"]
+[ext_resource type="PackedScene" uid="uid://wugcy6d5dvfq" path="res://assets/jetplane_obstacle2.tscn" id="6_tij6r"]
+[ext_resource type="PackedScene" uid="uid://c2glu2cqs7hwd" path="res://assets/jetplane_obstacle3.tscn" id="7_fleq2"]
+[ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
+[ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
+[ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
+[ext_resource type="PackedScene" uid="uid://bivtyjvfrv15f" path="res://assets/win.tscn" id="12_nivx7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4is"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eakbq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
+size = Vector2(1217.5, 16.5)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(420, 512)
+script = ExtResource("1_qlakw")
+ObstacleScene = ExtResource("2_p6737")
+MountainScene = ExtResource("4_ngl22")
+MissileScene = ExtResource("4_53f2b")
+JetPlane_Obstacle1Scene = ExtResource("5_tqf1o")
+JetPlane_Obstacle2Scene = ExtResource("6_tij6r")
+JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
+JetPlane_Obstacle4Scene = ExtResource("8_271cl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 7.00001
+offset_right = 107.0
+offset_bottom = 33.0
+scale = Vector2(2.16544, 2.06453)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sj4is")
+text = "II  PAUSE"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 837.0
+offset_top = 23.0
+offset_right = 1102.0
+offset_bottom = 46.0
+text = "Use the arrows to go up and down"
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+offset_top = 546.0
+offset_right = 1152.0
+offset_bottom = 586.0
+scale = Vector2(1, 0.599999)
+color = Color(0, 0.458824, 0.0901961, 0.505882)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 546.0
+offset_right = 1152.0
+offset_bottom = 586.0
+scale = Vector2(1, 0.599999)
+color = Color(0, 0.768627, 0.180392, 0.694118)
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 4.99998
+offset_right = 1156.0
+offset_bottom = 28.0
+scale = Vector2(0.875107, 1.33266)
+text = "0/0"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 4.99998
+offset_right = 1085.0
+offset_bottom = 28.0
+scale = Vector2(0.766514, 1.23169)
+theme_override_colors/font_color = Color(0, 0.458824, 0.0901961, 1)
+text = "DISTANCE COVERED:"
+horizontal_alignment = 1
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
+offset_top = 26.0
+offset_right = 1310.0
+offset_bottom = 191.0
+scale = Vector2(0.880597, 0.880597)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Label" type="Label" parent="CanvasLayer2/ColorRect"]
+layout_mode = 0
+offset_left = 422.441
+offset_top = 4.54237
+offset_right = 493.441
+offset_bottom = 27.5424
+scale = Vector2(6.87413, 6.87413)
+text = "PAUSED"
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+offset_left = 291.0
+offset_top = 271.0
+offset_right = 388.0
+offset_bottom = 297.0
+scale = Vector2(5.19574, 5.39819)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+text = "RESUME"
+
+[node name="Button2" type="Button" parent="CanvasLayer2"]
+offset_left = 294.0
+offset_top = 443.0
+offset_right = 433.0
+offset_bottom = 468.0
+scale = Vector2(3.59574, 3.49454)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+text = "HOME"
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
+position = Vector2(-693, -46)
+SPEED = 500.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-354, 0)
+scale = Vector2(1.24, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(98.25, 93.75)
+shape = SubResource("RectangleShape2D_y65k5")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -510.0
+offset_top = 86.0
+offset_right = -482.0
+offset_bottom = 122.0
+scale = Vector2(43.468, 0.440001)
+color = Color(0.278431, 0.278431, 0.278431, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D2" parent="." instance=ExtResource("11_3sgq2")]
+position = Vector2(-202, -238)
+
+[node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
+position = Vector2(624120, 5781)
+scale = Vector2(-64739.2, 568.407)
+
+[node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
+position = Vector2(99002, -576)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-291, -121)
+scale = Vector2(1.05241, 12.472)
+offset = Vector2(400, 0)
+position_smoothing_enabled = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button2" to="." method="_homeButtonPressed"]

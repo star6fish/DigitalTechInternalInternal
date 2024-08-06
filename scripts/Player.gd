@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var ExplosionScene: PackedScene
 
 var TakingOff = true
+var Crashing = false
+
+var Explosion = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -14,12 +17,15 @@ func _win():
 func _hitobject(object):
 	if object.get_parent().has_meta("obstacle"):
 		
-		var Explosion = ExplosionScene.instantiate()
+		Crashing = true
+		SPEED = 150
+		
+		Explosion = ExplosionScene.instantiate()
 		
 		Explosion.position.x = position.x
 		Explosion.position.y = position.y
 		
-		add_child(Explosion)
+		get_parent().add_child(Explosion)
 		
 		await get_tree().create_timer(0.5).timeout
 		
@@ -66,18 +72,26 @@ func _physics_process(delta):
 			
 		velocity.x += SPEED
 
-		if direction_y:
-			rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)
-			#velocity.y = 1 * (abs(rotation) * SPEED)
-		else:
-			rotation = rotate_toward(rotation, 0, delta * 5)
-			#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
+		if Crashing == true:
+			velocity.y = 200
+			rotation = rotate_toward(rotation, 45, delta * 2)
+		elif Crashing == false:
+			if direction_y:
+				rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)
+				#velocity.y = 1 * (abs(rotation) * SPEED)
+			else:
+				rotation = rotate_toward(rotation, 0, delta * 5)
+				#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
 				
-		if position.y == -910 and not direction_y:
-			rotation = rotate_toward(rotation, 0, delta * 5)
+			if position.y == -910 and not direction_y:
+				rotation = rotate_toward(rotation, 0, delta * 5)
 				
-		velocity.y = 1 * (rotation * SPEED)
+			velocity.y = 1 * (rotation * SPEED)
 			
 	move_and_slide()
 	
 	position.y = clamp(position.y, -910, 200)
+	
+	#if Crashing == true:
+		#Explosion.position.x = position.x
+		#Explosion.position.y = position.y
