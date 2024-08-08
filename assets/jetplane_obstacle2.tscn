@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://wugcy6d5dvfq"]
+[gd_scene load_steps=9 format=3 uid="uid://wugcy6d5dvfq"]
 
 [ext_resource type="Script" path="res://scripts/jetplane_obstacle1.gd" id="1_2egl2"]
 [ext_resource type="Texture2D" uid="uid://bgv8tvaoncp1m" path="res://assets/ObstacleJetPlane2FlyingAnimation/ObstacleJetPlane20000.png" id="2_ouoag"]
+[ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_s6oo8"]
 [ext_resource type="Texture2D" uid="uid://cig1ccc74hnfb" path="res://assets/ObstacleJetPlane2FlyingAnimation/ObstacleJetPlane20001.png" id="3_41mpu"]
 [ext_resource type="Texture2D" uid="uid://d1fin5gitotcn" path="res://assets/ObstacleJetPlane2FlyingAnimation/ObstacleJetPlane20002.png" id="4_6a1lw"]
 [ext_resource type="Texture2D" uid="uid://b6bhej6bjtsmk" path="res://assets/ObstacleJetPlane2FlyingAnimation/ObstacleJetPlane20003.png" id="5_21lxy"]
@@ -31,6 +32,8 @@ size = Vector2(54, 20)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_2egl2")
+ExplosionScene = ExtResource("2_s6oo8")
+ExplosionColour = Color(0.760784, 0, 0.168627, 1)
 metadata/obstacle = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -42,3 +45,5 @@ sprite_frames = SubResource("SpriteFrames_8d6uk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_i1muu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
