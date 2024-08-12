@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=17 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
 [ext_resource type="PackedScene" uid="uid://bivtyjvfrv15f" path="res://assets/win.tscn" id="12_nivx7"]
+[ext_resource type="PackedScene" uid="uid://br7c8tvpxrefj" path="res://assets/sky.tscn" id="13_bbkpx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4is"]
 bg_color = Color(0, 0, 0, 1)
@@ -43,6 +44,7 @@ corner_detail = 20
 size = Vector2(1217.5, 16.5)
 
 [node name="Node2D" type="Node2D"]
+modulate = Color(1, 0.968627, 0.968627, 1)
 position = Vector2(420, 512)
 script = ExtResource("1_qlakw")
 ObstacleScene = ExtResource("2_p6737")
@@ -169,7 +171,7 @@ color = Color(0.278431, 0.278431, 0.278431, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Node2D2" parent="." instance=ExtResource("11_3sgq2")]
-position = Vector2(-202, -238)
+position = Vector2(-204, -238)
 
 [node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
 position = Vector2(624120, 5781)
@@ -183,6 +185,10 @@ position = Vector2(-291, -121)
 scale = Vector2(1.05241, 12.472)
 offset = Vector2(400, 0)
 position_smoothing_enabled = true
+
+[node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
+position = Vector2(-1093, 97)
+scale = Vector2(196.983, 6.65513)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

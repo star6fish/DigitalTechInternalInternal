@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://br7c8tvpxrefj"]
+
+[sub_resource type="Gradient" id="Gradient_yeftf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfffo"]
+gradient = SubResource("Gradient_yeftf")
+fill_to = Vector2(0, 1)
+
+[node name="Node2D" type="Node2D"]
+light_mask = 2
+z_index = -1
+z_as_relative = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+modulate = Color(0.611765, 0.282353, 0, 1)
+z_index = -1
+z_as_relative = false
+position = Vector2(578.5, -34)
+scale = Vector2(18.0156, 1)
+color = Color(0.580392, 0.278431, 0, 1)
+energy = 1.6
+range_layer_min = -1
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_yfffo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 2
+offset_left = 1.0
+offset_top = -267.0
+offset_right = 1154.0
+color = Color(0.603922, 0.909804, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+light_mask = 2
+offset_left = 1.0
+offset_top = -12.0
+offset_right = 1154.0
+offset_bottom = 1.0
+color = Color(0.980392, 0.776471, 0.34902, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+light_mask = 2
+offset_left = 1.0
+offset_top = -21.0
+offset_right = 1154.0
+offset_bottom = -12.0
+color = Color(1, 0.74902, 0.552941, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+light_mask = 2
+offset_left = 1.0
+offset_top = -27.0
+offset_right = 1154.0
+offset_bottom = -21.0
+color = Color(1, 0.729412, 0.709804, 0.72549)
