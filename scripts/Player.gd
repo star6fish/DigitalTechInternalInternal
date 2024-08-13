@@ -78,7 +78,7 @@ func _physics_process(delta):
 
 		if Crashing == true:
 			velocity.y = 200
-			rotation = rotate_toward(rotation, 45, delta * 2)
+			rotation += 5 * delta
 		elif Crashing == false:
 			if direction_y:
 				rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)
