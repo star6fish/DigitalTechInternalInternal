@@ -14,6 +14,10 @@ config/name="Digital Tech Internal Internal"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
@@ -24,4 +28,8 @@ environment/defaults/default_clear_color=Color(0.454902, 0.454902, 0.454902, 1)
 OptionsPreSreen={
 "type": "bool",
 "value": false
+}
+ColourPlane={
+"type": "color",
+"value": Color(0, 0, 0, 1)
 }

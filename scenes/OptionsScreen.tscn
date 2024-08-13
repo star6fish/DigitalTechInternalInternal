@@ -1,6 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6voduoidr52e"]
+[gd_scene load_steps=8 format=3 uid="uid://b6voduoidr52e"]
 
 [ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="1_6acti"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug6bp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nilp"]
+bg_color = Color(0.576471, 0.576471, 0.576471, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u541m"]
 bg_color = Color(0, 0, 0, 1)
@@ -13,6 +34,30 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgcdm"]
+bg_color = Color(0, 0.698039, 0.0823529, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n0j7"]
+bg_color = Color(0, 0.631373, 0.811765, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juk62"]
+bg_color = Color(0.941176, 0.364706, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 corner_detail = 20
 
 [node name="Control" type="Control"]
@@ -42,49 +87,49 @@ offset_bottom = 27.5424
 scale = Vector2(6.87413, 6.87413)
 text = "OPTIONS"
 
-[node name="Button" type="Button" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 353.0
 offset_top = 206.0
-offset_right = 540.0
-offset_bottom = 231.0
-scale = Vector2(2.49617, 2.59344)
+offset_right = 550.0
+offset_bottom = 259.0
+scale = Vector2(2.36867, 2.36867)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
-text = "OPTION 1"
+theme_override_styles/normal = SubResource("StyleBoxFlat_ug6bp")
+text = "COLOUR PLANE"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 268.0
+offset_right = 465.0
+offset_bottom = 281.0
+scale = Vector2(3.85779, 3.85779)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1nilp")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
 offset_left = 353.0
-offset_top = 285.0
+offset_top = 349.0
 offset_right = 540.0
-offset_bottom = 310.0
+offset_bottom = 374.0
 scale = Vector2(2.49617, 2.59344)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_font_sizes/font_size = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 2"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 353.0
-offset_top = 367.0
+offset_top = 431.0
 offset_right = 540.0
-offset_bottom = 392.0
+offset_bottom = 456.0
 scale = Vector2(2.49617, 2.59344)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "OPTION 3"
-
-[node name="Button4" type="Button" parent="."]
-layout_mode = 0
-offset_left = 353.0
-offset_top = 449.0
-offset_right = 540.0
-offset_bottom = 474.0
-scale = Vector2(2.49617, 2.59344)
-theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
-text = "OPTION 4"
 
 [node name="Button5" type="Button" parent="."]
 layout_mode = 0
@@ -96,5 +141,35 @@ scale = Vector2(3.29698, 3.42544)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
 text = "BACK"
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 268.0
+offset_right = 537.0
+offset_bottom = 281.0
+scale = Vector2(3.85779, 3.85779)
+theme_override_styles/normal = SubResource("StyleBoxFlat_kgcdm")
+metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 598.0
+offset_top = 268.0
+offset_right = 611.0
+offset_bottom = 281.0
+scale = Vector2(3.85779, 3.85779)
+theme_override_styles/normal = SubResource("StyleBoxFlat_2n0j7")
+metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 671.0
+offset_top = 269.0
+offset_right = 684.0
+offset_bottom = 282.0
+scale = Vector2(3.85779, 3.85779)
+theme_override_styles/normal = SubResource("StyleBoxFlat_juk62")
+metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
 [connection signal="pressed" from="Button5" to="." method="_backButtonPressed"]
