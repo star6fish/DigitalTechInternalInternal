@@ -8,6 +8,8 @@ extends Node2D
 @export var JetPlane_Obstacle3Scene: PackedScene
 @export var JetPlane_Obstacle4Scene: PackedScene
 
+@onready var global = get_node("/root/Global")
+
 var obstacleCoolDown = false
 var obstacles = {}
 
@@ -86,7 +88,12 @@ func _spawn_obstacle():
 		if Double == 4:
 			_spawn_obstacle()
 	
-		await get_tree().create_timer(0.5).timeout
+		if global.Difficulty == "Easy":
+			await get_tree().create_timer(1).timeout
+		elif global.Difficulty == "Normal":
+			await get_tree().create_timer(0.5).timeout
+		elif global.Difficulty == "Hard":
+			await get_tree().create_timer(0.2).timeout		
 			
 		obstacles.erase(Obstacle)
 	

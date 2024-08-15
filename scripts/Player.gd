@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var ExplosionScene: PackedScene
 
+@onready var global = get_node("/root/Global")
+
 var TakingOff = true
 var Crashing = false
 
@@ -42,6 +44,7 @@ func _hitobject(object):
 func _physics_process(delta):
 	
 	$AnimatedSprite2D.play()
+	$AnimatedSprite2D.modulate = global.ColourPlane
 	
 	# Add the gravity.
 	
