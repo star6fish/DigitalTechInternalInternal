@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://1y60k7cd2gmc"]
+
+[ext_resource type="Script" path="res://scripts/WinScreen.gd" id="1_3h8ep"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.7884, 16.2284)
+script = ExtResource("1_3h8ep")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 239.0
+offset_right = 1310.0
+offset_bottom = 404.0
+scale = Vector2(0.880597, 0.880597)
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 422.441
+offset_top = 4.54237
+offset_right = 493.441
+offset_bottom = 27.5424
+scale = Vector2(6.87413, 6.87413)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+text = "YOU WIN"

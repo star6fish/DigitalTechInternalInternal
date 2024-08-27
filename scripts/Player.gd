@@ -14,7 +14,7 @@ var Explosion = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _win():
-	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/WinScreen.tscn")
 
 func _hitobject(object):
 	if object.get_parent().has_meta("obstacle"):
@@ -34,12 +34,19 @@ func _hitobject(object):
 		
 		await get_tree().create_timer(0.5).timeout
 		
-		queue_free()
+		global.obstaclesDodged = 0
+		
 		get_tree().paused = false
+		
+		queue_free()
 		get_tree().reload_current_scene()	
 		
 	elif object.get_parent().name == "Node2D3":
 		_win()
+
+func _hitobject_OD(object):
+	if object.get_parent().has_meta("obstacle"):
+		global.obstaclesDodged += 1
 
 func _physics_process(delta):
 	
@@ -55,6 +62,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	if TakingOff == true:
+
+		$AnimatedSprite2D.animation = "default"
 
 		if position.y <= -85:
 			rotation = rotate_toward(rotation, 0, delta * 0.2)
@@ -74,14 +83,19 @@ func _physics_process(delta):
 		
 		if direction_x:
 			velocity.x = clamp(direction_x * SPEED, 0, SPEED)
+			$AnimatedSprite2D.animation = "default_speeding"
 		else:
 			velocity.x = 0
+			$AnimatedSprite2D.animation = "default"
 			
 		velocity.x += SPEED
 
 		if Crashing == true:
 			velocity.y = 200
 			rotation += 5 * delta
+			
+			$AnimatedSprite2D.animation = "default"
+			
 		elif Crashing == false:
 			if direction_y:
 				rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)

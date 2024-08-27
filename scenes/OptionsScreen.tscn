@@ -174,6 +174,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_juk62")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 353.0
 offset_top = 350.0
 offset_right = 550.0
@@ -185,6 +186,7 @@ text = "DIFFICULTY"
 horizontal_alignment = 1
 
 [node name="Button8" type="Button" parent="."]
+layout_mode = 0
 offset_left = 472.0
 offset_top = 410.0
 offset_right = 485.0
@@ -194,6 +196,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l604h")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="Button9" type="Button" parent="."]
+layout_mode = 0
 offset_left = 562.0
 offset_top = 410.0
 offset_right = 575.0
@@ -203,6 +206,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_clphp")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="Button10" type="Button" parent="."]
+layout_mode = 0
 offset_left = 648.0
 offset_top = 411.0
 offset_right = 661.0

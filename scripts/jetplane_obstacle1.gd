@@ -8,7 +8,7 @@ var Crashing = false
 var Explosion = false
 
 func _hitobject(object):
-	if object.get_parent().name == "CharacterBody2D":
+	if object.get_parent().name == "CharacterBody2D" and object.name != "ObstacleDetector":
 		
 		Crashing = true
 		

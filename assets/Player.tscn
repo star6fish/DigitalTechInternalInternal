@@ -1,34 +1,58 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wlff68hwr0h"]
+[gd_scene load_steps=14 format=3 uid="uid://c1wlff68hwr0h"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_5acs1"]
-[ext_resource type="Texture2D" uid="uid://bijm5udnrw7yo" path="res://assets/JetPlaneFlyingAnimation/JetPlane0000.png" id="2_jist5"]
 [ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_ovkc5"]
-[ext_resource type="Texture2D" uid="uid://dauom0pk8kn20" path="res://assets/JetPlaneFlyingAnimation/JetPlane0001.png" id="3_ycseq"]
-[ext_resource type="Texture2D" uid="uid://dvqvgcuwqci8y" path="res://assets/JetPlaneFlyingAnimation/JetPlane0002.png" id="4_c5usi"]
-[ext_resource type="Texture2D" uid="uid://slokw2d3yh8f" path="res://assets/JetPlaneFlyingAnimation/JetPlane0003.png" id="5_n037r"]
+[ext_resource type="Texture2D" uid="uid://0x11p7kon8qa" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0000.png" id="3_ituiq"]
+[ext_resource type="Texture2D" uid="uid://e7p5hmyemuio" path="res://assets/JetPlaneAnimation2Speeding/Untitled-1 (2)0000.png" id="3_jdqmu"]
+[ext_resource type="Texture2D" uid="uid://jqyfjho4oa1f" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0001.png" id="4_m4fl1"]
+[ext_resource type="Texture2D" uid="uid://5pq8lxg4bmmg" path="res://assets/JetPlaneAnimation2Speeding/Untitled-1 (2)0001.png" id="4_uiopi"]
+[ext_resource type="Texture2D" uid="uid://ccxfyvrg467bc" path="res://assets/JetPlaneAnimation2Speeding/Untitled-1 (2)0002.png" id="5_cflk6"]
+[ext_resource type="Texture2D" uid="uid://ixv3cvl10274" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0002.png" id="5_la7dt"]
+[ext_resource type="Texture2D" uid="uid://dc1cb7nb8beb1" path="res://assets/JetPlaneAnimation2Speeding/Untitled-1 (2)0003.png" id="6_mwlb8"]
+[ext_resource type="Texture2D" uid="uid://b3ktqya0p3imp" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0003.png" id="6_vmvf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uml7w"]
-size = Vector2(72, 27)
+size = Vector2(64.6589, 27)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rpire"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nf3n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jist5")
+"texture": ExtResource("3_ituiq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ycseq")
+"texture": ExtResource("4_m4fl1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_c5usi")
+"texture": ExtResource("5_la7dt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_n037r")
+"texture": ExtResource("6_vmvf1")
 }],
 "loop": true,
 "name": &"default",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jdqmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uiopi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cflk6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mwlb8")
+}],
+"loop": true,
+"name": &"default_speeding",
+"speed": 24.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58hsa"]
+size = Vector2(23.9231, 871.583)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(1.07735, 1.07735)
@@ -38,15 +62,20 @@ ExplosionScene = ExtResource("2_ovkc5")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(2, -1)
+position = Vector2(0.157679, -1)
 shape = SubResource("RectangleShape2D_uml7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -1)
+position = Vector2(0.171764, -1)
 shape = SubResource("RectangleShape2D_uml7w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_rpire")
-frame_progress = 0.50999
+sprite_frames = SubResource("SpriteFrames_5nf3n")
+animation = &"default_speeding"
+
+[node name="ObstacleDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
+shape = SubResource("RectangleShape2D_58hsa")
 
 [connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
