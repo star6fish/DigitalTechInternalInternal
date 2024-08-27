@@ -34,8 +34,6 @@ func _hitobject(object):
 		
 		await get_tree().create_timer(0.5).timeout
 		
-		global.obstaclesDodged = 0
-		
 		get_tree().paused = false
 		
 		queue_free()
@@ -45,7 +43,7 @@ func _hitobject(object):
 		_win()
 
 func _hitobject_OD(object):
-	if object.get_parent().has_meta("obstacle"):
+	if object.get_parent().name != "Node2D" and object.get_parent().has_meta("obstacle"):
 		global.obstaclesDodged += 1
 
 func _physics_process(delta):

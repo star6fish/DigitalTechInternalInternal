@@ -101,7 +101,7 @@ func _spawn_obstacle():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	global.obstaclesDodged = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -118,7 +118,7 @@ func _process(delta):
 		if $Camera2D.position.x < i.position.x:
 			print("Delete")
 			
-	$CanvasLayer.get_child(4).text = str(global.obstaclesDodged)
+	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstaclesDodged)
 			
 	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)
 	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / " + str($Node2D3.position.x))
