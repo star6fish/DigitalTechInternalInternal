@@ -114,10 +114,6 @@ func _process(delta):
 		if obstacleCoolDown == false:
 			_spawn_obstacle()
 			
-	for i in obstacles:
-		if $Camera2D.position.x < i.position.x:
-			print("Delete")
-			
 	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstaclesDodged)
 			
 	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)

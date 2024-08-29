@@ -22,7 +22,9 @@ func _hitobject(object):
 		Explosion.get_child(1).color = ExplosionColour
 		
 		get_parent().add_child(Explosion)
-
+		
+	elif object.name == "ObstaclePassDetector":
+		queue_free()
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
