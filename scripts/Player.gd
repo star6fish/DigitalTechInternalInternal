@@ -34,7 +34,8 @@ func _hitobject(object):
 		
 		await get_tree().create_timer(0.5).timeout
 		
-		get_tree().paused = false
+		if get_tree().paused == true:
+			get_tree().paused = false
 		
 		queue_free()
 		get_tree().reload_current_scene()	
