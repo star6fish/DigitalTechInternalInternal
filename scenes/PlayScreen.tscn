@@ -1,19 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://1npm5sife422"]
+[gd_scene load_steps=5 format=3 uid="uid://1npm5sife422"]
 
 [ext_resource type="Script" path="res://scripts/PlayScreen.gd" id="1_x4aba"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqdio"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 20
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjom3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 20
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_06xa6"]
+font_size = 250
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -41,43 +55,51 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 402.0
-offset_top = 446.0
-offset_right = 481.0
-offset_bottom = 471.0
-scale = Vector2(4.885, 4.62405)
+offset_left = 391.0
+offset_top = 468.0
+offset_right = 938.0
+offset_bottom = 675.0
+scale = Vector2(0.601463, 0.569333)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_rqdio")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tjom3")
 text = "PLAY"
 
 [node name="Button2" type="Button" parent="CanvasLayer"]
-offset_left = 136.0
+offset_left = 116.0
 offset_top = 518.0
-offset_right = 215.0
-offset_bottom = 543.0
-scale = Vector2(3.03971, 2.87733)
+offset_right = 794.0
+offset_bottom = 753.0
+scale = Vector2(0.357514, 0.338416)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_rqdio")
 text = "OPTIONS"
 
 [node name="Button3" type="Button" parent="CanvasLayer"]
-offset_left = 816.0
-offset_top = 518.0
-offset_right = 895.0
-offset_bottom = 543.0
-scale = Vector2(3.03971, 2.87733)
+offset_left = 761.0
+offset_top = 516.0
+offset_right = 1439.0
+offset_bottom = 751.0
+scale = Vector2(0.357, 0.338)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_rqdio")
 text = "LEAVE"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 170.0
-offset_top = 74.7593
-offset_right = 289.0
-offset_bottom = 97.7593
-scale = Vector2(6.87413, 6.87413)
+offset_top = 81.7368
+offset_right = 2022.0
+offset_bottom = 423.737
+scale = Vector2(0.444732, 0.444732)
 text = "AIR FORCE ONE"
+label_settings = SubResource("LabelSettings_06xa6")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_playButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_optionsButtonPressed"]
