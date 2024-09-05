@@ -1,18 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6voduoidr52e"]
+[gd_scene load_steps=12 format=3 uid="uid://b6voduoidr52e"]
 
 [ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="1_6acti"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug6bp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqjsl"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nilp"]
@@ -60,6 +59,19 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug6bp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l604h"]
 bg_color = Color(0, 0.631373, 0, 1)
 corner_radius_top_left = 8
@@ -104,22 +116,24 @@ color = Color(0, 0, 0, 0.619608)
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
-offset_left = 422.441
-offset_top = 4.54237
-offset_right = 493.441
-offset_bottom = 27.5424
-scale = Vector2(6.87413, 6.87413)
+offset_left = 423.576
+offset_top = 6.81356
+offset_right = 774.576
+offset_bottom = 116.814
+scale = Vector2(1.38921, 1.38921)
+theme_override_font_sizes/font_size = 80
 text = "OPTIONS"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 353.0
 offset_top = 206.0
-offset_right = 550.0
-offset_bottom = 259.0
-scale = Vector2(2.36867, 2.36867)
+offset_right = 1211.0
+offset_bottom = 459.0
+scale = Vector2(0.541073, 0.541073)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_ug6bp")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_cqjsl")
 text = "COLOUR PLANE"
 horizontal_alignment = 1
 

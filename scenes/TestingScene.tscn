@@ -9,38 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://wugcy6d5dvfq" path="res://assets/jetplane_obstacle2.tscn" id="6_tij6r"]
 [ext_resource type="PackedScene" uid="uid://c2glu2cqs7hwd" path="res://assets/jetplane_obstacle3.tscn" id="7_fleq2"]
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
+[ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="9_644ma"]
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
+[ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="10_ynfu8"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
 [ext_resource type="PackedScene" uid="uid://bivtyjvfrv15f" path="res://assets/win.tscn" id="12_nivx7"]
 [ext_resource type="PackedScene" uid="uid://br7c8tvpxrefj" path="res://assets/sky.tscn" id="13_bbkpx"]
 [ext_resource type="PackedScene" uid="uid://b8qloge5tawnt" path="res://assets/cloud.tscn" id="14_qp1nm"]
 [ext_resource type="PackedScene" uid="uid://qk5dk5paish3" path="res://assets/backgroundMountain.tscn" id="15_s33og"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sj4is"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eakbq"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
@@ -63,13 +39,15 @@ JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 24.0
-offset_top = 7.00001
-offset_right = 107.0
-offset_bottom = 33.0
-scale = Vector2(2.16544, 2.06453)
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 498.0
+offset_bottom = 175.0
+scale = Vector2(0.355583, 0.339012)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_sj4is")
+theme_override_font_sizes/font_size = 93
+theme_override_styles/normal = ExtResource("9_644ma")
+theme_override_styles/hover = ExtResource("10_ynfu8")
 text = "II  PAUSE"
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -134,31 +112,36 @@ color = Color(0, 0, 0, 0.619608)
 
 [node name="Label" type="Label" parent="CanvasLayer2/ColorRect"]
 layout_mode = 0
-offset_left = 422.441
-offset_top = 4.54237
-offset_right = 493.441
-offset_bottom = 27.5424
-scale = Vector2(6.87413, 6.87413)
+offset_left = 398.593
+offset_top = 3.40678
+offset_right = 707.593
+offset_bottom = 113.407
+scale = Vector2(1.43084, 1.43084)
+theme_override_font_sizes/font_size = 80
 text = "PAUSED"
 
 [node name="Button" type="Button" parent="CanvasLayer2"]
 offset_left = 291.0
 offset_top = 271.0
-offset_right = 388.0
-offset_bottom = 297.0
-scale = Vector2(5.19574, 5.39819)
+offset_right = 1173.0
+offset_bottom = 536.0
+scale = Vector2(0.566069, 0.588125)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+theme_override_font_sizes/font_size = 125
+theme_override_styles/normal = ExtResource("9_644ma")
+theme_override_styles/hover = ExtResource("10_ynfu8")
 text = "RESUME"
 
 [node name="Button2" type="Button" parent="CanvasLayer2"]
 offset_left = 294.0
 offset_top = 443.0
-offset_right = 433.0
-offset_bottom = 468.0
-scale = Vector2(3.59574, 3.49454)
+offset_right = 981.0
+offset_bottom = 570.0
+scale = Vector2(0.72673, 0.706277)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_eakbq")
+theme_override_font_sizes/font_size = 71
+theme_override_styles/normal = ExtResource("9_644ma")
+theme_override_styles/hover = ExtResource("10_ynfu8")
 text = "HOME"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]

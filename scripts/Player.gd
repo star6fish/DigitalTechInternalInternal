@@ -26,7 +26,6 @@ func _hitobject(object):
 		
 		Explosion.position.x = position.x
 		Explosion.position.y = position.y
-		
 		Explosion.get_child(0).modulate = Color.ORANGE
 		Explosion.get_child(1).color = Color.ORANGE
 		
@@ -46,19 +45,11 @@ func _hitobject(object):
 func _hitobject_OD(object):
 	if object.get_parent().name != "Node2D" and object.get_parent().has_meta("obstacle"):
 		global.obstaclesDodged += 1
-
+		
 func _physics_process(delta):
 	
 	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.modulate = global.ColourPlane
-	
-	# Add the gravity.
-	
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
-		
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	if TakingOff == true:
 
@@ -98,10 +89,8 @@ func _physics_process(delta):
 		elif Crashing == false:
 			if direction_y:
 				rotation = rotate_toward(rotation, 0.8 * direction_y, delta * 4)
-				#velocity.y = 1 * (abs(rotation) * SPEED)
 			else:
 				rotation = rotate_toward(rotation, 0, delta * 5)
-				#velocity.y = clamp(round(velocity.y), -1, 1) * (abs(rotation) * SPEED)
 				
 			if position.y == -910 and not direction_y:
 				rotation = rotate_toward(rotation, 0, delta * 5)
