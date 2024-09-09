@@ -28,3 +28,11 @@ offset_bottom = 27.5424
 scale = Vector2(6.87413, 6.87413)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 text = "YOU WIN"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.145098)
+offset_left = 852.0
+offset_top = 617.013
+offset_right = 1140.0
+offset_bottom = 640.013
+text = "GAME MADE BY JAMES USING GODOT"

@@ -84,5 +84,13 @@ scale = Vector2(0.444732, 0.444732)
 text = "AIR FORCE ONE"
 label_settings = SubResource("LabelSettings_06xa6")
 
+[node name="Label2" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.145098)
+offset_left = 852.0
+offset_top = 617.013
+offset_right = 1140.0
+offset_bottom = 640.013
+text = "GAME MADE BY JAMES USING GODOT"
+
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_playButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_optionsButtonPressed"]

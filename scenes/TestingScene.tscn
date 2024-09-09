@@ -99,6 +99,14 @@ offset_right = 277.0
 offset_bottom = 537.0
 text = "Obstacles Dodged:     "
 
+[node name="Label3" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.145098)
+offset_left = 852.0
+offset_top = 617.013
+offset_right = 1140.0
+offset_bottom = 640.013
+text = "GAME MADE BY JAMES USING GODOT"
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 2
 visible = false
@@ -143,6 +151,14 @@ theme_override_font_sizes/font_size = 71
 theme_override_styles/normal = ExtResource("9_644ma")
 theme_override_styles/hover = ExtResource("10_ynfu8")
 text = "HOME"
+
+[node name="Label2" type="Label" parent="CanvasLayer2"]
+modulate = Color(1, 1, 1, 0.145098)
+offset_left = 852.0
+offset_top = 617.013
+offset_right = 1140.0
+offset_bottom = 640.013
+text = "GAME MADE BY JAMES USING GODOT"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
 position = Vector2(-693, -46)
