@@ -198,7 +198,7 @@ offset = Vector2(400, 0)
 position_smoothing_enabled = true
 
 [node name="ObstaclePassDetector" type="Area2D" parent="Camera2D"]
-position = Vector2(-310.715, 0)
+position = Vector2(-760.16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/ObstaclePassDetector"]
 position = Vector2(-69.3646, 10.7441)

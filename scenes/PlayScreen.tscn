@@ -44,6 +44,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = ExtResource("2_y6fqv")
 theme_override_styles/hover = ExtResource("3_6dm14")
+theme_override_styles/pressed = ExtResource("3_6dm14")
 text = "PLAY"
 
 [node name="Button2" type="Button" parent="CanvasLayer"]
@@ -58,6 +59,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = ExtResource("2_y6fqv")
 theme_override_styles/hover = ExtResource("3_6dm14")
+theme_override_styles/pressed = ExtResource("3_6dm14")
 text = "OPTIONS"
 
 [node name="Button3" type="Button" parent="CanvasLayer"]
@@ -72,6 +74,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = ExtResource("2_y6fqv")
 theme_override_styles/hover = ExtResource("3_6dm14")
+theme_override_styles/pressed = ExtResource("3_6dm14")
 text = "LEAVE"
 
 [node name="Label" type="Label" parent="."]
@@ -86,6 +89,7 @@ label_settings = SubResource("LabelSettings_06xa6")
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0.145098)
+layout_mode = 0
 offset_left = 852.0
 offset_top = 617.013
 offset_right = 1140.0
