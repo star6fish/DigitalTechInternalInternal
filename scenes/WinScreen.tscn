@@ -21,12 +21,13 @@ color = Color(0, 0, 0, 0.619608)
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
-offset_left = 422.441
-offset_top = 4.54237
-offset_right = 493.441
-offset_bottom = 27.5424
-scale = Vector2(6.87413, 6.87413)
+offset_left = 399.0
+offset_top = 14.0
+offset_right = 1593.0
+offset_bottom = 356.0
+scale = Vector2(0.396571, 0.396571)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_font_sizes/font_size = 250
 text = "YOU WIN"
 
 [node name="Label2" type="Label" parent="CanvasLayer"]

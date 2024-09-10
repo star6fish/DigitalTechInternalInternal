@@ -1,6 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b6voduoidr52e"]
 
 [ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="1_6acti"]
+[ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="2_6glo3"]
+[ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="3_nrnbf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqjsl"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,19 +22,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u541m"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgcdm"]
@@ -57,19 +46,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ug6bp"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l604h"]
@@ -145,6 +121,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cqjsl")
 text = "COLOUR PLANE"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 358.0
+offset_right = 1213.0
+offset_bottom = 611.0
+scale = Vector2(0.541073, 0.541073)
+theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxFlat_cqjsl")
+text = "DIFFICULTY"
+horizontal_alignment = 1
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 452.0
@@ -158,11 +147,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1nilp")
 layout_mode = 0
 offset_left = 354.0
 offset_top = 543.0
-offset_right = 495.0
-offset_bottom = 568.0
-scale = Vector2(3.29698, 3.42544)
+offset_right = 1823.0
+offset_bottom = 766.0
+scale = Vector2(0.319986, 0.332453)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_u541m")
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 125
+theme_override_styles/normal = ExtResource("2_6glo3")
+theme_override_styles/hover = ExtResource("3_nrnbf")
+theme_override_styles/pressed = ExtResource("3_nrnbf")
 text = "BACK"
 
 [node name="Button4" type="Button" parent="."]
@@ -195,24 +188,12 @@ scale = Vector2(3.85779, 3.85779)
 theme_override_styles/normal = SubResource("StyleBoxFlat_juk62")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 353.0
-offset_top = 350.0
-offset_right = 550.0
-offset_bottom = 403.0
-scale = Vector2(2.36867, 2.36867)
-theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_ug6bp")
-text = "DIFFICULTY"
-horizontal_alignment = 1
-
 [node name="Button8" type="Button" parent="."]
 layout_mode = 0
 offset_left = 472.0
-offset_top = 410.0
+offset_top = 418.0
 offset_right = 485.0
-offset_bottom = 423.0
+offset_bottom = 431.0
 scale = Vector2(3.85779, 3.85779)
 theme_override_styles/normal = SubResource("StyleBoxFlat_l604h")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
@@ -220,9 +201,9 @@ metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 [node name="Button9" type="Button" parent="."]
 layout_mode = 0
 offset_left = 562.0
-offset_top = 410.0
+offset_top = 418.0
 offset_right = 575.0
-offset_bottom = 423.0
+offset_bottom = 431.0
 scale = Vector2(3.85779, 3.85779)
 theme_override_styles/normal = SubResource("StyleBoxFlat_clphp")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
@@ -230,9 +211,9 @@ metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 [node name="Button10" type="Button" parent="."]
 layout_mode = 0
 offset_left = 648.0
-offset_top = 411.0
+offset_top = 419.0
 offset_right = 661.0
-offset_bottom = 424.0
+offset_bottom = 432.0
 scale = Vector2(3.85779, 3.85779)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kdcrb")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)

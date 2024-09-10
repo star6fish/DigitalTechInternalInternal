@@ -96,5 +96,6 @@ offset_right = 1140.0
 offset_bottom = 640.013
 text = "GAME MADE BY JAMES USING GODOT"
 
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_buttonEffect" binds= [NodePath("."), true, false]]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_playButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_optionsButtonPressed"]
