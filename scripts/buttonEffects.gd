@@ -1,35 +1,6 @@
-extends Control
-
-@onready var global = get_node("/root/Global")
+extends CanvasLayer
 
 var ButtonsHover = {}
-
-func _grey():
-	global.ColourPlane = Color.GRAY
-	
-func _green():
-	global.ColourPlane = Color.GREEN
-	
-func _blue():
-	global.ColourPlane = Color.DARK_TURQUOISE
-
-func  _orange():
-	global.ColourPlane = Color.ORANGE
-
-func _easy():
-	global.Difficulty = "Easy"
-	
-func _normal():
-	global.Difficulty = "Normal"
-
-func _hard():
-	global.Difficulty = "Hard"
-
-func _back():
-	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
-
-func _backButtonPressed():
-	_back()
 
 func _buttonEffect(ButtonTarget, Hover, Press):
 	
@@ -64,9 +35,9 @@ func _buttonEffect(ButtonTarget, Hover, Press):
 				
 				var ButtonTween = create_tween()
 				ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget] + (ButtonsHover[ButtonTarget] / 6), 0.1)
-		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	for i in get_children():
 		if i.has_signal("button_down"):
 			

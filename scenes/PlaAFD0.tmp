@@ -1,18 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://1npm5sife422"]
+[gd_scene load_steps=5 format=3 uid="uid://1npm5sife422"]
 
 [ext_resource type="Script" path="res://scripts/PlayScreen.gd" id="1_x4aba"]
-[ext_resource type="Script" path="res://scripts/buttonEffects.gd" id="2_7h32i"]
 [ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="2_y6fqv"]
 [ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="3_6dm14"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_06xa6"]
 font_size = 250
-
-[sub_resource type="Environment" id="Environment_rry3d"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 1.85
-glow_strength = 0.95
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -25,7 +18,6 @@ scale = Vector2(1, 1.00322)
 script = ExtResource("1_x4aba")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_7h32i")
 
 [node name="Label4" type="Label" parent="CanvasLayer"]
 offset_left = 175.0
@@ -41,9 +33,9 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 291.0
+offset_left = 287.0
 offset_top = 413.0
-offset_right = 838.0
+offset_right = 834.0
 offset_bottom = 648.0
 scale = Vector2(0.601463, 0.569333)
 pivot_offset = Vector2(273, 117)
@@ -106,9 +98,6 @@ offset_top = 617.013
 offset_right = 1140.0
 offset_bottom = 640.013
 text = "GAME MADE BY JAMES USING GODOT"
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rry3d")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_playButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_optionsButtonPressed"]

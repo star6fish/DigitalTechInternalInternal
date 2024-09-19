@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6voduoidr52e"]
+[gd_scene load_steps=13 format=3 uid="uid://b6voduoidr52e"]
 
 [ext_resource type="Script" path="res://scripts/OptionsScreen.gd" id="1_6acti"]
 [ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="2_6glo3"]
+[ext_resource type="Script" path="res://scripts/buttonEffects.gd" id="2_baels"]
 [ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="3_nrnbf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqjsl"]
@@ -108,8 +109,10 @@ offset_right = 1140.0
 offset_bottom = 640.013
 text = "GAME MADE BY JAMES USING GODOT"
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+script = ExtResource("2_baels")
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
 offset_left = 353.0
 offset_top = 206.0
 offset_right = 1211.0
@@ -121,8 +124,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cqjsl")
 text = "COLOUR PLANE"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
+[node name="Label2" type="Label" parent="CanvasLayer2"]
 offset_left = 355.0
 offset_top = 358.0
 offset_right = 1213.0
@@ -134,22 +136,22 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cqjsl")
 text = "DIFFICULTY"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 452.0
-offset_top = 268.0
-offset_right = 465.0
-offset_bottom = 281.0
+[node name="Button" type="Button" parent="CanvasLayer2"]
+offset_left = 467.147
+offset_top = 283.147
+offset_right = 480.147
+offset_bottom = 296.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_1nilp")
 
-[node name="Button5" type="Button" parent="."]
-layout_mode = 0
-offset_left = 354.0
-offset_top = 543.0
-offset_right = 1823.0
-offset_bottom = 766.0
+[node name="Button5" type="Button" parent="CanvasLayer2"]
+offset_left = -143.0
+offset_top = 452.0
+offset_right = 1326.0
+offset_bottom = 675.0
 scale = Vector2(0.319986, 0.332453)
+pivot_offset = Vector2(734, 111)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
@@ -158,71 +160,71 @@ theme_override_styles/hover = ExtResource("3_nrnbf")
 theme_override_styles/pressed = ExtResource("3_nrnbf")
 text = "BACK"
 
-[node name="Button4" type="Button" parent="."]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 268.0
-offset_right = 537.0
-offset_bottom = 281.0
+[node name="Button4" type="Button" parent="CanvasLayer2"]
+offset_left = 539.147
+offset_top = 283.147
+offset_right = 552.147
+offset_bottom = 296.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kgcdm")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Button6" type="Button" parent="."]
-layout_mode = 0
-offset_left = 598.0
-offset_top = 268.0
-offset_right = 611.0
-offset_bottom = 281.0
+[node name="Button6" type="Button" parent="CanvasLayer2"]
+offset_left = 613.147
+offset_top = 283.147
+offset_right = 626.147
+offset_bottom = 296.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_2n0j7")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Button7" type="Button" parent="."]
-layout_mode = 0
-offset_left = 671.0
-offset_top = 269.0
-offset_right = 684.0
-offset_bottom = 282.0
+[node name="Button7" type="Button" parent="CanvasLayer2"]
+offset_left = 686.147
+offset_top = 284.147
+offset_right = 699.147
+offset_bottom = 297.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_juk62")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Button8" type="Button" parent="."]
-layout_mode = 0
-offset_left = 472.0
-offset_top = 418.0
-offset_right = 485.0
-offset_bottom = 431.0
+[node name="Button8" type="Button" parent="CanvasLayer2"]
+offset_left = 493.0
+offset_top = 433.0
+offset_right = 506.0
+offset_bottom = 446.0
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_l604h")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Button9" type="Button" parent="."]
-layout_mode = 0
-offset_left = 562.0
-offset_top = 418.0
-offset_right = 575.0
-offset_bottom = 431.0
+[node name="Button9" type="Button" parent="CanvasLayer2"]
+offset_left = 577.147
+offset_top = 433.147
+offset_right = 590.147
+offset_bottom = 446.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_clphp")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[node name="Button10" type="Button" parent="."]
-layout_mode = 0
-offset_left = 648.0
-offset_top = 419.0
-offset_right = 661.0
-offset_bottom = 432.0
+[node name="Button10" type="Button" parent="CanvasLayer2"]
+offset_left = 663.147
+offset_top = 434.147
+offset_right = 676.147
+offset_bottom = 447.147
 scale = Vector2(3.85779, 3.85779)
+pivot_offset = Vector2(6, 6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_kdcrb")
 metadata/colour = Color(0.364706, 0.364706, 0.364706, 1)
 
-[connection signal="pressed" from="Button" to="." method="_grey"]
-[connection signal="pressed" from="Button5" to="." method="_backButtonPressed"]
-[connection signal="pressed" from="Button4" to="." method="_green"]
-[connection signal="pressed" from="Button6" to="." method="_blue"]
-[connection signal="pressed" from="Button7" to="." method="_orange"]
-[connection signal="pressed" from="Button8" to="." method="_easy"]
-[connection signal="pressed" from="Button9" to="." method="_normal"]
-[connection signal="pressed" from="Button10" to="." method="_hard"]
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_grey"]
+[connection signal="pressed" from="CanvasLayer2/Button5" to="." method="_backButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button4" to="." method="_green"]
+[connection signal="pressed" from="CanvasLayer2/Button6" to="." method="_blue"]
+[connection signal="pressed" from="CanvasLayer2/Button7" to="." method="_orange"]
+[connection signal="pressed" from="CanvasLayer2/Button8" to="." method="_easy"]
+[connection signal="pressed" from="CanvasLayer2/Button9" to="." method="_normal"]
+[connection signal="pressed" from="CanvasLayer2/Button10" to="." method="_hard"]

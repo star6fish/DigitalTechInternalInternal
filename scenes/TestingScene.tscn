@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=22 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c2glu2cqs7hwd" path="res://assets/jetplane_obstacle3.tscn" id="7_fleq2"]
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
 [ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="9_644ma"]
+[ext_resource type="Script" path="res://scripts/buttonEffects.gd" id="9_n4yfa"]
 [ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
 [ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="10_ynfu8"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
@@ -24,6 +25,11 @@ size = Vector2(1217.5, 16.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iegil"]
 size = Vector2(20, 84.1084)
 
+[sub_resource type="Environment" id="Environment_1c1a5"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+
 [node name="Node2D" type="Node2D"]
 modulate = Color(1, 0.968627, 0.968627, 1)
 position = Vector2(425, 512)
@@ -37,13 +43,15 @@ JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
 JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_n4yfa")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 20.0
-offset_top = 7.0
-offset_right = 498.0
-offset_bottom = 175.0
+offset_left = -139.0
+offset_top = -38.0
+offset_right = 339.0
+offset_bottom = 130.0
 scale = Vector2(0.355583, 0.339012)
+pivot_offset = Vector2(239, 84)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 theme_override_font_sizes/font_size = 93
 theme_override_styles/normal = ExtResource("9_644ma")
@@ -111,6 +119,7 @@ text = "GAME MADE BY JAMES USING GODOT"
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 process_mode = 2
 visible = false
+script = ExtResource("9_n4yfa")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 offset_top = 26.0
@@ -130,11 +139,12 @@ theme_override_font_sizes/font_size = 80
 text = "PAUSED"
 
 [node name="Button" type="Button" parent="CanvasLayer2"]
-offset_left = 291.0
-offset_top = 271.0
-offset_right = 1173.0
-offset_bottom = 536.0
+offset_left = 98.0
+offset_top = 218.0
+offset_right = 980.0
+offset_bottom = 483.0
 scale = Vector2(0.566069, 0.588125)
+pivot_offset = Vector2(441, 132)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 125
@@ -144,11 +154,12 @@ theme_override_styles/pressed = ExtResource("10_ynfu8")
 text = "RESUME"
 
 [node name="Button2" type="Button" parent="CanvasLayer2"]
-offset_left = 294.0
-offset_top = 443.0
-offset_right = 981.0
-offset_bottom = 570.0
+offset_left = 198.0
+offset_top = 426.0
+offset_right = 885.0
+offset_bottom = 553.0
 scale = Vector2(0.72673, 0.706277)
+pivot_offset = Vector2(343, 63)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 71
@@ -518,6 +529,9 @@ scale = Vector2(0.566358, 0.566358)
 [node name="Node2D90" parent="." instance=ExtResource("15_s33og")]
 position = Vector2(94477, 29)
 scale = Vector2(0.283819, 0.283819)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1c1a5")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

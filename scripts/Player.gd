@@ -33,7 +33,7 @@ func _hitobject(object):
 		
 		await get_tree().create_timer(0.5).timeout
 		
-		if get_tree().paused == true:
+		if get_tree() != null and get_tree().paused == true:
 			get_tree().paused = false
 		
 		queue_free()
