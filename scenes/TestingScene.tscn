@@ -19,16 +19,17 @@
 [ext_resource type="PackedScene" uid="uid://b8qloge5tawnt" path="res://assets/cloud.tscn" id="14_qp1nm"]
 [ext_resource type="PackedScene" uid="uid://qk5dk5paish3" path="res://assets/backgroundMountain.tscn" id="15_s33og"]
 
+[sub_resource type="Environment" id="Environment_1c1a5"]
+background_mode = 3
+background_energy_multiplier = 5.55
+glow_enabled = true
+glow_intensity = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iegil"]
 size = Vector2(20, 84.1084)
-
-[sub_resource type="Environment" id="Environment_1c1a5"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 1.0
 
 [node name="Node2D" type="Node2D"]
 modulate = Color(1, 0.968627, 0.968627, 1)
@@ -42,10 +43,16 @@ JetPlane_Obstacle2Scene = ExtResource("6_tij6r")
 JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
 JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1c1a5")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("9_n4yfa")
 
 [node name="Button" type="Button" parent="CanvasLayer"]
+self_modulate = Color(2.5, 2.5, 1, 1)
+show_behind_parent = true
+top_level = true
 offset_left = -139.0
 offset_top = -38.0
 offset_right = 339.0
@@ -74,6 +81,9 @@ scale = Vector2(1, 0.599999)
 color = Color(0, 0.458824, 0.0901961, 0.505882)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color(1.51, 2.5, 1, 1)
+show_behind_parent = true
+top_level = true
 offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
@@ -102,6 +112,7 @@ text = "DISTANCE COVERED:"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
+self_modulate = Color(2.50196, 2.50196, 2.50196, 1)
 offset_left = 12.0
 offset_top = 514.0
 offset_right = 277.0
@@ -529,9 +540,6 @@ scale = Vector2(0.566358, 0.566358)
 [node name="Node2D90" parent="." instance=ExtResource("15_s33og")]
 position = Vector2(94477, 29)
 scale = Vector2(0.283819, 0.283819)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1c1a5")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

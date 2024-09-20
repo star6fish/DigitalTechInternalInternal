@@ -4,26 +4,45 @@ extends Control
 
 var ButtonsHover = {}
 
+func updateButtonOutlines():
+	
+	for i in $CanvasLayer2.get_children():
+		if i.has_signal("button_down"):
+			if Color.from_string(i.name, Color.BLACK) == global.ColourPlane:
+				$CanvasLayer2/ColourSelect.position = i.position
+		
+	for i in $CanvasLayer2.get_children():
+		if i.has_signal("button_down"):
+			if i.name == global.Difficulty:
+				$CanvasLayer2/DifficultySelect.position = i.position
+
 func _grey():
 	global.ColourPlane = Color.GRAY
+	updateButtonOutlines()
 	
 func _green():
 	global.ColourPlane = Color.GREEN
+	updateButtonOutlines()
 	
 func _blue():
 	global.ColourPlane = Color.DARK_TURQUOISE
+	updateButtonOutlines()
 
 func  _orange():
 	global.ColourPlane = Color.ORANGE
+	updateButtonOutlines()
 
 func _easy():
 	global.Difficulty = "Easy"
+	updateButtonOutlines()
 	
 func _normal():
 	global.Difficulty = "Normal"
+	updateButtonOutlines()
 
 func _hard():
 	global.Difficulty = "Hard"
+	updateButtonOutlines()
 
 func _back():
 	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
@@ -64,6 +83,9 @@ func _buttonEffect(ButtonTarget, Hover, Press):
 				
 				var ButtonTween = create_tween()
 				ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget] + (ButtonsHover[ButtonTarget] / 6), 0.1)
+		
+func _ready():
+	updateButtonOutlines()
 		
 func _process(delta):
 	
