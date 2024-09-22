@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://1npm5sife422"]
+[gd_scene load_steps=8 format=3 uid="uid://1npm5sife422"]
 
 [ext_resource type="Script" path="res://scripts/PlayScreen.gd" id="1_x4aba"]
 [ext_resource type="Script" path="res://scripts/buttonEffects.gd" id="2_7h32i"]
 [ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="2_y6fqv"]
 [ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="3_6dm14"]
+[ext_resource type="Texture2D" uid="uid://c3xrivw6jd00c" path="res://assets/BackgroundPlay.jpg" id="5_dv88c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_06xa6"]
 font_size = 250
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.227451)
+shadow_offset = Vector2(1, 0)
 
 [sub_resource type="Environment" id="Environment_rry3d"]
 background_mode = 3
@@ -109,6 +113,21 @@ text = "GAME MADE BY JAMES USING GODOT"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rry3d")
+
+[node name="BackgroundPlay" type="Sprite2D" parent="."]
+modulate = Color(0.796078, 0.796078, 0.796078, 1)
+self_modulate = Color(0.552941, 0.615686, 0.447059, 1)
+z_index = -1
+position = Vector2(577, 323.957)
+scale = Vector2(2.30099, 2.30099)
+texture = ExtResource("5_dv88c")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_playButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_optionsButtonPressed"]
