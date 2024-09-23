@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=26 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://br7c8tvpxrefj" path="res://assets/sky.tscn" id="13_bbkpx"]
 [ext_resource type="PackedScene" uid="uid://b8qloge5tawnt" path="res://assets/cloud.tscn" id="14_qp1nm"]
 [ext_resource type="PackedScene" uid="uid://qk5dk5paish3" path="res://assets/backgroundMountain.tscn" id="15_s33og"]
+[ext_resource type="Shader" path="res://assets/TestingScene.gdshader" id="19_lpy63"]
 
 [sub_resource type="Environment" id="Environment_1c1a5"]
 background_mode = 3
@@ -30,6 +31,17 @@ size = Vector2(1217.5, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iegil"]
 size = Vector2(20, 84.1084)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehk6k"]
+shader = ExtResource("19_lpy63")
+
+[sub_resource type="Gradient" id="Gradient_5yiur"]
+colors = PackedColorArray(0, 0.646749, 0.660477, 0.498039, 0.0392157, 0.533333, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jv6t8"]
+gradient = SubResource("Gradient_5yiur")
+fill_from = Vector2(0.467236, 0)
+fill_to = Vector2(0.501424, 0.720798)
 
 [node name="Node2D" type="Node2D"]
 modulate = Color(1, 0.968627, 0.968627, 1)
@@ -212,6 +224,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-204, -238)
 
 [node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
+visible = false
 position = Vector2(624120, 5781)
 scale = Vector2(-64739.2, 568.407)
 
@@ -232,8 +245,8 @@ position = Vector2(-69.3646, 10.7441)
 shape = SubResource("RectangleShape2D_iegil")
 
 [node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
-position = Vector2(-1093, 97)
-scale = Vector2(196.983, 6.65513)
+position = Vector2(-1068, 301)
+scale = Vector2(196.983, 9.01513)
 
 [node name="Node2D5" parent="." instance=ExtResource("14_qp1nm")]
 position = Vector2(809, -884)
@@ -332,214 +345,221 @@ position = Vector2(91020, -679)
 position = Vector2(94651, -978)
 
 [node name="Node2D37" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(-293, -51)
+position = Vector2(-304, 17)
 
 [node name="Node2D38" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(1178, 40)
+position = Vector2(1167, 108)
 
 [node name="Node2D39" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(2952, 37)
+position = Vector2(2941, 105)
 scale = Vector2(0.396514, 0.396514)
 
 [node name="Node2D40" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(3746, 32)
+position = Vector2(3735, 100)
 
 [node name="Node2D41" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(4345, 38)
+position = Vector2(4334, 106)
 scale = Vector2(0.569539, 0.569539)
 
 [node name="Node2D42" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(5315, 38)
+position = Vector2(5304, 106)
 scale = Vector2(0.358642, 0.358642)
 
 [node name="Node2D43" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(7022, 36)
+position = Vector2(7011, 104)
 scale = Vector2(0.288833, 0.288833)
 
 [node name="Node2D44" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(7875, 38)
+position = Vector2(7864, 106)
 scale = Vector2(0.249282, 0.249282)
 
 [node name="Node2D45" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(10380, 29)
+position = Vector2(10369, 97)
 scale = Vector2(0.418062, 0.418062)
 
 [node name="Node2D46" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(12284, 29)
+position = Vector2(12273, 97)
 scale = Vector2(0.358356, 0.358356)
 
 [node name="Node2D47" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(14865, 36)
+position = Vector2(14854, 104)
 scale = Vector2(0.343332, 0.343332)
 
 [node name="Node2D48" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(16540, 23)
+position = Vector2(16529, 91)
 scale = Vector2(0.411834, 0.411834)
 
 [node name="Node2D49" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(18829, 26)
+position = Vector2(18818, 94)
 scale = Vector2(0.27266, 0.27266)
 
 [node name="Node2D50" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(22281, 37)
+position = Vector2(22270, 105)
 
 [node name="Node2D51" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(24776, 23)
+position = Vector2(24765, 91)
 scale = Vector2(0.528049, 0.528049)
 
 [node name="Node2D52" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(27659, 23)
+position = Vector2(27648, 91)
 scale = Vector2(0.332312, 0.332312)
 
 [node name="Node2D53" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(30381, 29)
+position = Vector2(30370, 97)
 scale = Vector2(0.347208, 0.347208)
 
 [node name="Node2D54" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(33869, 31)
+position = Vector2(33858, 99)
 scale = Vector2(0.422706, 0.422706)
 
 [node name="Node2D55" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(37526, 29)
+position = Vector2(37515, 97)
 scale = Vector2(0.293478, 0.293478)
 
 [node name="Node2D56" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(42041, 23)
+position = Vector2(42030, 91)
 scale = Vector2(0.304598, 0.304598)
 
 [node name="Node2D57" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(43230, 23)
+position = Vector2(43219, 91)
 scale = Vector2(0.261953, 0.261953)
 
 [node name="Node2D58" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(44952, 32)
+position = Vector2(44941, 100)
 scale = Vector2(0.555454, 0.555454)
 
 [node name="Node2D59" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(46930, 30)
+position = Vector2(46919, 98)
 scale = Vector2(0.753918, 0.753918)
 
 [node name="Node2D60" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(47548, 30)
+position = Vector2(47537, 98)
 scale = Vector2(0.27949, 0.27949)
 
 [node name="Node2D61" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(48888, 32)
+position = Vector2(48877, 100)
 scale = Vector2(0.399541, 0.399541)
 
 [node name="Node2D62" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(50746, 31)
+position = Vector2(50735, 99)
 
 [node name="Node2D63" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(52684, 38)
+position = Vector2(52673, 106)
 scale = Vector2(0.437456, 0.437456)
 
 [node name="Node2D64" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(54608, 38)
+position = Vector2(54597, 106)
 scale = Vector2(0.441072, 0.441072)
 
 [node name="Node2D65" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(55996, 34)
+position = Vector2(55985, 102)
 scale = Vector2(0.720648, 0.720648)
 
 [node name="Node2D66" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(57700, 34)
+position = Vector2(57689, 102)
 scale = Vector2(0.437527, 0.437527)
 
 [node name="Node2D67" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(60477, 27)
+position = Vector2(60466, 95)
 scale = Vector2(0.333368, 0.333368)
 
 [node name="Node2D68" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(62353, 27)
+position = Vector2(62342, 95)
 scale = Vector2(0.27424, 0.27424)
 
 [node name="Node2D69" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(65793, 27)
+position = Vector2(65782, 95)
 scale = Vector2(0.270263, 0.270263)
 
 [node name="Node2D70" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(67863, 22)
+position = Vector2(67852, 90)
 scale = Vector2(0.484253, 0.484253)
 
 [node name="Node2D71" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(69336, 22)
+position = Vector2(69325, 90)
 scale = Vector2(0.355917, 0.355917)
 
 [node name="Node2D72" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(71317, 35)
+position = Vector2(71306, 103)
 scale = Vector2(0.505847, 0.505847)
 
 [node name="Node2D73" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(73108, 37)
+position = Vector2(73097, 105)
 scale = Vector2(0.470407, 0.470407)
 
 [node name="Node2D74" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(73718, 33)
+position = Vector2(73707, 101)
 scale = Vector2(0.385719, 0.385719)
 
 [node name="Node2D75" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(75215, 29)
+position = Vector2(75204, 97)
 scale = Vector2(0.368679, 0.368679)
 
 [node name="Node2D76" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(76144, 34)
+position = Vector2(76133, 102)
 scale = Vector2(0.441911, 0.441911)
 
 [node name="Node2D77" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(77074, 28)
+position = Vector2(77063, 96)
 scale = Vector2(0.839427, 0.839427)
 
 [node name="Node2D78" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(78130, 31)
+position = Vector2(78119, 99)
 
 [node name="Node2D79" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(80312, 33)
+position = Vector2(80301, 101)
 scale = Vector2(0.418804, 0.389645)
 
 [node name="Node2D80" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(80973, 29)
+position = Vector2(80962, 97)
 scale = Vector2(0.330342, 0.330342)
 
 [node name="Node2D81" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(81989, 29)
+position = Vector2(81978, 97)
 scale = Vector2(0.362486, 0.362486)
 
 [node name="Node2D82" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(82470, 29)
+position = Vector2(82459, 97)
 scale = Vector2(0.378538, 0.378538)
 
 [node name="Node2D83" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(84837, 30)
+position = Vector2(84826, 98)
 scale = Vector2(0.280892, 0.280892)
 
 [node name="Node2D84" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(85435, 35)
+position = Vector2(85424, 103)
 scale = Vector2(0.355177, 0.355177)
 
 [node name="Node2D85" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(88147, 26)
+position = Vector2(88136, 94)
 scale = Vector2(0.331959, 0.281174)
 
 [node name="Node2D86" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(89490, 31)
+position = Vector2(89479, 99)
 scale = Vector2(0.439583, 0.439583)
 
 [node name="Node2D87" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(90603, 30)
+position = Vector2(90592, 98)
 scale = Vector2(0.385875, 0.385875)
 
 [node name="Node2D88" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(92157, 35)
+position = Vector2(92146, 103)
 scale = Vector2(0.409156, 0.409156)
 
 [node name="Node2D89" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(92767, 34)
+position = Vector2(92756, 102)
 scale = Vector2(0.566358, 0.566358)
 
 [node name="Node2D90" parent="." instance=ExtResource("15_s33og")]
-position = Vector2(94477, 29)
+position = Vector2(94466, 97)
 scale = Vector2(0.283819, 0.283819)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ehk6k")
+position = Vector2(40623, 2481)
+scale = Vector2(1282.78, 79.9375)
+texture = SubResource("GradientTexture2D_jv6t8")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

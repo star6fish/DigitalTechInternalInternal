@@ -33,11 +33,10 @@ func _hitobject(object):
 		
 		await get_tree().create_timer(0.5).timeout
 		
-		if get_tree() != null and get_tree().paused == true:
+		if get_tree() != null:
 			get_tree().paused = false
-		
-		queue_free()
-		get_tree().reload_current_scene()	
+			queue_free()
+			get_tree().reload_current_scene()	
 		
 	elif object.get_parent().name == "Node2D3":
 		_win()
