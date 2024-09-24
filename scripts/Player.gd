@@ -9,6 +9,7 @@ var TakingOff = true
 var Crashing = false
 
 var Explosion = false
+var ShakeStrength = 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -99,6 +100,14 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	position.y = clamp(position.y, -910, 200)
+	
+	if Crashing == true:
+		
+		ShakeStrength = lerp(ShakeStrength, 20.0, 5 * delta)
+		
+		var ShakeVector = Vector2((400 * (1 - (20/ShakeStrength))) + RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength))
+		get_parent().get_child(8).offset = ShakeVector
+		get_parent().get_child(8).zoom = lerp(get_parent().get_child(8).zoom, Vector2(1.5, 1.5), delta)
 	
 	#if Crashing == true:
 		#Explosion.position.x = position.x

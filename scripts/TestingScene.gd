@@ -12,6 +12,7 @@ extends Node2D
 
 var obstacleCoolDown = false
 var obstacles = {}
+var ShakeStrength = 0
 
 func _pause():
 	get_tree().paused = true
@@ -35,7 +36,7 @@ func _resumeButtonPressed():
 	
 func _homeButtonPressed():
 	_home()
-
+	
 func _spawn_obstacle():
 	
 	obstacleCoolDown = true
