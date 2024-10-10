@@ -103,10 +103,11 @@ func _physics_process(delta):
 	
 	if Crashing == true:
 		
-		ShakeStrength = lerp(ShakeStrength, 20.0, 5 * delta)
+		ShakeStrength = lerp(ShakeStrength, 40.0, 5 * delta)
 		
-		var ShakeVector = Vector2((400 * (1 - (20/ShakeStrength))) + RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength))
-		get_parent().get_child(8).offset = ShakeVector
+		var ShakeVector = Vector2(400 - (400 * (ShakeStrength / 40) / 4) + RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength))
+		get_parent().get_child(8).offset = lerp(get_parent().get_child(8).offset, ShakeVector, delta * 10)
+		get_parent().get_child(8).rotation = lerp(get_parent().get_child(8).rotation, RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), delta * 5)
 		get_parent().get_child(8).zoom = lerp(get_parent().get_child(8).zoom, Vector2(1.5, 1.5), delta)
 	
 	#if Crashing == true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=31 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b8qloge5tawnt" path="res://assets/cloud.tscn" id="14_qp1nm"]
 [ext_resource type="PackedScene" uid="uid://qk5dk5paish3" path="res://assets/backgroundMountain.tscn" id="15_s33og"]
 [ext_resource type="Shader" path="res://assets/TestingScene.gdshader" id="19_lpy63"]
+[ext_resource type="PackedScene" uid="uid://g7ji1egg3ryb" path="res://assets/Cactus.tscn" id="20_yunnv"]
 
 [sub_resource type="Environment" id="Environment_1c1a5"]
 background_mode = 3
@@ -42,6 +43,41 @@ colors = PackedColorArray(0, 0.646749, 0.660477, 0.498039, 0.0392157, 0.533333, 
 gradient = SubResource("Gradient_5yiur")
 fill_from = Vector2(0.467236, 0)
 fill_to = Vector2(0.501424, 0.720798)
+
+[sub_resource type="Shader" id="Shader_cwkth"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	
+	float Wave_Amplitude = 0.5;
+	float Wave_Period = 0.5;
+	
+	float waves = UV.y * 20.0 + sin(UV.x * 20.0 / Wave_Period + 0.5) * Wave_Amplitude - Wave_Amplitude;
+	COLOR.a = step(0.5, waves);
+	
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlj38"]
+shader = SubResource("Shader_cwkth")
+
+[sub_resource type="Gradient" id="Gradient_bemig"]
+colors = PackedColorArray(0.623529, 0.376471, 0, 1, 1, 0.843137, 0.529412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pdwmn"]
+gradient = SubResource("Gradient_bemig")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [node name="Node2D" type="Node2D"]
 modulate = Color(1, 0.968627, 0.968627, 1)
@@ -90,17 +126,16 @@ offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
 scale = Vector2(1, 0.599999)
-color = Color(0, 0.458824, 0.0901961, 0.505882)
+color = Color(0.0371129, 0.542277, 0.0301495, 1)
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-self_modulate = Color(1.51, 2.5, 1, 1)
 show_behind_parent = true
 top_level = true
 offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
 scale = Vector2(1, 0.599999)
-color = Color(0, 0.768627, 0.180392, 0.694118)
+color = Color(0, 100, 0, 1)
 
 [node name="Label3" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
@@ -119,7 +154,7 @@ offset_top = 4.99998
 offset_right = 1085.0
 offset_bottom = 28.0
 scale = Vector2(0.766514, 1.23169)
-theme_override_colors/font_color = Color(0, 0.458824, 0.0901961, 1)
+theme_override_colors/font_color = Color(0.752941, 1, 0.74902, 1)
 text = "DISTANCE COVERED:"
 horizontal_alignment = 1
 
@@ -557,9 +592,29 @@ scale = Vector2(0.283819, 0.283819)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_ehk6k")
-position = Vector2(40623, 2481)
-scale = Vector2(1282.78, 79.9375)
+position = Vector2(10553, 2421)
+scale = Vector2(342.781, 79.9375)
 texture = SubResource("GradientTexture2D_jv6t8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ehk6k")
+position = Vector2(54813, 2421)
+scale = Vector2(342.781, 79.9375)
+texture = SubResource("GradientTexture2D_jv6t8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_xlj38")
+position = Vector2(32683, 2421)
+scale = Vector2(348.781, 79.9375)
+texture = SubResource("GradientTexture2D_pdwmn")
+
+[node name="Node2D91" parent="." instance=ExtResource("20_yunnv")]
+position = Vector2(21815, 74)
+
+[node name="Node2D92" parent="." instance=ExtResource("20_yunnv")]
+position = Vector2(23313, 195)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

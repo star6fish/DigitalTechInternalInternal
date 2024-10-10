@@ -9,7 +9,7 @@ void fragment() {
 	
 	float Wave_Amplitude = 0.2;
 	float Wave_Speed = 2.0;
-	float Wave_Period = 0.2;
+	float Wave_Period = 0.4;
 	
 	float waves = UV.y * 20.0 + sin(UV.x * 20.0 / Wave_Period + 1.0 * Wave_Speed * TIME) * Wave_Amplitude - Wave_Amplitude;
 	COLOR.a = step(0.5, waves) - 0.2;

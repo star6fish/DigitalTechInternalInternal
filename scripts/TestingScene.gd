@@ -103,7 +103,19 @@ func _spawn_obstacle():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.obstaclesDodged = 0
-
+	if global.Difficulty == "Easy":
+		$CanvasLayer.get_child(2).color = Color.DARK_GREEN
+		$CanvasLayer.get_child(3).color = Color.GREEN
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.FLORAL_WHITE)
+	elif global.Difficulty == "Normal":
+		$CanvasLayer.get_child(2).color = Color.DARK_ORANGE
+		$CanvasLayer.get_child(3).color = Color.ORANGE
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.PAPAYA_WHIP)
+	if global.Difficulty == "Hard":
+		$CanvasLayer.get_child(2).color = Color.DARK_RED
+		$CanvasLayer.get_child(3).color = Color.RED
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.LIGHT_YELLOW)
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
