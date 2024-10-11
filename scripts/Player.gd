@@ -39,6 +39,8 @@ func _hitobject(object):
 			queue_free()
 			get_tree().reload_current_scene()	
 		
+	elif object.has_meta("MapType"):
+		global.MapType = object.get_meta("MapType")
 	elif object.get_parent().name == "Node2D3":
 		_win()
 

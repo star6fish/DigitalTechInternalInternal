@@ -76,6 +76,7 @@ colors = PackedColorArray(0.623529, 0.376471, 0, 1, 1, 0.843137, 0.529412, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pdwmn"]
 gradient = SubResource("Gradient_bemig")
+use_hdr = true
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -90,6 +91,7 @@ JetPlane_Obstacle1Scene = ExtResource("5_tqf1o")
 JetPlane_Obstacle2Scene = ExtResource("6_tij6r")
 JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
 JetPlane_Obstacle4Scene = ExtResource("8_271cl")
+CactusScene = ExtResource("20_yunnv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1c1a5")
@@ -266,22 +268,42 @@ scale = Vector2(-64739.2, 568.407)
 [node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
 position = Vector2(56619, 192)
 
+[node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
+position = Vector2(-1068, 301)
+scale = Vector2(196.983, 9.01513)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-291, -121)
 scale = Vector2(1.05241, 12.472)
 offset = Vector2(400, 0)
 position_smoothing_enabled = true
 
-[node name="ObstaclePassDetector" type="Area2D" parent="Camera2D"]
-position = Vector2(-760.16, 0)
+[node name="MapTypeChangeDetector" type="Area2D" parent="."]
+position = Vector2(21154, -524)
+scale = Vector2(1.05241, 50.352)
+metadata/MapType = "Desert"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/ObstaclePassDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector"]
+position = Vector2(-73.1674, 10.4266)
+scale = Vector2(1.00126, -5.10682)
+shape = SubResource("RectangleShape2D_iegil")
+
+[node name="MapTypeChangeDetector2" type="Area2D" parent="."]
+position = Vector2(43475, -524)
+scale = Vector2(1.05241, 50.352)
+metadata/MapType = "Ocean"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector2"]
 position = Vector2(-69.3646, 10.7441)
 shape = SubResource("RectangleShape2D_iegil")
 
-[node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
-position = Vector2(-1068, 301)
-scale = Vector2(196.983, 9.01513)
+[node name="ObstaclePassDetector" type="Area2D" parent="."]
+position = Vector2(-1091, -121)
+scale = Vector2(1.05241, 12.472)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstaclePassDetector"]
+position = Vector2(-69.3646, 10.7441)
+shape = SubResource("RectangleShape2D_iegil")
 
 [node name="Node2D5" parent="." instance=ExtResource("14_qp1nm")]
 position = Vector2(809, -884)
@@ -592,29 +614,23 @@ scale = Vector2(0.283819, 0.283819)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_ehk6k")
-position = Vector2(10553, 2421)
+position = Vector2(10100, 2458)
 scale = Vector2(342.781, 79.9375)
 texture = SubResource("GradientTexture2D_jv6t8")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_ehk6k")
-position = Vector2(54813, 2421)
+position = Vector2(54360, 2458)
 scale = Vector2(342.781, 79.9375)
 texture = SubResource("GradientTexture2D_jv6t8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_xlj38")
-position = Vector2(32683, 2421)
+position = Vector2(32230, 2458)
 scale = Vector2(348.781, 79.9375)
 texture = SubResource("GradientTexture2D_pdwmn")
-
-[node name="Node2D91" parent="." instance=ExtResource("20_yunnv")]
-position = Vector2(21815, 74)
-
-[node name="Node2D92" parent="." instance=ExtResource("20_yunnv")]
-position = Vector2(23313, 195)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

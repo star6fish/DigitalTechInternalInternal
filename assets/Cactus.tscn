@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://g7ji1egg3ryb"]
+[gd_scene load_steps=5 format=3 uid="uid://g7ji1egg3ryb"]
 
+[ext_resource type="Script" path="res://scripts/Cactus.gd" id="1_3m47b"]
 [ext_resource type="Texture2D" uid="uid://bna10rwo2o6pe" path="res://assets/Cactus.png" id="1_x8oih"]
+[ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_110lf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3adsf"]
 size = Vector2(248, 342)
 
 [node name="Node2D" type="Node2D"]
-metadata/Obstacle = true
+scale = Vector2(0.207638, 0.207638)
+script = ExtResource("1_3m47b")
+ExplosionScene = ExtResource("2_110lf")
+ExplosionColour = Color(0, 0.682353, 0.0901961, 1)
+metadata/obstacle = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

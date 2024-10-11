@@ -7,6 +7,7 @@ extends Node2D
 @export var JetPlane_Obstacle2Scene: PackedScene
 @export var JetPlane_Obstacle3Scene: PackedScene
 @export var JetPlane_Obstacle4Scene: PackedScene
+@export var CactusScene: PackedScene
 
 @onready var global = get_node("/root/Global")
 
@@ -46,8 +47,11 @@ func _spawn_obstacle():
 	
 	var ObstacleSelect = Random.randi_range(1, 3)
 	
-	if ObstacleSelect == 1:
-		ObstacleSelect = MountainScene
+	if ObstacleSelect == 1:	
+		if global.MapType == "Ocean":
+			ObstacleSelect = MountainScene
+		elif global.MapType == "Desert":
+			ObstacleSelect = CactusScene
 	elif ObstacleSelect == 2:
 		ObstacleSelect = MissileScene
 	elif ObstacleSelect == 3:
@@ -72,7 +76,8 @@ func _spawn_obstacle():
 	if ObstacleSelect == MountainScene:
 		canSpawn = true
 		obstaclePositionY = randf_range(100, 200)
-			
+	elif ObstacleSelect == CactusScene:
+		obstaclePositionY = randf_range(20, -20)
 	if canSpawn == true:
 							
 		var Obstacle = ObstacleSelect.instantiate()
