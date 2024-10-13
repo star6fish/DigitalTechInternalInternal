@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=35 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -11,15 +11,19 @@
 [ext_resource type="PackedScene" uid="uid://cyjlqnw5dsikp" path="res://assets/jetplane_obstacle4.tscn" id="8_271cl"]
 [ext_resource type="StyleBox" uid="uid://bgh1hkucu2cdf" path="res://assets/ButtonTemplate.tres" id="9_644ma"]
 [ext_resource type="Script" path="res://scripts/buttonEffects.gd" id="9_n4yfa"]
-[ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ocean.tscn" id="10_vq2ss"]
+[ext_resource type="PackedScene" uid="uid://lip6dco1t72r" path="res://assets/JungleTree1.tscn" id="10_fteo2"]
+[ext_resource type="PackedScene" uid="uid://dpj1bnft2f0bf" path="res://assets/ground.tscn" id="10_vq2ss"]
 [ext_resource type="StyleBox" uid="uid://dixcelk1cbrif" path="res://assets/ButtonHoverTemplate.tres" id="10_ynfu8"]
 [ext_resource type="PackedScene" uid="uid://1yw6q0csnkrc" path="res://assets/aircraftcarrier.tscn" id="11_3sgq2"]
+[ext_resource type="PackedScene" uid="uid://b7peyaptaxanp" path="res://assets/JungleTree2.tscn" id="11_th4ki"]
 [ext_resource type="PackedScene" uid="uid://bivtyjvfrv15f" path="res://assets/win.tscn" id="12_nivx7"]
 [ext_resource type="PackedScene" uid="uid://br7c8tvpxrefj" path="res://assets/sky.tscn" id="13_bbkpx"]
 [ext_resource type="PackedScene" uid="uid://b8qloge5tawnt" path="res://assets/cloud.tscn" id="14_qp1nm"]
 [ext_resource type="PackedScene" uid="uid://qk5dk5paish3" path="res://assets/backgroundMountain.tscn" id="15_s33og"]
 [ext_resource type="Shader" path="res://assets/TestingScene.gdshader" id="19_lpy63"]
 [ext_resource type="PackedScene" uid="uid://g7ji1egg3ryb" path="res://assets/Cactus.tscn" id="20_yunnv"]
+[ext_resource type="PackedScene" uid="uid://ok6ygwfdvixd" path="res://assets/DesertMountain.tscn" id="21_qhjr4"]
+[ext_resource type="PackedScene" uid="uid://xu304xur86l" path="res://assets/Rock.tscn" id="22_8bk87"]
 
 [sub_resource type="Environment" id="Environment_1c1a5"]
 background_mode = 3
@@ -44,39 +48,20 @@ gradient = SubResource("Gradient_5yiur")
 fill_from = Vector2(0.467236, 0)
 fill_to = Vector2(0.501424, 0.720798)
 
-[sub_resource type="Shader" id="Shader_cwkth"]
-code = "shader_type canvas_item;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	
-	float Wave_Amplitude = 0.5;
-	float Wave_Period = 0.5;
-	
-	float waves = UV.y * 20.0 + sin(UV.x * 20.0 / Wave_Period + 0.5) * Wave_Amplitude - Wave_Amplitude;
-	COLOR.a = step(0.5, waves);
-	
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlj38"]
-shader = SubResource("Shader_cwkth")
-
 [sub_resource type="Gradient" id="Gradient_bemig"]
 colors = PackedColorArray(0.623529, 0.376471, 0, 1, 1, 0.843137, 0.529412, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_pdwmn"]
 gradient = SubResource("Gradient_bemig")
 use_hdr = true
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_f5uou"]
+colors = PackedColorArray(2.40654e-08, 0.506615, 0.0240442, 1, 0.362513, 0.993683, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8lq8b"]
+gradient = SubResource("Gradient_f5uou")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
@@ -92,6 +77,8 @@ JetPlane_Obstacle2Scene = ExtResource("6_tij6r")
 JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
 JetPlane_Obstacle4Scene = ExtResource("8_271cl")
 CactusScene = ExtResource("20_yunnv")
+JungleTree_Obstacle1Scene = ExtResource("10_fteo2")
+JungleTree_Obstacle2Scene = ExtResource("11_th4ki")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1c1a5")
@@ -268,15 +255,15 @@ scale = Vector2(-64739.2, 568.407)
 [node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
 position = Vector2(56619, 192)
 
-[node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
-position = Vector2(-1068, 301)
-scale = Vector2(196.983, 9.01513)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-291, -121)
 scale = Vector2(1.05241, 12.472)
 offset = Vector2(400, 0)
 position_smoothing_enabled = true
+
+[node name="Node2D4" parent="." instance=ExtResource("13_bbkpx")]
+position = Vector2(-1380, 865)
+scale = Vector2(196.983, 9.01513)
 
 [node name="MapTypeChangeDetector" type="Area2D" parent="."]
 position = Vector2(21154, -524)
@@ -295,6 +282,24 @@ metadata/MapType = "Ocean"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector2"]
 position = Vector2(-69.3646, 10.7441)
+shape = SubResource("RectangleShape2D_iegil")
+
+[node name="MapTypeChangeDetector3" type="Area2D" parent="."]
+position = Vector2(43475, -524)
+scale = Vector2(1.05241, 50.352)
+metadata/MapType = "Jungle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector3"]
+position = Vector2(3113.81, 8.81792)
+shape = SubResource("RectangleShape2D_iegil")
+
+[node name="MapTypeChangeDetector4" type="Area2D" parent="."]
+position = Vector2(51291, -545)
+scale = Vector2(1.05241, 50.352)
+metadata/MapType = "Ocean"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector4"]
+position = Vector2(3113.81, 8.81792)
 shape = SubResource("RectangleShape2D_iegil")
 
 [node name="ObstaclePassDetector" type="Area2D" parent="."]
@@ -621,16 +626,73 @@ texture = SubResource("GradientTexture2D_jv6t8")
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_ehk6k")
-position = Vector2(54360, 2458)
-scale = Vector2(342.781, 79.9375)
+position = Vector2(45071, 2532)
+scale = Vector2(53.3345, 81.6941)
+texture = SubResource("GradientTexture2D_jv6t8")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ehk6k")
+position = Vector2(56216, 2544)
+scale = Vector2(53.3345, 81.6941)
 texture = SubResource("GradientTexture2D_jv6t8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
-material = SubResource("ShaderMaterial_xlj38")
-position = Vector2(32230, 2458)
+position = Vector2(32216, 2601)
 scale = Vector2(348.781, 79.9375)
 texture = SubResource("GradientTexture2D_pdwmn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(50676.8, 2609)
+scale = Vector2(122.258, 79.9375)
+texture = SubResource("GradientTexture2D_8lq8b")
+
+[node name="Area2D" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(23072, 744)
+scale = Vector2(104.782, 104.782)
+
+[node name="Area2D2" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(26529, 1959)
+
+[node name="Area2D3" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(29173, 1634)
+
+[node name="Area2D4" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(32015, 1582)
+
+[node name="Area2D5" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(34777, 1750)
+
+[node name="Area2D6" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(37634, 1622)
+
+[node name="Area2D7" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(40192, 1926)
+
+[node name="Area2D8" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(41183, 1675)
+
+[node name="Area2D9" parent="." instance=ExtResource("22_8bk87")]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+z_index = 2
+position = Vector2(21025, 87)
+
+[node name="Area2D10" parent="." instance=ExtResource("22_8bk87")]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+z_index = 2
+position = Vector2(43360, 159)
+
+[node name="Area2D11" parent="." instance=ExtResource("22_8bk87")]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+z_index = 2
+position = Vector2(46734, 138)
+
+[node name="Area2D12" parent="." instance=ExtResource("22_8bk87")]
+modulate = Color(0.45098, 0.45098, 0.45098, 1)
+z_index = 2
+position = Vector2(54551, 138)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

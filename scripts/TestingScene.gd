@@ -8,6 +8,8 @@ extends Node2D
 @export var JetPlane_Obstacle3Scene: PackedScene
 @export var JetPlane_Obstacle4Scene: PackedScene
 @export var CactusScene: PackedScene
+@export var JungleTree_Obstacle1Scene: PackedScene
+@export var JungleTree_Obstacle2Scene: PackedScene
 
 @onready var global = get_node("/root/Global")
 
@@ -52,6 +54,15 @@ func _spawn_obstacle():
 			ObstacleSelect = MountainScene
 		elif global.MapType == "Desert":
 			ObstacleSelect = CactusScene
+		elif global.MapType == "Jungle":
+			
+			var ObstacleJungleTreeType = Random.randi_range(1, 2)
+			
+			if ObstacleJungleTreeType == 1:
+				ObstacleSelect = JungleTree_Obstacle1Scene
+			elif ObstacleJungleTreeType == 2:
+				ObstacleSelect = JungleTree_Obstacle2Scene
+				
 	elif ObstacleSelect == 2:
 		ObstacleSelect = MissileScene
 	elif ObstacleSelect == 3:
@@ -73,7 +84,7 @@ func _spawn_obstacle():
 		if obstacles[obstacle] - obstaclePositionY < 10:
 			canSpawn = false
 			
-	if ObstacleSelect == MountainScene:
+	if ObstacleSelect == MountainScene or ObstacleSelect == JungleTree_Obstacle1Scene or ObstacleSelect == JungleTree_Obstacle2Scene:
 		canSpawn = true
 		obstaclePositionY = randf_range(100, 200)
 	elif ObstacleSelect == CactusScene:

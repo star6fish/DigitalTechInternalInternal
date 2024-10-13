@@ -37,8 +37,9 @@ func _hitobject(object):
 		if get_tree() != null:
 			get_tree().paused = false
 			queue_free()
+			global.MapType = "Ocean"
 			get_tree().reload_current_scene()	
-		
+			
 	elif object.has_meta("MapType"):
 		global.MapType = object.get_meta("MapType")
 	elif object.get_parent().name == "Node2D3":

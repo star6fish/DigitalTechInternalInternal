@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ok6ygwfdvixd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ge8go"]
+
+[sub_resource type="Gradient" id="Gradient_8l5tg"]
+offsets = PackedFloat32Array(0.476744, 0.482558)
+colors = PackedColorArray(1, 0.843137, 0.529412, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sootj"]
+gradient = SubResource("Gradient_8l5tg")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(180.051, 180.051)
+metadata/Obstacle = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ge8go")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.65661e-10, 2.22045e-16)
+scale = Vector2(0.117759, 0.117759)
+texture = SubResource("GradientTexture2D_sootj")

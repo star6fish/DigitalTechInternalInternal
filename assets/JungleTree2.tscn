@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7peyaptaxanp"]
+
+[ext_resource type="Script" path="res://scripts/JungleTree2.gd" id="1_2n7vf"]
+[ext_resource type="Texture2D" uid="uid://rgx4me18an4l" path="res://assets/JungleTree2.png" id="1_tpbu6"]
+[ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_bpx4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd72b"]
+size = Vector2(51, 62)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(6.28, 6.28)
+script = ExtResource("1_2n7vf")
+ExplosionScene = ExtResource("2_bpx4d")
+ExplosionColour = Color(0.996078, 0.803922, 0.0784314, 1)
+metadata/Obstacle = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -31)
+shape = SubResource("RectangleShape2D_hd72b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_tpbu6")
