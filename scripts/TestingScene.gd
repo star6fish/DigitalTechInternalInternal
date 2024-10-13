@@ -90,7 +90,7 @@ func _spawn_obstacle():
 	elif ObstacleSelect == CactusScene:
 		obstaclePositionY = randf_range(20, -20)
 	if canSpawn == true:
-							
+		
 		var Obstacle = ObstacleSelect.instantiate()
 		
 		obstacles[Obstacle] = obstaclePositionY

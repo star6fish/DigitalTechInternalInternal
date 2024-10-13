@@ -28,8 +28,12 @@
 [sub_resource type="Environment" id="Environment_1c1a5"]
 background_mode = 3
 background_energy_multiplier = 5.55
+ambient_light_color = Color(0.941421, 0.896557, 0.99677, 1)
 glow_enabled = true
+glow_normalized = true
 glow_intensity = 1.0
+fog_light_color = Color(0.392157, 0.423529, 0.47451, 1)
+fog_light_energy = 1.48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y65k5"]
 size = Vector2(1217.5, 16.5)
