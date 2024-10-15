@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://du10gum3q5vem"]
+[gd_scene load_steps=4 format=3 uid="uid://du10gum3q5vem"]
 
 [ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_2g4tb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta37u"]
 size = Vector2(833.082, 13)
 
+[sub_resource type="Curve" id="Curve_32ykr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Area2D" type="Area2D"]
-scale = Vector2(0.124545, 0.124545)
+scale = Vector2(0.0112261, 0.522914)
 script = ExtResource("1_2g4tb")
 metadata/Bullet = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.66953, 221.964)
+scale = Vector2(1.66953, 4.22095)
 shape = SubResource("RectangleShape2D_ta37u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -19,3 +23,10 @@ offset_left = -417.518
 offset_top = -8.0292
 offset_right = 416.482
 offset_bottom = 5.9708
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-7.62939e-06, 30.0856)
+scale = Vector2(-0.00110428, 0.0746578)
+points = PackedVector2Array(0, 0)
+width = 200.0
+width_curve = SubResource("Curve_32ykr")

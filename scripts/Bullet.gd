@@ -4,6 +4,8 @@ extends Area2D
 
 var ObjectsHit = 0
 
+var TrailPoint_Queue = []
+
 func _hitobject(object):
 	if object.get_parent().has_meta("obstacle"):
 		ObjectsHit += 1
@@ -20,3 +22,12 @@ func _ready():
 func _process(delta):
 	position.x += 2000 * delta
 	position.y += delta * (rotation * 500)
+	
+	TrailPoint_Queue.push_front($Line2D.position)
+	
+	if TrailPoint_Queue.size() > 2000:
+		TrailPoint_Queue.pop_back()
+	
+	for point in TrailPoint_Queue:
+		$Line2D.add_point(point)
+	
