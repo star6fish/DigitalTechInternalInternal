@@ -8,7 +8,7 @@ var Crashing = false
 var Explosion = false
 
 func _hitobject(object):
-	if object.get_parent().name == "CharacterBody2D" and object.name != "ObstacleDetector":
+	if object.get_parent().name == "CharacterBody2D" and object.name != "ObstacleDetector" or object.has_meta("Bullet"):
 		
 		Crashing = true
 		
@@ -21,6 +21,8 @@ func _hitobject(object):
 		Explosion.get_child(1).color = ExplosionColour
 		
 		get_parent().add_child(Explosion)
+		
+		queue_free()
 		
 	elif object.name == "ObstaclePassDetector":
 		queue_free()

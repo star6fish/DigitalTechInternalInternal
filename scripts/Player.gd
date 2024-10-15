@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var ExplosionScene: PackedScene
+@export var BulletScene: PackedScene
 
 @onready var global = get_node("/root/Global")
 
@@ -10,6 +11,8 @@ var Crashing = false
 
 var Explosion = false
 var ShakeStrength = 0.0
+
+var ShootingCooldown = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -48,6 +51,20 @@ func _hitobject(object):
 func _hitobject_OD(object):
 	if object.get_parent().name != "Node2D" and object.get_parent().has_meta("obstacle"):
 		global.obstaclesDodged += 1
+		
+func _shoot():
+	
+	ShootingCooldown = true
+	
+	var Bullet = BulletScene.instantiate()
+	get_parent().add_child(Bullet)
+	
+	Bullet.position = position
+	Bullet.rotation = rotation / 2
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	ShootingCooldown = false
 		
 func _physics_process(delta):
 	
@@ -99,6 +116,11 @@ func _physics_process(delta):
 				rotation = rotate_toward(rotation, 0, delta * 5)
 				
 			velocity.y = 1 * (rotation * SPEED)
+			
+			var shooting = Input.is_action_pressed("shoot")
+			
+			if shooting and ShootingCooldown == false:
+				_shoot()
 			
 	move_and_slide()
 	

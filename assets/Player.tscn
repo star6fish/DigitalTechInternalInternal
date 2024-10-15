@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1wlff68hwr0h"]
+[gd_scene load_steps=15 format=3 uid="uid://c1wlff68hwr0h"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_5acs1"]
 [ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_ovkc5"]
+[ext_resource type="PackedScene" uid="uid://du10gum3q5vem" path="res://assets/Bullet.tscn" id="3_007f3"]
 [ext_resource type="Texture2D" uid="uid://0x11p7kon8qa" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0000.png" id="3_ituiq"]
 [ext_resource type="Texture2D" uid="uid://e7p5hmyemuio" path="res://assets/JetPlaneAnimation2Speeding/Untitled-1 (2)0000.png" id="3_jdqmu"]
 [ext_resource type="Texture2D" uid="uid://jqyfjho4oa1f" path="res://assets/JetPlaneAnimation2/Untitled-1 (2)0001.png" id="4_m4fl1"]
@@ -58,6 +59,7 @@ size = Vector2(23.9231, 871.583)
 scale = Vector2(1.07735, 1.07735)
 script = ExtResource("1_5acs1")
 ExplosionScene = ExtResource("2_ovkc5")
+BulletScene = ExtResource("3_007f3")
 
 [node name="Area2D" type="Area2D" parent="."]
 
