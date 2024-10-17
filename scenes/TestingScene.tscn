@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://k6nq41vrrsrx"]
+[gd_scene load_steps=36 format=3 uid="uid://k6nq41vrrsrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
@@ -60,6 +60,9 @@ gradient = SubResource("Gradient_bemig")
 use_hdr = true
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms37v"]
+size = Vector2(64.0402, 63.387)
 
 [sub_resource type="Gradient" id="Gradient_f5uou"]
 colors = PackedColorArray(2.40654e-08, 0.506615, 0.0240442, 1, 0.362513, 0.993683, 0, 1)
@@ -232,6 +235,14 @@ text = "GAME MADE BY JAMES USING GODOT"
 position = Vector2(-693, -46)
 SPEED = 500.0
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(13.0718, -392.63)
+exclude_parent = false
+target_position = Vector2(0, 2000)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-354, 0)
 scale = Vector2(1.24, 1)
@@ -254,7 +265,7 @@ position = Vector2(-204, -238)
 
 [node name="Node2D" parent="." instance=ExtResource("10_vq2ss")]
 visible = false
-position = Vector2(624120, 5781)
+position = Vector2(625007, 5733)
 scale = Vector2(-64739.2, 568.407)
 
 [node name="Node2D3" parent="." instance=ExtResource("12_nivx7")]
@@ -647,6 +658,16 @@ z_index = 1
 position = Vector2(32216, 2601)
 scale = Vector2(348.781, 79.9375)
 texture = SubResource("GradientTexture2D_pdwmn")
+metadata/DesertRug = true
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+collision_layer = 3
+collision_mask = 3
+metadata/DesertRug = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
+position = Vector2(-0.011467, -0.318993)
+shape = SubResource("RectangleShape2D_ms37v")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 z_index = 1
@@ -654,50 +675,41 @@ position = Vector2(50676.8, 2609)
 scale = Vector2(122.258, 79.9375)
 texture = SubResource("GradientTexture2D_8lq8b")
 
-[node name="Area2D" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(23072, 744)
-scale = Vector2(104.782, 104.782)
+[node name="Node2D92" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(26698, 1657)
 
-[node name="Area2D2" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(26529, 1959)
+[node name="Node2D93" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(32029, 1657)
 
-[node name="Area2D3" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(29173, 1634)
+[node name="Node2D94" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(35498, 1657)
+scale = Vector2(105.954, 157.466)
 
-[node name="Area2D4" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(32015, 1582)
+[node name="Node2D95" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(39427, 1657)
 
-[node name="Area2D5" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(34777, 1750)
-
-[node name="Area2D6" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(37634, 1622)
-
-[node name="Area2D7" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(40192, 1926)
-
-[node name="Area2D8" parent="." instance=ExtResource("21_qhjr4")]
-position = Vector2(41183, 1675)
-
-[node name="Area2D9" parent="." instance=ExtResource("22_8bk87")]
+[node name="Node2D91" parent="." instance=ExtResource("22_8bk87")]
 modulate = Color(0.45098, 0.45098, 0.45098, 1)
-z_index = 2
-position = Vector2(21025, 87)
+z_index = 1
+position = Vector2(21055, 164)
 
-[node name="Area2D10" parent="." instance=ExtResource("22_8bk87")]
+[node name="Node2D96" parent="." instance=ExtResource("22_8bk87")]
 modulate = Color(0.45098, 0.45098, 0.45098, 1)
-z_index = 2
-position = Vector2(43360, 159)
+z_index = 1
+position = Vector2(43364, 185)
 
-[node name="Area2D11" parent="." instance=ExtResource("22_8bk87")]
+[node name="Node2D97" parent="." instance=ExtResource("22_8bk87")]
 modulate = Color(0.45098, 0.45098, 0.45098, 1)
-z_index = 2
-position = Vector2(46734, 138)
+z_index = 1
+position = Vector2(46778, 165)
 
-[node name="Area2D12" parent="." instance=ExtResource("22_8bk87")]
+[node name="Node2D98" parent="." instance=ExtResource("21_qhjr4")]
+position = Vector2(23984, 1657)
+
+[node name="Node2D100" parent="." instance=ExtResource("22_8bk87")]
 modulate = Color(0.45098, 0.45098, 0.45098, 1)
-z_index = 2
-position = Vector2(54551, 138)
+z_index = 1
+position = Vector2(54509, 232)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]

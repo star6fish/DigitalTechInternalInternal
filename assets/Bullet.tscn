@@ -5,9 +5,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ta37u"]
 size = Vector2(833.082, 13)
 
-[sub_resource type="Curve" id="Curve_32ykr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xsvi5"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+direction = Vector3(-10, -50, 0)
+spread = 20.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+orbit_velocity_min = -1.431
+orbit_velocity_max = 1.801
+gravity = Vector3(0, 80, 0)
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.0112261, 0.522914)
@@ -19,14 +26,13 @@ scale = Vector2(1.66953, 4.22095)
 shape = SubResource("RectangleShape2D_ta37u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -417.518
-offset_top = -8.0292
-offset_right = 416.482
-offset_bottom = 5.9708
+offset_left = -1870.64
+offset_top = -3.82472
+offset_right = -1036.64
+offset_bottom = 10.1753
+scale = Vector2(4.56309, 0.541034)
 
-[node name="Line2D" type="Line2D" parent="."]
-position = Vector2(-7.62939e-06, 30.0856)
-scale = Vector2(-0.00110428, 0.0746578)
-points = PackedVector2Array(0, 0)
-width = 200.0
-width_curve = SubResource("Curve_32ykr")
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.941176, 0.678431, 0.431373, 1)
+process_material = SubResource("ParticleProcessMaterial_xsvi5")
+lifetime = 2.05

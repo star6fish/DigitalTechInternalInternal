@@ -60,9 +60,9 @@ func _shoot():
 	get_parent().add_child(Bullet)
 	
 	Bullet.position = position
-	Bullet.rotation = rotation / 2
+	Bullet.rotation = rotation
 	
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	ShootingCooldown = false
 		
@@ -131,9 +131,9 @@ func _physics_process(delta):
 		ShakeStrength = lerp(ShakeStrength, 40.0, 5 * delta)
 		
 		var ShakeVector = Vector2(400 - (400 * (ShakeStrength / 40) / 4) + RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength))
-		get_parent().get_child(8).offset = lerp(get_parent().get_child(8).offset, ShakeVector, delta * 10)
-		get_parent().get_child(8).rotation = lerp(get_parent().get_child(8).rotation, RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), delta * 5)
-		get_parent().get_child(8).zoom = lerp(get_parent().get_child(8).zoom, Vector2(1.5, 1.5), delta)
+		get_parent().get_child(9).offset = lerp(get_parent().get_child(9).offset, ShakeVector, delta * 10)
+		get_parent().get_child(9).rotation = lerp(get_parent().get_child(9).rotation, RandomNumberGenerator.new().randf_range(-ShakeStrength, ShakeStrength), delta * 5)
+		get_parent().get_child(9).zoom = lerp(get_parent().get_child(9).zoom, Vector2(1.5, 1.5), delta)
 	
 	#if Crashing == true:
 		#Explosion.position.x = position.x

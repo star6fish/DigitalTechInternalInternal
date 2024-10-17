@@ -21,13 +21,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x += 2000 * delta
-	position.y += delta * (rotation * 500)
-	
-	TrailPoint_Queue.push_front($Line2D.position)
-	
-	if TrailPoint_Queue.size() > 2000:
-		TrailPoint_Queue.pop_back()
-	
-	for point in TrailPoint_Queue:
-		$Line2D.add_point(point)
+	position.y += delta * (rotation * 2000)
 	

@@ -88,7 +88,18 @@ func _spawn_obstacle():
 		canSpawn = true
 		obstaclePositionY = randf_range(100, 200)
 	elif ObstacleSelect == CactusScene:
-		obstaclePositionY = randf_range(20, -20)
+		
+		if $RayCast2D.is_colliding():
+			
+			var RaycastInstance = $RayCast2D.get_collider()
+			
+			if RaycastInstance.has_meta("DesertRug"):
+				obstaclePositionY = 650 - $RayCast2D.get_collision_point().y
+			else:
+				canSpawn = false
+		else:
+			canSpawn = false
+				
 	if canSpawn == true:
 		
 		var Obstacle = ObstacleSelect.instantiate()
@@ -134,6 +145,8 @@ func _ready():
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	$RayCast2D.position = Vector2($CharacterBody2D.position.x + 2000, -500)
 	
 	$Camera2D.position.x = $CharacterBody2D.position.x
 	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -600, -100)
