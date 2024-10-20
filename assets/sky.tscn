@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://br7c8tvpxrefj"]
 
-[sub_resource type="Gradient" id="Gradient_yeftf"]
+[sub_resource type="Gradient" id="Gradient_idkps"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yfffo"]
-gradient = SubResource("Gradient_yeftf")
+gradient = SubResource("Gradient_idkps")
 fill_to = Vector2(0, 1)
 
 [node name="Node2D" type="Node2D"]

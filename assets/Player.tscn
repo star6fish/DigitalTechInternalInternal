@@ -58,8 +58,8 @@ size = Vector2(23.9231, 871.583)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(1.07735, 1.07735)
 script = ExtResource("1_5acs1")
-ExplosionScene = ExtResource("2_ovkc5")
-BulletScene = ExtResource("3_007f3")
+explosion_scene = ExtResource("2_ovkc5")
+bullet_scene = ExtResource("3_007f3")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,162 +1,170 @@
 extends Node2D
 
-@export var ObstacleScene: PackedScene
-@export var MountainScene: PackedScene
-@export var MissileScene: PackedScene
-@export var JetPlane_Obstacle1Scene: PackedScene
-@export var JetPlane_Obstacle2Scene: PackedScene
-@export var JetPlane_Obstacle3Scene: PackedScene
-@export var JetPlane_Obstacle4Scene: PackedScene
-@export var CactusScene: PackedScene
-@export var JungleTree_Obstacle1Scene: PackedScene
-@export var JungleTree_Obstacle2Scene: PackedScene
+@export var obstacle_scene: PackedScene
+@export var mountain_scene: PackedScene
+@export var missile_scene: PackedScene
+@export var jet_plane_obstacle1_scene: PackedScene
+@export var jet_plane_obstacle2_scene: PackedScene
+@export var jet_plane_obstacle3_scene: PackedScene
+@export var jet_plane_obstacle4_scene: PackedScene
+@export var cactus_scene: PackedScene
+@export var jungle_tree_obstacle1_scene: PackedScene
+@export var jungle_tree_obstacle2_scene: PackedScene
 
 @onready var global = get_node("/root/Global")
 
-var obstacleCoolDown = false
+var obstacle_cool_down = false
 var obstacles = {}
 var ShakeStrength = 0
 
+#Pause button pressed
 func _pause():
 	get_tree().paused = true
 	$CanvasLayer.visible = false
 	$CanvasLayer2.visible = true
 	
+#Resume button pressed
 func _resume():
 	get_tree().paused = false
 	$CanvasLayer2.visible = false
 	$CanvasLayer.visible = true
 	
+#Home button pressed
 func _home():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
-	
-func _pauseButtonPressed():
-	_pause()
 
-func _resumeButtonPressed():
+	
+func _pause_button_pressed():
+	_pause()
+	
+
+func _resume_button_pressed():
 	_resume()
 	
-func _homeButtonPressed():
+	
+func _home_button_pressed():
 	_home()
 	
+#Spawn an obstacle
 func _spawn_obstacle():
 	
-	obstacleCoolDown = true
+	obstacle_cool_down = true
 	
-	var Random = RandomNumberGenerator.new()
-	Random.randomize()
+	var random = RandomNumberGenerator.new()
+	random.randomize()
 	
-	var ObstacleSelect = Random.randi_range(1, 3)
+	var obstacle_select = random.randi_range(1, 3)
 	
-	if ObstacleSelect == 1:	
-		if global.MapType == "Ocean":
-			ObstacleSelect = MountainScene
-		elif global.MapType == "Desert":
-			ObstacleSelect = CactusScene
-		elif global.MapType == "Jungle":
+	if obstacle_select == 1:	
+		if global.map_type == "Ocean":
+			obstacle_select = mountain_scene
+		elif global.map_type == "Desert":
+			obstacle_select = cactus_scene
+		elif global.map_type == "Jungle":
 			
-			var ObstacleJungleTreeType = Random.randi_range(1, 2)
+			var obstacle_jungle_tree_type = random.randi_range(1, 2)
 			
-			if ObstacleJungleTreeType == 1:
-				ObstacleSelect = JungleTree_Obstacle1Scene
-			elif ObstacleJungleTreeType == 2:
-				ObstacleSelect = JungleTree_Obstacle2Scene
+			if obstacle_jungle_tree_type == 1:
+				obstacle_select = jungle_tree_obstacle1_scene
+			elif obstacle_jungle_tree_type == 2:
+				obstacle_select = jungle_tree_obstacle2_scene
 				
-	elif ObstacleSelect == 2:
-		ObstacleSelect = MissileScene
-	elif ObstacleSelect == 3:
+	elif obstacle_select == 2:
+		obstacle_select = missile_scene
+	elif obstacle_select == 3:
 		
-		var ObstacleJetPlaneColour = Random.randi_range(1, 3)
+		var obstacle_jet_plane_colour = random.randi_range(1, 3)
 		
-		if ObstacleJetPlaneColour == 1:
-			ObstacleSelect = JetPlane_Obstacle1Scene
-		elif ObstacleJetPlaneColour == 2:
-			ObstacleSelect = JetPlane_Obstacle2Scene
-		elif  ObstacleJetPlaneColour == 3:
-			ObstacleSelect = JetPlane_Obstacle3Scene
+		if obstacle_jet_plane_colour == 1:
+			obstacle_select = jet_plane_obstacle1_scene
+		elif obstacle_jet_plane_colour == 2:
+			obstacle_select = jet_plane_obstacle2_scene
+		elif obstacle_jet_plane_colour == 3:
+			obstacle_select = jet_plane_obstacle3_scene
 			
-	var obstaclePositionY = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
+	var obstacle_position_y = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
 		
-	var canSpawn = true
+	var can_spawn = true
 			
 	for obstacle in obstacles:
-		if obstacles[obstacle] - obstaclePositionY < 10:
-			canSpawn = false
+		if obstacles[obstacle] - obstacle_position_y < 10:
+			can_spawn = false
 			
-	if ObstacleSelect == MountainScene or ObstacleSelect == JungleTree_Obstacle1Scene or ObstacleSelect == JungleTree_Obstacle2Scene:
-		canSpawn = true
-		obstaclePositionY = randf_range(100, 200)
-	elif ObstacleSelect == CactusScene:
+	if obstacle_select == mountain_scene or obstacle_select == jungle_tree_obstacle1_scene or obstacle_select == jungle_tree_obstacle2_scene:
+		can_spawn = true
+		obstacle_position_y = randf_range(100, 200)
+	elif obstacle_select == cactus_scene:
+		
+		$RayCast2D.position = Vector2($CharacterBody2D.position.x + 2000, -500)
 		
 		if $RayCast2D.is_colliding():
 			
 			var RaycastInstance = $RayCast2D.get_collider()
 			
 			if RaycastInstance.has_meta("DesertRug"):
-				obstaclePositionY = 650 - $RayCast2D.get_collision_point().y
+				obstacle_position_y = 600 - $RayCast2D.get_collision_point().y
 			else:
-				canSpawn = false
+				can_spawn = false
 		else:
-			canSpawn = false
+			can_spawn = false
 				
-	if canSpawn == true:
+	if can_spawn == true:
 		
-		var Obstacle = ObstacleSelect.instantiate()
+		var obstacle = obstacle_select.instantiate()
 		
-		obstacles[Obstacle] = obstaclePositionY
+		obstacles[obstacle] = obstacle_position_y
 				
-		add_child(Obstacle)
+		add_child(obstacle)
 			
-		Obstacle.position.x = $CharacterBody2D.position.x + 2000
-		Obstacle.position.y = obstaclePositionY
+		obstacle.position.x = $CharacterBody2D.position.x + 2000
+		obstacle.position.y = obstacle_position_y
 	
-		var Double = Random.randi_range(1, 4)
+		var double = random.randi_range(1, 4)
 	
-		if Double == 4:
+		if double == 4:
 			_spawn_obstacle()
 	
-		if global.Difficulty == "Easy":
+		if global.difficulty == "Easy":
 			await get_tree().create_timer(1).timeout
-		elif global.Difficulty == "Normal":
+		elif global.difficulty == "Normal":
 			await get_tree().create_timer(0.5).timeout
-		elif global.Difficulty == "Hard":
+		elif global.difficulty == "Hard":
 			await get_tree().create_timer(0.2).timeout		
 			
-		obstacles.erase(Obstacle)
+		obstacles.erase(obstacle)
 	
-	obstacleCoolDown = false
-	
-# Called when the node enters the scene tree for the first time.
+	obstacle_cool_down = false
+
+
+#Called when the node enters the scene tree for the first time.
 func _ready():
-	global.obstaclesDodged = 0
-	if global.Difficulty == "Easy":
+	global.obstacles_dodged = 0
+	if global.difficulty == "Easy":
 		$CanvasLayer.get_child(2).color = Color.DARK_GREEN
 		$CanvasLayer.get_child(3).color = Color.GREEN
 		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.FLORAL_WHITE)
-	elif global.Difficulty == "Normal":
+	elif global.difficulty == "Normal":
 		$CanvasLayer.get_child(2).color = Color.DARK_ORANGE
 		$CanvasLayer.get_child(3).color = Color.ORANGE
 		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.PAPAYA_WHIP)
-	if global.Difficulty == "Hard":
+	if global.difficulty == "Hard":
 		$CanvasLayer.get_child(2).color = Color.DARK_RED
 		$CanvasLayer.get_child(3).color = Color.RED
 		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.LIGHT_YELLOW)
-		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+#Called every frame.'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	$RayCast2D.position = Vector2($CharacterBody2D.position.x + 2000, -500)
 	
 	$Camera2D.position.x = $CharacterBody2D.position.x
 	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -600, -100)
 	
 	if $CharacterBody2D.position.x > 1600:
 	
-		if obstacleCoolDown == false:
+		if obstacle_cool_down == false:
 			_spawn_obstacle()
 			
-	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstaclesDodged)
+	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstacles_dodged)
 			
 	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)
 	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / " + str($Node2D3.position.x))

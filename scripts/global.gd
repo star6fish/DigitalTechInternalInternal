@@ -1,7 +1,7 @@
 extends Node
 
-var ColourPlane = Color.GRAY
-var Difficulty = "Normal"
-var obstaclesDodged = 0
-var MapType = "Ocean"
-var ShootingObstaclesCrashing = {}
+var colour_plane = Color.GRAY
+var difficulty = "Normal"
+var obstacles_dodged = 0
+var map_type = "Ocean"
+var shooting_obstacles_crashing = {}

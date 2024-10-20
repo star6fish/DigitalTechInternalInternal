@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://c1wlff68hwr0h" path="res://assets/Player.tscn" id="1_86ifi"]
 [ext_resource type="Script" path="res://scripts/TestingScene.gd" id="1_qlakw"]
-[ext_resource type="PackedScene" uid="uid://kownbogt80w6" path="res://assets/obstacle.tscn" id="2_p6737"]
 [ext_resource type="PackedScene" uid="uid://btccivvk86dij" path="res://assets/missile.tscn" id="4_53f2b"]
 [ext_resource type="PackedScene" uid="uid://bdab77ain0ysm" path="res://assets/mountain.tscn" id="4_ngl22"]
 [ext_resource type="PackedScene" uid="uid://0j8eka4tmoa1" path="res://assets/jetplane_obstacle1.tscn" id="5_tqf1o"]
@@ -30,8 +29,9 @@ background_mode = 3
 background_energy_multiplier = 5.55
 ambient_light_color = Color(0.941421, 0.896557, 0.99677, 1)
 glow_enabled = true
-glow_normalized = true
-glow_intensity = 1.0
+glow_intensity = 0.27
+glow_strength = 1.08
+glow_hdr_scale = 0.0
 fog_light_color = Color(0.392157, 0.423529, 0.47451, 1)
 fog_light_energy = 1.48
 
@@ -72,20 +72,31 @@ gradient = SubResource("Gradient_f5uou")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="Environment" id="Environment_3utu1"]
+background_mode = 3
+background_energy_multiplier = 5.55
+ambient_light_color = Color(0.941421, 0.896557, 0.99677, 1)
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 4.15
+glow_strength = 1.15
+glow_hdr_scale = 0.0
+fog_light_color = Color(0.392157, 0.423529, 0.47451, 1)
+fog_light_energy = 1.48
+
 [node name="Node2D" type="Node2D"]
 modulate = Color(1, 0.968627, 0.968627, 1)
 position = Vector2(425, 512)
 script = ExtResource("1_qlakw")
-ObstacleScene = ExtResource("2_p6737")
-MountainScene = ExtResource("4_ngl22")
-MissileScene = ExtResource("4_53f2b")
-JetPlane_Obstacle1Scene = ExtResource("5_tqf1o")
-JetPlane_Obstacle2Scene = ExtResource("6_tij6r")
-JetPlane_Obstacle3Scene = ExtResource("7_fleq2")
-JetPlane_Obstacle4Scene = ExtResource("8_271cl")
-CactusScene = ExtResource("20_yunnv")
-JungleTree_Obstacle1Scene = ExtResource("10_fteo2")
-JungleTree_Obstacle2Scene = ExtResource("11_th4ki")
+mountain_scene = ExtResource("4_ngl22")
+missile_scene = ExtResource("4_53f2b")
+jet_plane_obstacle1_scene = ExtResource("5_tqf1o")
+jet_plane_obstacle2_scene = ExtResource("6_tij6r")
+jet_plane_obstacle3_scene = ExtResource("7_fleq2")
+jet_plane_obstacle4_scene = ExtResource("8_271cl")
+cactus_scene = ExtResource("20_yunnv")
+jungle_tree_obstacle1_scene = ExtResource("10_fteo2")
+jungle_tree_obstacle2_scene = ExtResource("11_th4ki")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1c1a5")
@@ -104,6 +115,8 @@ offset_bottom = 130.0
 scale = Vector2(0.355583, 0.339012)
 pivot_offset = Vector2(239, 84)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
+theme_override_colors/font_pressed_color = Color(0.737255, 1, 0.192157, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 1, 0.192157, 1)
 theme_override_font_sizes/font_size = 93
 theme_override_styles/normal = ExtResource("9_644ma")
 theme_override_styles/hover = ExtResource("10_ynfu8")
@@ -132,7 +145,7 @@ offset_top = 546.0
 offset_right = 1152.0
 offset_bottom = 586.0
 scale = Vector2(1, 0.599999)
-color = Color(0, 100, 0, 1)
+color = Color(0, 1, 0, 1)
 
 [node name="Label3" type="Label" parent="CanvasLayer/ColorRect"]
 layout_mode = 0
@@ -201,7 +214,8 @@ offset_bottom = 483.0
 scale = Vector2(0.566069, 0.588125)
 pivot_offset = Vector2(441, 132)
 theme_override_colors/font_color = Color(0, 1, 0.192157, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.737255, 1, 0.192157, 1)
+theme_override_colors/font_hover_color = Color(0.737255, 1, 0.192157, 1)
 theme_override_font_sizes/font_size = 125
 theme_override_styles/normal = ExtResource("9_644ma")
 theme_override_styles/hover = ExtResource("10_ynfu8")
@@ -216,7 +230,8 @@ offset_bottom = 553.0
 scale = Vector2(0.72673, 0.706277)
 pivot_offset = Vector2(343, 63)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.776471, 0.776471, 0.776471, 1)
+theme_override_colors/font_hover_color = Color(0.776471, 0.776471, 0.776471, 1)
 theme_override_font_sizes/font_size = 71
 theme_override_styles/normal = ExtResource("9_644ma")
 theme_override_styles/hover = ExtResource("10_ynfu8")
@@ -233,7 +248,6 @@ text = "GAME MADE BY JAMES USING GODOT"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_86ifi")]
 position = Vector2(-693, -46)
-SPEED = 500.0
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(13.0718, -392.63)
@@ -711,6 +725,9 @@ modulate = Color(0.45098, 0.45098, 0.45098, 1)
 z_index = 1
 position = Vector2(54509, 232)
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_pauseButtonPressed"]
-[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resumeButtonPressed"]
-[connection signal="pressed" from="CanvasLayer2/Button2" to="." method="_homeButtonPressed"]
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3utu1")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Button" to="." method="_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Button2" to="." method="_home_button_pressed"]

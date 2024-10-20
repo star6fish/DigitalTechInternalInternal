@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://du10gum3q5vem"]
+[gd_scene load_steps=6 format=3 uid="uid://du10gum3q5vem"]
 
 [ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_2g4tb"]
 
@@ -16,13 +16,22 @@ orbit_velocity_min = -1.431
 orbit_velocity_max = 1.801
 gravity = Vector3(0, 80, 0)
 
+[sub_resource type="Gradient" id="Gradient_6blgd"]
+offsets = PackedFloat32Array(0, 0.843023)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_34vey"]
+gradient = SubResource("Gradient_6blgd")
+fill = 1
+fill_from = Vector2(0.501424, 0.498576)
+
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.0112261, 0.522914)
 script = ExtResource("1_2g4tb")
 metadata/Bullet = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(1.66953, 4.22095)
+scale = Vector2(1.66953, 2.69106)
 shape = SubResource("RectangleShape2D_ta37u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -36,3 +45,14 @@ scale = Vector2(4.56309, 0.541034)
 modulate = Color(0.941176, 0.678431, 0.431373, 1)
 process_material = SubResource("ParticleProcessMaterial_xsvi5")
 lifetime = 2.05
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(44.5389, 1.90735e-06)
+scale = Vector2(59.8494, 0.119523)
+energy = 10.05
+range_layer_min = -1
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_34vey")
