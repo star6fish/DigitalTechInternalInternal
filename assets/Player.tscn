@@ -80,5 +80,5 @@ animation = &"default_speeding"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetector"]
 shape = SubResource("RectangleShape2D_58hsa")
 
-[connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
-[connection signal="area_entered" from="ObstacleDetector" to="." method="_hitobject_OD"]
+[connection signal="area_entered" from="Area2D" to="." method="_hit_object"]
+[connection signal="area_entered" from="ObstacleDetector" to="." method="_hit_object_OD"]

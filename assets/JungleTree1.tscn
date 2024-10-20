@@ -11,8 +11,8 @@ size = Vector2(50, 62)
 z_index = 1
 scale = Vector2(7.21198, 7.21198)
 script = ExtResource("1_ts552")
-ExplosionScene = ExtResource("2_hjnx7")
-ExplosionColour = Color(0.996078, 0.803922, 0.0784314, 1)
+explosion_scene = ExtResource("2_hjnx7")
+explosion_colour = Color(0.862745, 0.533333, 0, 1)
 metadata/obstacle = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,4 +25,4 @@ texture = ExtResource("1_eql5m")
 position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_dkmf3")
 
-[connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
+[connection signal="area_entered" from="Area2D" to="." method="_hit_object"]

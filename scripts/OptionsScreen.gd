@@ -2,103 +2,120 @@ extends Control
 
 @onready var global = get_node("/root/Global")
 
-var ButtonsHover = {}
+var buttons_hover = {}
 
-func updateButtonOutlines():
+
+func update_button_outlines():
 	
 	for i in $CanvasLayer2.get_children():
 		if i.has_signal("button_down"):
-			if Color.from_string(i.name, Color.BLACK) == global.ColourPlane:
+			if Color.from_string(i.name, Color.BLACK) == global.colour_plane:
 				$CanvasLayer2/ColourSelect.position = i.position
 		
 	for i in $CanvasLayer2.get_children():
 		if i.has_signal("button_down"):
-			if i.name == global.Difficulty:
+			if i.name == global.difficulty:
 				$CanvasLayer2/DifficultySelect.position = i.position
 
+
 func _grey():
-	global.ColourPlane = Color.GRAY
-	updateButtonOutlines()
+	global.colour_plane = Color.GRAY
+	update_button_outlines()
+	
 	
 func _green():
-	global.ColourPlane = Color.GREEN
-	updateButtonOutlines()
+	global.colour_plane = Color.GREEN
+	update_button_outlines()
+	
 	
 func _blue():
-	global.ColourPlane = Color.DARK_TURQUOISE
-	updateButtonOutlines()
+	global.colour_plane = Color.DARK_TURQUOISE
+	update_button_outlines()
+
 
 func  _orange():
-	global.ColourPlane = Color.ORANGE
-	updateButtonOutlines()
+	global.colour_plane = Color.ORANGE
+	update_button_outlines()
+
 
 func _easy():
-	global.Difficulty = "Easy"
-	updateButtonOutlines()
+	global.difficulty = "Easy"
+	update_button_outlines()
+
 	
 func _normal():
-	global.Difficulty = "Normal"
-	updateButtonOutlines()
+	global.difficulty = "Normal"
+	update_button_outlines()
+
 
 func _hard():
-	global.Difficulty = "Hard"
-	updateButtonOutlines()
+	global.difficulty = "Hard"
+	update_button_outlines()
+
 
 func _back():
 	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
 
-func _backButtonPressed():
+
+func _back_button_pressed():
 	_back()
 
-func _buttonEffect(ButtonTarget, Hover, Press):
+
+func _button_effect(button_target, hover, press):
 	
-	if Hover == true:
+	if hover == true:
 		
-		if not ButtonsHover.get(ButtonTarget):
+		if not buttons_hover.get(button_target):
 			
-			ButtonsHover[ButtonTarget] = ButtonTarget.scale
+			buttons_hover[button_target] = button_target.scale
 			
-			var ButtonTween = create_tween()
-			ButtonTween.tween_property(ButtonTarget, "scale", ButtonTarget.scale + (ButtonTarget.scale / 6), 0.1)
+			var button_tween = create_tween()
+			button_tween.tween_property(button_target, "scale", button_target.scale
+					 + (button_target.scale / 6), 0.1)
 			
-	elif Hover == false:
+	elif hover == false:
 		
-		if ButtonsHover.get(ButtonTarget):
+		if buttons_hover.get(button_target):
 			
-			var ButtonTween = create_tween()
-			ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget], 0.1)
+			var button_tween = create_tween()
+			button_tween.tween_property(button_target, "scale", buttons_hover[button_target], 0.1)
 			
-			ButtonsHover.erase(ButtonTarget)
+			buttons_hover.erase(button_target)
 			
-	if Press == true:
+	if press == true:
 			
-		var ButtonTween = create_tween()
-		ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget] - (ButtonsHover[ButtonTarget] / 6), 0.1)
+		var button_tween = create_tween()
+		button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
+				 - (buttons_hover[button_target] / 6), 0.1)
 		
-	elif Press == false:
+	elif press == false:
 		
-		if Hover == true:
+		if hover == true:
 			
-			if ButtonsHover.get(ButtonTarget):
+			if buttons_hover.get(button_target):
 				
-				var ButtonTween = create_tween()
-				ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget] + (ButtonsHover[ButtonTarget] / 6), 0.1)
-		
+				var button_tween = create_tween()
+				button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
+						 + (buttons_hover[button_target] / 6), 0.1)
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	updateButtonOutlines()
-		
+	update_button_outlines()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	for i in get_children():
 		if i.has_signal("button_down"):
 			
 			if i.is_hovered() == true:
-				_buttonEffect(i, true, false)
+				_button_effect(i, true, false)
 			elif i.is_hovered() == false:
-				_buttonEffect(i, false, false)
+				_button_effect(i, false, false)
 				
 			if i.is_pressed() == true:
-				_buttonEffect(i, true, true)
+				_button_effect(i, true, true)
 			if i.is_pressed() == false:
 				if i.is_hovered() == true:
-					_buttonEffect(i, true, false)
+					_button_effect(i, true, false)
+

@@ -32,8 +32,8 @@ size = Vector2(54, 20)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_2vevw")
-ExplosionScene = ExtResource("2_adp14")
-ExplosionColour = Color(0.109804, 0.705882, 0, 1)
+explosion_scene = ExtResource("2_adp14")
+explosion_colour = Color(0.282353, 0.737255, 0, 1)
 metadata/obstacle = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -48,4 +48,4 @@ frame_progress = 0.123045
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_i1muu")
 
-[connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
+[connection signal="area_entered" from="Area2D" to="." method="_hit_object"]

@@ -57,7 +57,7 @@ glow_blend_mode = 1
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tg7er")
-ExplosionParticles = ExtResource("2_sndvc")
+explosion_particles = ExtResource("2_sndvc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.76, 2.76)

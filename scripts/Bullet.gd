@@ -2,14 +2,13 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 
-var ObjectsHit = 0
+var objects_hit = 0
 
-var TrailPoint_Queue = []
 
-func _hitobject(object):
+func _hit_object(object):
 	if object.get_parent().has_meta("obstacle"):
-		ObjectsHit += 1
-		if ObjectsHit >= 5:
+		objects_hit += 1
+		if objects_hit >= 5:
 			queue_free()
 
 # Called when the node enters the scene tree for the first time.

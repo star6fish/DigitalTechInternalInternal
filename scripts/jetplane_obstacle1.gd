@@ -1,42 +1,40 @@
 extends Node2D
 
-@export var ExplosionScene : PackedScene
-@export var ExplosionColour : Color
+@export var explosion_scene : PackedScene
+@export var explosion_colour : Color
 
-var Crashing = false
+var crashing = false
 
-var Explosion = false
+var explosion = false
 
-func _hitobject(object):
-	if object.get_parent().name == "CharacterBody2D" and object.name != "ObstacleDetector" or object.has_meta("Bullet"):
+
+func _hit_object(object):
+	if (object.get_parent().name == "CharacterBody2D"
+	and object.name != "ObstacleDetector"
+	or object.has_meta("Bullet")):
 		
-		Crashing = true
+		crashing = true
 		
-		Explosion = ExplosionScene.instantiate()
+		explosion = explosion_scene.instantiate()
 		
-		Explosion.position.x = position.x
-		Explosion.position.y = position.y
+		explosion.position.x = position.x
+		explosion.position.y = position.y
 		
-		Explosion.get_child(0).modulate = ExplosionColour
-		Explosion.get_child(1).color = ExplosionColour
+		explosion.get_child(0).modulate = explosion_colour
+		explosion.get_child(1).color = explosion_colour
 		
-		get_parent().add_child(Explosion)
+		get_parent().add_child(explosion)
 		
 		queue_free()
 		
 	elif object.name == "ObstaclePassDetector":
 		queue_free()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= 500 * delta
 	
-	if Crashing == true:
+	if crashing == true:
 		
-		Explosion.position.x = position.x
-		Explosion.position.y = position.y
+		explosion.position.x = position.x
+		explosion.position.y = position.y

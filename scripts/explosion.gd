@@ -1,15 +1,16 @@
 extends Node2D
 
-@export var ExplosionParticles : PackedScene
+@export var explosion_particles : PackedScene
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	var _particles = ExplosionParticles.instantiate()
+	var particles = explosion_particles.instantiate()
 	
-	_particles.position = position
-	_particles.rotation = rotation
-	_particles.emitting = true
+	particles.position = position
+	particles.rotation = rotation
+	particles.emitting = true
 	
-	get_tree().current_scene.add_child(_particles)
+	get_tree().current_scene.add_child(particles)
 	
 	await get_tree().create_timer(2).timeout
 	

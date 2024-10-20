@@ -17,10 +17,12 @@ var shooting_cooldown = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
 func _win():
 	get_tree().change_scene_to_file("res://scenes/WinScreen.tscn")
 
-func _hitobject(object):
+
+func _hit_object(object):
 	if object.get_parent().has_meta("obstacle"):
 		
 		crashing = true
@@ -48,10 +50,12 @@ func _hitobject(object):
 	elif object.get_parent().name == "Node2D3":
 		_win()
 
-func _hitobject_OD(object):
+
+func _hit_object_OD(object):
 	if object.get_parent().name != "Node2D" and object.get_parent().has_meta("obstacle"):
 		global.obstacles_dodged += 1
-		
+
+
 func _shoot():
 	
 	shooting_cooldown = true
@@ -65,7 +69,8 @@ func _shoot():
 	await get_tree().create_timer(0.5).timeout
 	
 	shooting_cooldown = false
-		
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	
 	$AnimatedSprite2D.play()
@@ -130,11 +135,18 @@ func _physics_process(delta):
 		
 		shake_strength = lerp(shake_strength, 40.0, 5 * delta)
 		
-		var shake_vector = Vector2(400 - (400 * (shake_strength / 40) / 4) + RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength), RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength))
-		get_parent().get_child(9).offset = lerp(get_parent().get_child(9).offset, shake_vector, delta * 10)
-		get_parent().get_child(9).rotation = lerp(get_parent().get_child(9).rotation, RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength), delta * 5)
-		get_parent().get_child(9).zoom = lerp(get_parent().get_child(9).zoom, Vector2(1.5, 1.5), delta)
+		var shake_vector = Vector2(400 - (400 * (shake_strength / 40) / 4)
+				 + RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength),
+				 RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength))
+		get_parent().get_child(9).offset = lerp(get_parent().get_child(9).offset, shake_vector,
+				 delta * 10)
+		get_parent().get_child(9).rotation = lerp(get_parent().get_child(9).rotation,
+				 RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength),
+				 delta * 5)
+		get_parent().get_child(9).zoom = lerp(get_parent().get_child(9).zoom,
+				 Vector2(1.5, 1.5), delta)
 	
 	#if Crashing == true:
 		#Explosion.position.x = position.x
 		#Explosion.position.y = position.y
+		

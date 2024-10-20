@@ -10,8 +10,8 @@ size = Vector2(248, 342)
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.207638, 0.207638)
 script = ExtResource("1_3m47b")
-ExplosionScene = ExtResource("2_110lf")
-ExplosionColour = Color(0, 0.682353, 0.0901961, 1)
+explosion_scene = ExtResource("2_110lf")
+explosion_colour = Color(0.862745, 0.533333, 0, 1)
 metadata/obstacle = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -25,4 +25,4 @@ position = Vector2(-15.7509, -201)
 scale = Vector2(11.5469, 12.5939)
 texture = ExtResource("1_x8oih")
 
-[connection signal="area_entered" from="Area2D" to="." method="_hitobject"]
+[connection signal="area_entered" from="Area2D" to="." method="_hit_object"]

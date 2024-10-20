@@ -503,7 +503,7 @@ pivot_offset = Vector2(6, 6)
 theme_override_styles/panel = SubResource("StyleBoxFlat_nqbtv")
 
 [connection signal="pressed" from="CanvasLayer2/GRAY" to="." method="_grey"]
-[connection signal="pressed" from="CanvasLayer2/Button5" to="." method="_backButtonPressed"]
+[connection signal="pressed" from="CanvasLayer2/Button5" to="." method="_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer2/GREEN" to="." method="_green"]
 [connection signal="pressed" from="CanvasLayer2/DARK_TURQUOISE" to="." method="_blue"]
 [connection signal="pressed" from="CanvasLayer2/ORANGE" to="." method="_orange"]

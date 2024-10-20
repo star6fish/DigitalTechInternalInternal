@@ -15,21 +15,20 @@ extends Node2D
 
 var obstacle_cool_down = false
 var obstacles = {}
-var ShakeStrength = 0
 
-#Pause button pressed
+# Pause button pressed
 func _pause():
 	get_tree().paused = true
 	$CanvasLayer.visible = false
 	$CanvasLayer2.visible = true
 	
-#Resume button pressed
+# Resume button pressed
 func _resume():
 	get_tree().paused = false
 	$CanvasLayer2.visible = false
 	$CanvasLayer.visible = true
 	
-#Home button pressed
+# Home button pressed
 func _home():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/PlayScreen.tscn")
@@ -46,7 +45,7 @@ func _resume_button_pressed():
 func _home_button_pressed():
 	_home()
 	
-#Spawn an obstacle
+# Spawn an obstacle
 func _spawn_obstacle():
 	
 	obstacle_cool_down = true
@@ -83,7 +82,8 @@ func _spawn_obstacle():
 		elif obstacle_jet_plane_colour == 3:
 			obstacle_select = jet_plane_obstacle3_scene
 			
-	var obstacle_position_y = clamp(randf_range($CharacterBody2D.position.y - 100, $CharacterBody2D.position.y + 100), -1000, -320)
+	var obstacle_position_y = clamp(randf_range($CharacterBody2D.position.y - 100,
+		 	$CharacterBody2D.position.y + 100), -1000, -320)
 		
 	var can_spawn = true
 			
@@ -91,7 +91,10 @@ func _spawn_obstacle():
 		if obstacles[obstacle] - obstacle_position_y < 10:
 			can_spawn = false
 			
-	if obstacle_select == mountain_scene or obstacle_select == jungle_tree_obstacle1_scene or obstacle_select == jungle_tree_obstacle2_scene:
+	if (obstacle_select == mountain_scene 
+	or obstacle_select == jungle_tree_obstacle1_scene
+	or obstacle_select == jungle_tree_obstacle2_scene):
+		
 		can_spawn = true
 		obstacle_position_y = randf_range(100, 200)
 	elif obstacle_select == cactus_scene:
@@ -135,25 +138,27 @@ func _spawn_obstacle():
 		obstacles.erase(obstacle)
 	
 	obstacle_cool_down = false
-
-
-#Called when the node enters the scene tree for the first time.
+	
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	global.obstacles_dodged = 0
 	if global.difficulty == "Easy":
 		$CanvasLayer.get_child(2).color = Color.DARK_GREEN
 		$CanvasLayer.get_child(3).color = Color.GREEN
-		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.FLORAL_WHITE)
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color",
+				 Color.FLORAL_WHITE)
 	elif global.difficulty == "Normal":
 		$CanvasLayer.get_child(2).color = Color.DARK_ORANGE
 		$CanvasLayer.get_child(3).color = Color.ORANGE
-		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.PAPAYA_WHIP)
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color",
+			 	Color.PAPAYA_WHIP)
 	if global.difficulty == "Hard":
 		$CanvasLayer.get_child(2).color = Color.DARK_RED
 		$CanvasLayer.get_child(3).color = Color.RED
-		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color", Color.LIGHT_YELLOW)
+		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color",
+		 		Color.LIGHT_YELLOW)
 
-#Called every frame.'delta' is the elapsed time since the previous frame.
+# Called every frame.'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	$Camera2D.position.x = $CharacterBody2D.position.x
@@ -166,5 +171,8 @@ func _process(delta):
 			
 	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstacles_dodged)
 			
-	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x / $Node2D3.position.x)
-	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / " + str($Node2D3.position.x))
+	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x
+			 / $Node2D3.position.x)
+	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / "
+			+ str($Node2D3.position.x))
+
