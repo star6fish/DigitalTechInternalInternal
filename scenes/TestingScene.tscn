@@ -649,7 +649,7 @@ scale = Vector2(0.283819, 0.283819)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_ehk6k")
-position = Vector2(10100, 2458)
+position = Vector2(10069, 2458)
 scale = Vector2(342.781, 79.9375)
 texture = SubResource("GradientTexture2D_jv6t8")
 

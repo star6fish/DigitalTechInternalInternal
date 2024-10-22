@@ -4,6 +4,7 @@ extends Control
 
 var buttons_hover = {}
 
+const BUTTON_TWEENING_SIZE_SPEED = 0.1
 
 func update_button_outlines():
 	
@@ -71,14 +72,15 @@ func _button_effect(button_target, hover, press):
 			
 			var button_tween = create_tween()
 			button_tween.tween_property(button_target, "scale", button_target.scale
-					 + (button_target.scale / 6), 0.1)
+					 + (button_target.scale / 6), BUTTON_TWEENING_SIZE_SPEED)
 			
 	elif hover == false:
 		
 		if buttons_hover.get(button_target):
 			
 			var button_tween = create_tween()
-			button_tween.tween_property(button_target, "scale", buttons_hover[button_target], 0.1)
+			button_tween.tween_property(button_target, "scale", buttons_hover[button_target],
+					 BUTTON_TWEENING_SIZE_SPEED)
 			
 			buttons_hover.erase(button_target)
 			
@@ -86,7 +88,7 @@ func _button_effect(button_target, hover, press):
 			
 		var button_tween = create_tween()
 		button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
-				 - (buttons_hover[button_target] / 6), 0.1)
+				 - (buttons_hover[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
 		
 	elif press == false:
 		
@@ -96,7 +98,7 @@ func _button_effect(button_target, hover, press):
 				
 				var button_tween = create_tween()
 				button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
-						 + (buttons_hover[button_target] / 6), 0.1)
+						 + (buttons_hover[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

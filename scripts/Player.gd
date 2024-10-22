@@ -9,10 +9,21 @@ extends CharacterBody2D
 var taking_off = true
 var crashing = false
 
+const VELOCITY_CLAMP_MINIMUM_Y = -910
+const VELOCITY_CLAMP_MAXIMUM_Y = 200
+
 var explosion = false
 var shake_strength = 0.0
+const EXPLOSION_ZOOM = 1.5
+const SHAKE_MAGNITUDE = 40.0
+const SHAKE_OFFSET = 400
 
 var shooting_cooldown = false
+
+const TAKE_OFF_ROTATION_MINIMISED = -0.5
+
+const TAKE_OFF_ROTATION = -215
+const TAKE_OFF_LEVEL_Y = -85
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -80,7 +91,7 @@ func _physics_process(delta):
 
 		$AnimatedSprite2D.animation = "default"
 
-		if position.y <= -85:
+		if position.y <= TAKE_OFF_LEVEL_Y:
 			rotation = rotate_toward(rotation, 0, delta * 0.2)
 			if rotation == 0:
 				taking_off = false
@@ -88,8 +99,8 @@ func _physics_process(delta):
 			velocity.x = speed * 2
 			velocity.y = 1 * (rotation * speed)
 			
-			if position.x >= - 215:
-				rotation = rotate_toward(rotation, -0.5, delta)
+			if position.x >= TAKE_OFF_ROTATION:
+				rotation = rotate_toward(rotation, TAKE_OFF_ROTATION_MINIMISED, delta)
 			
 	elif taking_off == false:
 		
@@ -129,13 +140,14 @@ func _physics_process(delta):
 			
 	move_and_slide()
 	
-	position.y = clamp(position.y, -910, 200)
+	position.y = clamp(position.y, VELOCITY_CLAMP_MINIMUM_Y, VELOCITY_CLAMP_MAXIMUM_Y)
 	
 	if crashing == true:
 		
-		shake_strength = lerp(shake_strength, 40.0, 5 * delta)
+		shake_strength = lerp(shake_strength, SHAKE_MAGNITUDE, 5 * delta)
 		
-		var shake_vector = Vector2(400 - (400 * (shake_strength / 40) / 4)
+		var shake_vector = Vector2(SHAKE_OFFSET - (
+					SHAKE_OFFSET * (shake_strength / SHAKE_MAGNITUDE) / 4)
 				 + RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength),
 				 RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength))
 		get_parent().get_child(9).offset = lerp(get_parent().get_child(9).offset, shake_vector,
@@ -144,7 +156,7 @@ func _physics_process(delta):
 				 RandomNumberGenerator.new().randf_range(-shake_strength, shake_strength),
 				 delta * 5)
 		get_parent().get_child(9).zoom = lerp(get_parent().get_child(9).zoom,
-				 Vector2(1.5, 1.5), delta)
+				 Vector2(EXPLOSION_ZOOM, EXPLOSION_ZOOM), delta)
 	
 	#if Crashing == true:
 		#Explosion.position.x = position.x

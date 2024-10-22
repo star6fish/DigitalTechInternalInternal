@@ -16,6 +16,18 @@ extends Node2D
 var obstacle_cool_down = false
 var obstacles = {}
 
+const OBSTACLE_SPAWN_OFFSET_X = 2000
+const OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y = 10
+const OBSTACLE_SPAWN_RANDOMNESS_Y = 50
+const CACTUS_SPAWN_OFFSET_Y = -600
+const OBSTACLE_CLAMP_Y_MINIMUM = -1000
+const OBSTACLE_CLAMP_Y_MAXIMUM = -320
+
+const CAMERA_CLAMP_Y_MINIMUM = -600
+const CAMERA_CLAMP_Y_MAXIMUM = -100
+
+const TAKE_OFF_LEAVE_X = 1600
+
 # Pause button pressed
 func _pause():
 	get_tree().paused = true
@@ -82,13 +94,15 @@ func _spawn_obstacle():
 		elif obstacle_jet_plane_colour == 3:
 			obstacle_select = jet_plane_obstacle3_scene
 			
-	var obstacle_position_y = clamp(randf_range($CharacterBody2D.position.y - 100,
-		 	$CharacterBody2D.position.y + 100), -1000, -320)
+	var obstacle_position_y = clamp(randf_range(
+			$CharacterBody2D.position.y - OBSTACLE_SPAWN_RANDOMNESS_Y,
+		 	$CharacterBody2D.position.y + OBSTACLE_SPAWN_RANDOMNESS_Y),
+			OBSTACLE_CLAMP_Y_MINIMUM, OBSTACLE_CLAMP_Y_MAXIMUM)
 		
 	var can_spawn = true
 			
 	for obstacle in obstacles:
-		if obstacles[obstacle] - obstacle_position_y < 10:
+		if obstacles[obstacle] - obstacle_position_y < OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y:
 			can_spawn = false
 			
 	if (obstacle_select == mountain_scene 
@@ -97,16 +111,17 @@ func _spawn_obstacle():
 		
 		can_spawn = true
 		obstacle_position_y = randf_range(100, 200)
+		
 	elif obstacle_select == cactus_scene:
 		
-		$RayCast2D.position = Vector2($CharacterBody2D.position.x + 2000, -500)
+		$RayCast2D.position = Vector2($CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X, CAMERA_CLAMP_Y_MAXIMUM)
 		
 		if $RayCast2D.is_colliding():
 			
-			var RaycastInstance = $RayCast2D.get_collider()
+			var raycast_instance = $RayCast2D.get_collider()
 			
-			if RaycastInstance.has_meta("DesertRug"):
-				obstacle_position_y = 600 - $RayCast2D.get_collision_point().y
+			if raycast_instance.has_meta("DesertRug"):
+				obstacle_position_y = CACTUS_SPAWN_OFFSET_Y - $RayCast2D.get_collision_point().y
 			else:
 				can_spawn = false
 		else:
@@ -120,7 +135,7 @@ func _spawn_obstacle():
 				
 		add_child(obstacle)
 			
-		obstacle.position.x = $CharacterBody2D.position.x + 2000
+		obstacle.position.x = $CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X
 		obstacle.position.y = obstacle_position_y
 	
 		var double = random.randi_range(1, 4)
@@ -141,7 +156,9 @@ func _spawn_obstacle():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	global.obstacles_dodged = 0
+	
 	if global.difficulty == "Easy":
 		$CanvasLayer.get_child(2).color = Color.DARK_GREEN
 		$CanvasLayer.get_child(3).color = Color.GREEN
@@ -162,17 +179,18 @@ func _ready():
 func _process(delta):
 	
 	$Camera2D.position.x = $CharacterBody2D.position.x
-	$Camera2D.position.y = clamp($CharacterBody2D.position.y, -600, -100)
+	$Camera2D.position.y = clamp($CharacterBody2D.position.y, CAMERA_CLAMP_Y_MINIMUM,
+			 CAMERA_CLAMP_Y_MAXIMUM)
 	
-	if $CharacterBody2D.position.x > 1600:
+	if $CharacterBody2D.position.x > TAKE_OFF_LEAVE_X:
 	
 		if obstacle_cool_down == false:
 			_spawn_obstacle()
 			
 	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstacles_dodged)
 			
-	$CanvasLayer.get_child(3).position.x = -1152 * (1 - $CharacterBody2D.position.x
-			 / $Node2D3.position.x)
+	$CanvasLayer.get_child(3).position.x = -$CanvasLayer.get_child(3).size.x * (
+				1 - $CharacterBody2D.position.x / $Node2D3.position.x)
 	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / "
 			+ str($Node2D3.position.x))
 

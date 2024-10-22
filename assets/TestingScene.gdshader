@@ -7,11 +7,12 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
 	
-	float Wave_Amplitude = 0.05;
-	float Wave_Speed = 2.0;
-	float Wave_Period = 2.8;
+	float wave_amplitude = 0.05;
+	float wave_speed = 2.0;
+	float wave_period = 2.8;
 	
-	float waves = UV.y * 20.0 + sin(UV.x * 20.0 / Wave_Period + 1.0 * Wave_Speed * TIME) * Wave_Amplitude - Wave_Amplitude;
+	float waves = UV.y * 20.0 + sin(UV.x * 20.0 / wave_period + 1.0 * wave_speed * TIME)
+			 * wave_amplitude - wave_amplitude;
 	COLOR.a = step(0.5, waves) - 0.2;
 	
 }
