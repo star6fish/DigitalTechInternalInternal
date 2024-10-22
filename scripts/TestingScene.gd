@@ -19,7 +19,7 @@ var obstacles = {}
 const OBSTACLE_SPAWN_OFFSET_X = 2000
 const OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y = 10
 const OBSTACLE_SPAWN_RANDOMNESS_Y = 50
-const CACTUS_SPAWN_OFFSET_Y = -600
+const CACTUS_SPAWN_OFFSET_Y = 600
 const OBSTACLE_CLAMP_Y_MINIMUM = -1000
 const OBSTACLE_CLAMP_Y_MAXIMUM = -320
 
@@ -56,6 +56,48 @@ func _resume_button_pressed():
 	
 func _home_button_pressed():
 	_home()
+	
+	
+func _get_obstacle_spawn_position_y(obstacle_select):
+	
+	var can_spawn = true
+	
+	var obstacle_position_y = clamp(randf_range(
+			$CharacterBody2D.position.y - OBSTACLE_SPAWN_RANDOMNESS_Y,
+		 	$CharacterBody2D.position.y + OBSTACLE_SPAWN_RANDOMNESS_Y),
+			OBSTACLE_CLAMP_Y_MINIMUM, OBSTACLE_CLAMP_Y_MAXIMUM)
+			
+	for obstacle in obstacles:
+		if obstacles[obstacle] - obstacle_position_y < OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y:
+			can_spawn = false
+	
+	if (obstacle_select == mountain_scene 
+	or obstacle_select == jungle_tree_obstacle1_scene
+	or obstacle_select == jungle_tree_obstacle2_scene):
+		
+		obstacle_position_y = randf_range(100, 200)
+	
+	elif obstacle_select == cactus_scene:
+		
+		$RayCast2D.position = Vector2($CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X,
+				 CAMERA_CLAMP_Y_MINIMUM)
+		
+		if $RayCast2D.is_colliding():
+			
+			var raycast_instance = $RayCast2D.get_collider()
+			
+			if raycast_instance.has_meta("DesertRug"):
+				obstacle_position_y = CACTUS_SPAWN_OFFSET_Y - $RayCast2D.get_collision_point().y
+			else:
+				can_spawn = false
+		else:
+			can_spawn = false
+			
+	if can_spawn == false:
+		obstacle_position_y = false
+	
+	return obstacle_position_y
+	
 	
 # Spawn an obstacle
 func _spawn_obstacle():
@@ -94,40 +136,9 @@ func _spawn_obstacle():
 		elif obstacle_jet_plane_colour == 3:
 			obstacle_select = jet_plane_obstacle3_scene
 			
-	var obstacle_position_y = clamp(randf_range(
-			$CharacterBody2D.position.y - OBSTACLE_SPAWN_RANDOMNESS_Y,
-		 	$CharacterBody2D.position.y + OBSTACLE_SPAWN_RANDOMNESS_Y),
-			OBSTACLE_CLAMP_Y_MINIMUM, OBSTACLE_CLAMP_Y_MAXIMUM)
-		
-	var can_spawn = true
-			
-	for obstacle in obstacles:
-		if obstacles[obstacle] - obstacle_position_y < OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y:
-			can_spawn = false
-			
-	if (obstacle_select == mountain_scene 
-	or obstacle_select == jungle_tree_obstacle1_scene
-	or obstacle_select == jungle_tree_obstacle2_scene):
-		
-		can_spawn = true
-		obstacle_position_y = randf_range(100, 200)
-		
-	elif obstacle_select == cactus_scene:
-		
-		$RayCast2D.position = Vector2($CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X, CAMERA_CLAMP_Y_MAXIMUM)
-		
-		if $RayCast2D.is_colliding():
-			
-			var raycast_instance = $RayCast2D.get_collider()
-			
-			if raycast_instance.has_meta("DesertRug"):
-				obstacle_position_y = CACTUS_SPAWN_OFFSET_Y - $RayCast2D.get_collision_point().y
-			else:
-				can_spawn = false
-		else:
-			can_spawn = false
+	var obstacle_position_y = _get_obstacle_spawn_position_y(obstacle_select)
 				
-	if can_spawn == true:
+	if obstacle_position_y:
 		
 		var obstacle = obstacle_select.instantiate()
 		
@@ -136,6 +147,7 @@ func _spawn_obstacle():
 		add_child(obstacle)
 			
 		obstacle.position.x = $CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X
+		
 		obstacle.position.y = obstacle_position_y
 	
 		var double = random.randi_range(1, 4)

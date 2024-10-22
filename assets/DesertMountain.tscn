@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ok6ygwfdvixd"]
+[gd_scene load_steps=6 format=3 uid="uid://ok6ygwfdvixd"]
 
 [ext_resource type="Script" path="res://scripts/DesertMountain.gd" id="1_klrxx"]
+[ext_resource type="PackedScene" uid="uid://bnupu42r46n7x" path="res://assets/explosion.tscn" id="2_ei3ve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ge8go"]
 
@@ -18,7 +19,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="Node2D" type="Node2D"]
 scale = Vector2(180.051, 180.051)
 script = ExtResource("1_klrxx")
-explosion_scene = null
+explosion_scene = ExtResource("2_ei3ve")
 explosion_colour = Color(0.862745, 0.533333, 0, 1)
 metadata/DesertRug = true
 metadata/obstacle = true
