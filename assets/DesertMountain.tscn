@@ -31,6 +31,7 @@ metadata/DesertRug = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ge8go")
+one_way_collision_margin = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4.65661e-10, 2.22045e-16)

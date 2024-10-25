@@ -11,6 +11,7 @@ func _hit_object(object):
 	and object.name != "ObstacleDetector"
 	or object.has_meta("Bullet")):
 		
+		# Make the obstacle explosion
 		explosion = explosion_scene.instantiate()
 		
 		explosion.position.x = object.position.x

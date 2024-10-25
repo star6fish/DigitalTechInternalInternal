@@ -6,6 +6,8 @@ extends Node2D
 func _ready():
 	var particles = explosion_particles.instantiate()
 	
+	particles.modulate = $AnimatedSprite2D.modulate
+	
 	particles.position = position
 	particles.rotation = rotation
 	particles.emitting = true

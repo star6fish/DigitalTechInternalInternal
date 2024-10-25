@@ -81,4 +81,4 @@ animation = &"default_speeding"
 shape = SubResource("RectangleShape2D_58hsa")
 
 [connection signal="area_entered" from="Area2D" to="." method="_hit_object"]
-[connection signal="area_entered" from="ObstacleDetector" to="." method="_hit_object_OD"]
+[connection signal="area_entered" from="ObstacleDetector" to="." method="_hit_object_obstacle_detector"]

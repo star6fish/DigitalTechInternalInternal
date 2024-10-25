@@ -2,9 +2,10 @@ extends Control
 
 @onready var global = get_node("/root/Global")
 
-var buttons_hover = {}
+var buttons_hovering = {}
 
 const BUTTON_TWEENING_SIZE_SPEED = 0.1
+
 
 func update_button_outlines():
 	
@@ -62,47 +63,49 @@ func _back_button_pressed():
 	_back()
 
 
-func _button_effect(button_target, hover, press):
+func _button_effect(button_target, hovering, pressing):
 	
-	if hover == true:
+	if hovering == true:
 		
-		if not buttons_hover.get(button_target):
+		if not buttons_hovering.get(button_target):
 			
-			buttons_hover[button_target] = button_target.scale
+			buttons_hovering[button_target] = button_target.scale
 			
-			var button_tween = create_tween()
-			button_tween.tween_property(button_target, "scale", button_target.scale
+			var button_size_tween = create_tween()
+			button_size_tween.tween_property(button_target, "scale", button_target.scale
 					 + (button_target.scale / 6), BUTTON_TWEENING_SIZE_SPEED)
 			
-	elif hover == false:
+	elif hovering == false:
 		
-		if buttons_hover.get(button_target):
+		if buttons_hovering.get(button_target):
 			
-			var button_tween = create_tween()
-			button_tween.tween_property(button_target, "scale", buttons_hover[button_target],
-					 BUTTON_TWEENING_SIZE_SPEED)
+			var button_size_tween = create_tween()
+			button_size_tween.tween_property(button_target, "scale",
+					 buttons_hovering[button_target], BUTTON_TWEENING_SIZE_SPEED)
 			
-			buttons_hover.erase(button_target)
+			buttons_hovering.erase(button_target)
 			
-	if press == true:
+	if pressing == true:
 			
-		var button_tween = create_tween()
-		button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
-				 - (buttons_hover[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
+		var button_size_tween = create_tween()
+		button_size_tween.tween_property(button_target, "scale", buttons_hovering[button_target]
+				 - (buttons_hovering[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
 		
-	elif press == false:
+	elif pressing == false:
 		
-		if hover == true:
+		if hovering == true:
 			
-			if buttons_hover.get(button_target):
+			if buttons_hovering.get(button_target):
 				
-				var button_tween = create_tween()
-				button_tween.tween_property(button_target, "scale", buttons_hover[button_target]
-						 + (buttons_hover[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
+				var button_size_tween = create_tween()
+				button_size_tween.tween_property(button_target, "scale", buttons_hovering[button_target]
+						 + (buttons_hovering[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_button_outlines()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -110,14 +113,5 @@ func _process(delta):
 	for i in get_children():
 		if i.has_signal("button_down"):
 			
-			if i.is_hovered() == true:
-				_button_effect(i, true, false)
-			elif i.is_hovered() == false:
-				_button_effect(i, false, false)
-				
-			if i.is_pressed() == true:
-				_button_effect(i, true, true)
-			if i.is_pressed() == false:
-				if i.is_hovered() == true:
-					_button_effect(i, true, false)
+			_button_effect(i, i.is_hovered(), i.is_pressed())
 

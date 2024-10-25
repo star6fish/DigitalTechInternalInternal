@@ -15,6 +15,7 @@ func _hit_object(object):
 		
 		crashing = true
 		
+		# Make the obstacle explosion
 		explosion = explosion_scene.instantiate()
 		
 		explosion.position.x = position.x

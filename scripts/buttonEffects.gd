@@ -1,59 +1,53 @@
 extends CanvasLayer
 
-var ButtonsHover = {}
+var buttons_hovering = {}
 
 const BUTTON_TWEENING_SIZE_SPEED = 0.1
 
-func _buttonEffect(ButtonTarget, Hover, Press):
+
+# Makes the button pressing size effect
+func _button_effect(button_target, hovering, pressing):
 	
-	if Hover == true:
+	if hovering == true: # Bigger
 		
-		if not ButtonsHover.get(ButtonTarget):
+		if not buttons_hovering.get(button_target):
 			
-			ButtonsHover[ButtonTarget] = ButtonTarget.scale
+			buttons_hovering[button_target] = button_target.scale
 			
-			var ButtonTween = create_tween()
-			ButtonTween.tween_property(ButtonTarget, "scale", ButtonTarget.scale
-					 + (ButtonTarget.scale / 6), BUTTON_TWEENING_SIZE_SPEED)
+			var button_size_tween = create_tween()
+			button_size_tween.tween_property(button_target, "scale", button_target.scale
+					 + (button_target.scale / 6), BUTTON_TWEENING_SIZE_SPEED)
 			
-	elif Hover == false:
+	elif hovering == false: # Normal
 		
-		if ButtonsHover.get(ButtonTarget):
+		if buttons_hovering.get(button_target):
 			
-			var ButtonTween = create_tween()
-			ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget],
-					 BUTTON_TWEENING_SIZE_SPEED)
+			var button_size_tween = create_tween()
+			button_size_tween.tween_property(button_target, "scale",
+					 buttons_hovering[button_target], BUTTON_TWEENING_SIZE_SPEED)
 			
-			ButtonsHover.erase(ButtonTarget)
+			buttons_hovering.erase(button_target)
 			
-	if Press == true:
+	if pressing == true: # Smaller
 			
-		var ButtonTween = create_tween()
-		ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget]
-				 - (ButtonsHover[ButtonTarget] / 6), BUTTON_TWEENING_SIZE_SPEED)
+		var button_size_tween = create_tween()
+		button_size_tween.tween_property(button_target, "scale", buttons_hovering[button_target]
+				 - (buttons_hovering[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
 		
-	elif Press == false:
+	elif pressing == false: 
 		
-		if Hover == true:
+		if hovering == true:# Bigger
 			
-			if ButtonsHover.get(ButtonTarget):
+			if buttons_hovering.get(button_target):
 				
-				var ButtonTween = create_tween()
-				ButtonTween.tween_property(ButtonTarget, "scale", ButtonsHover[ButtonTarget]
-						 + (ButtonsHover[ButtonTarget] / 6), BUTTON_TWEENING_SIZE_SPEED)
+				var button_size_tween = create_tween()
+				button_size_tween.tween_property(button_target, "scale", buttons_hovering[button_target]
+						 + (buttons_hovering[button_target] / 6), BUTTON_TWEENING_SIZE_SPEED)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for i in get_children():
 		if i.has_signal("button_down"):
 			
-			if i.is_hovered() == true:
-				_buttonEffect(i, true, false)
-			elif i.is_hovered() == false:
-				_buttonEffect(i, false, false)
-				
-			if i.is_pressed() == true:
-				_buttonEffect(i, true, true)
-			if i.is_pressed() == false:
-				if i.is_hovered() == true:
-					_buttonEffect(i, true, false)
+			_button_effect(i, i.is_hovered(), i.is_pressed())

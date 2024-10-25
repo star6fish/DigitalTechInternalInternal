@@ -8,7 +8,7 @@ var objects_hit = 0
 func _hit_object(object):
 	if object.get_parent().has_meta("obstacle"):
 		objects_hit += 1
-		if objects_hit >= 5:
+		if objects_hit >= 3:
 			queue_free()
 
 # Called when the node enters the scene tree for the first time.

@@ -296,12 +296,12 @@ position = Vector2(-1380, 865)
 scale = Vector2(196.983, 9.01513)
 
 [node name="MapTypeChangeDetector" type="Area2D" parent="."]
-position = Vector2(21154, -524)
+position = Vector2(21313, -440)
 scale = Vector2(1.05241, 50.352)
 metadata/MapType = "Desert"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector"]
-position = Vector2(-73.1674, 10.4266)
+position = Vector2(847.578, 9.89037)
 scale = Vector2(1.00126, -5.10682)
 shape = SubResource("RectangleShape2D_iegil")
 
@@ -311,7 +311,7 @@ scale = Vector2(1.05241, 50.352)
 metadata/MapType = "Ocean"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector2"]
-position = Vector2(-69.3646, 10.7441)
+position = Vector2(-792.467, 11.2607)
 shape = SubResource("RectangleShape2D_iegil")
 
 [node name="MapTypeChangeDetector3" type="Area2D" parent="."]
@@ -320,7 +320,7 @@ scale = Vector2(1.05241, 50.352)
 metadata/MapType = "Jungle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector3"]
-position = Vector2(3113.81, 8.81792)
+position = Vector2(3272.49, 9.0761)
 shape = SubResource("RectangleShape2D_iegil")
 
 [node name="MapTypeChangeDetector4" type="Area2D" parent="."]
@@ -329,7 +329,7 @@ scale = Vector2(1.05241, 50.352)
 metadata/MapType = "Ocean"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapTypeChangeDetector4"]
-position = Vector2(3113.81, 8.81792)
+position = Vector2(2883.86, 8.83778)
 shape = SubResource("RectangleShape2D_iegil")
 
 [node name="ObstaclePassDetector" type="Area2D" parent="."]

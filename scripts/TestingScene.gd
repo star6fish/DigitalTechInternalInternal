@@ -22,11 +22,13 @@ const OBSTACLE_SPAWN_RANDOMNESS_Y = 50
 const CACTUS_SPAWN_OFFSET_Y = 600
 const OBSTACLE_CLAMP_Y_MINIMUM = -1000
 const OBSTACLE_CLAMP_Y_MAXIMUM = -320
+const MOUNTAIN_SPAWN_DISTANCE_MINIMUM_X = 20
 
 const CAMERA_CLAMP_Y_MINIMUM = -600
 const CAMERA_CLAMP_Y_MAXIMUM = -100
 
 const TAKE_OFF_LEAVE_X = 1600
+
 
 # Pause button pressed
 func _pause():
@@ -34,11 +36,13 @@ func _pause():
 	$CanvasLayer.visible = false
 	$CanvasLayer2.visible = true
 	
+	
 # Resume button pressed
 func _resume():
 	get_tree().paused = false
 	$CanvasLayer2.visible = false
 	$CanvasLayer.visible = true
+	
 	
 # Home button pressed
 func _home():
@@ -58,27 +62,41 @@ func _home_button_pressed():
 	_home()
 	
 	
-func _get_obstacle_spawn_position_y(obstacle_select):
+# Gets the position that an obstacle can spawn at
+func _get_obstacle_spawn_position(obstacle_select):
 	
 	var can_spawn = true
+	
+	var obstacle_position = Vector2()
+	
+	var obstacle_position_x = $CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X
 	
 	var obstacle_position_y = clamp(randf_range(
 			$CharacterBody2D.position.y - OBSTACLE_SPAWN_RANDOMNESS_Y,
 		 	$CharacterBody2D.position.y + OBSTACLE_SPAWN_RANDOMNESS_Y),
 			OBSTACLE_CLAMP_Y_MINIMUM, OBSTACLE_CLAMP_Y_MAXIMUM)
 			
-	for obstacle in obstacles:
+	for obstacle in obstacles: # Checking if the obstacle position is too close to another obstacle
 		if obstacles[obstacle] - obstacle_position_y < OBSTACLE_SPAWN_DISTANCE_MINIMUM_Y:
 			can_spawn = false
 	
-	if (obstacle_select == mountain_scene 
-	or obstacle_select == jungle_tree_obstacle1_scene
+	if obstacle_select == mountain_scene:
+		
+		for obstacle in obstacles: # Checking if the obstacle position is too close to another obstacle
+			if (obstacles[obstacle] - $CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X
+					 < MOUNTAIN_SPAWN_DISTANCE_MINIMUM_X):
+				can_spawn = false
+		
+		obstacle_position_y = randf_range(100, 200)
+		
+	elif (obstacle_select == jungle_tree_obstacle1_scene
 	or obstacle_select == jungle_tree_obstacle2_scene):
 		
 		obstacle_position_y = randf_range(100, 200)
 	
 	elif obstacle_select == cactus_scene:
 		
+		# Raycast to see the Y position where the obstacles can spawn
 		$RayCast2D.position = Vector2($CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X,
 				 CAMERA_CLAMP_Y_MINIMUM)
 		
@@ -93,10 +111,12 @@ func _get_obstacle_spawn_position_y(obstacle_select):
 		else:
 			can_spawn = false
 			
+	obstacle_position = Vector2(obstacle_position_x, obstacle_position_y)
+			
 	if can_spawn == false:
-		obstacle_position_y = false
+		obstacle_position = false
 	
-	return obstacle_position_y
+	return obstacle_position
 	
 	
 # Spawn an obstacle
@@ -136,19 +156,21 @@ func _spawn_obstacle():
 		elif obstacle_jet_plane_colour == 3:
 			obstacle_select = jet_plane_obstacle3_scene
 			
-	var obstacle_position_y = _get_obstacle_spawn_position_y(obstacle_select)
+	var obstacle_position = _get_obstacle_spawn_position(obstacle_select)
 				
-	if obstacle_position_y:
+	if obstacle_position: # If the obstacle position can spawn an obstacle (if not then next phsyics process will do it again)
 		
 		var obstacle = obstacle_select.instantiate()
 		
-		obstacles[obstacle] = obstacle_position_y
+		if obstacle_select == mountain_scene:
+			obstacles[obstacle] = obstacle_position.x
+		else:
+			obstacles[obstacle] = obstacle_position.y
 				
 		add_child(obstacle)
 			
-		obstacle.position.x = $CharacterBody2D.position.x + OBSTACLE_SPAWN_OFFSET_X
-		
-		obstacle.position.y = obstacle_position_y
+		obstacle.position.x = obstacle_position.x
+		obstacle.position.y = obstacle_position.y
 	
 		var double = random.randi_range(1, 4)
 	
@@ -165,6 +187,7 @@ func _spawn_obstacle():
 		obstacles.erase(obstacle)
 	
 	obstacle_cool_down = false
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -187,6 +210,7 @@ func _ready():
 		$CanvasLayer.get_child(3).get_child(1).add_theme_color_override("font_color",
 		 		Color.LIGHT_YELLOW)
 
+
 # Called every frame.'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
@@ -194,13 +218,14 @@ func _process(delta):
 	$Camera2D.position.y = clamp($CharacterBody2D.position.y, CAMERA_CLAMP_Y_MINIMUM,
 			 CAMERA_CLAMP_Y_MAXIMUM)
 	
-	if $CharacterBody2D.position.x > TAKE_OFF_LEAVE_X:
+	if $CharacterBody2D.position.x > TAKE_OFF_LEAVE_X: # If the player is past the take off point then obstacles can spawn
 	
 		if obstacle_cool_down == false:
 			_spawn_obstacle()
 			
 	$CanvasLayer.get_child(4).text = "Obstacles Dodged:     " + str(global.obstacles_dodged)
-			
+	
+	# Changing the distance covered bar
 	$CanvasLayer.get_child(3).position.x = -$CanvasLayer.get_child(3).size.x * (
 				1 - $CharacterBody2D.position.x / $Node2D3.position.x)
 	$CanvasLayer.get_child(3).get_child(0).text = (str(floor($CharacterBody2D.position.x)) + " / "

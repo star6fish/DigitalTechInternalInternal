@@ -3,16 +3,13 @@ extends Node2D
 @export var explosion_scene : PackedScene
 @export var explosion_colour : Color
 
-var crashing = false
-
 var explosion = false
 
 
 func _hit_object(object):
 	if object.get_parent().name == "CharacterBody2D" and object.name != "ObstacleDetector":
 		
-		crashing = true
-		
+		# Make the obstacle explosion
 		explosion = explosion_scene.instantiate()
 		
 		explosion.position.x = object.position.x
